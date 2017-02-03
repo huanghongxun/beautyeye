@@ -25,122 +25,114 @@ import org.jb2011.lnf.beautyeye.utils.BEUtils;
  * 虚线圆角边框Border.
  * <p>
  * TODO 目前圆角大小和虚线间隔等目前都是固定的，进一步重构后可以进行重用哦.
- * 
+ *
  * @author Jack Jiang(jb2011@163.com)
  */
-public class BEDashedRoundRecBorder extends LineBorder implements UIResource 
-{
-	
-	/** The separator space. */
-	private int arcWidth=6,arcHeight=6,separatorSolid=2, separatorSpace=2;
-	
-	/**
-	 * 构造方法.
-	 *
-	 * @param color 虚线颜色
-	 */
-	public BEDashedRoundRecBorder(Color color) 
-	{
-		super(color);
-	}
+public class BEDashedRoundRecBorder extends LineBorder implements UIResource {
 
-	/* (non-Javadoc)
-	 * @see javax.swing.border.LineBorder#paintBorder(java.awt.Component, java.awt.Graphics, int, int, int, int)
-	 */
-	public void paintBorder(Component c, Graphics g, int x, int y, int width, int height)
-	{
-		Color oldColor = g.getColor();
-		g.setColor(lineColor);
-		BEUtils.drawDashedRect(g, x, y, width, height,arcWidth,arcHeight,separatorSolid,separatorSpace);
-		g.setColor(oldColor);
-	}
+    /**
+     * The separator space.
+     */
+    private int arcWidth = 6, arcHeight = 6, separatorSolid = 2, separatorSpace = 2;
 
-	/**
-	 * Gets the arc width.
-	 *
-	 * @return the arc width
-	 */
-	public int getArcWidth()
-	{
-		return arcWidth;
-	}
+    /**
+     * 构造方法.
+     *
+     * @param color 虚线颜色
+     */
+    public BEDashedRoundRecBorder(Color color) {
+        super(color);
+    }
 
-	/**
-	 * Sets the arc width.
-	 *
-	 * @param arcWidth the arc width
-	 * @return the bE dashed round rec border
-	 */
-	public BEDashedRoundRecBorder setArcWidth(int arcWidth)
-	{
-		this.arcWidth = arcWidth;
-		return this;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+        Color oldColor = g.getColor();
+        g.setColor(lineColor);
+        BEUtils.drawDashedRect(g, x, y, width, height, arcWidth, arcHeight, separatorSolid, separatorSpace);
+        g.setColor(oldColor);
+    }
 
-	/**
-	 * Gets the arc height.
-	 *
-	 * @return the arc height
-	 */
-	public int getArcHeight()
-	{
-		return arcHeight;
-	}
+    /**
+     * Gets the arc width.
+     *
+     * @return the arc width
+     */
+    public int getArcWidth() {
+        return arcWidth;
+    }
 
-	/**
-	 * Sets the arc height.
-	 *
-	 * @param arcHeight the arc height
-	 * @return the bE dashed round rec border
-	 */
-	public BEDashedRoundRecBorder setArcHeight(int arcHeight)
-	{
-		this.arcHeight = arcHeight;
-		return this;
-	}
+    /**
+     * Sets the arc width.
+     *
+     * @param arcWidth the arc width
+     * @return the bE dashed round rec border
+     */
+    public BEDashedRoundRecBorder setArcWidth(int arcWidth) {
+        this.arcWidth = arcWidth;
+        return this;
+    }
 
-	/**
-	 * Gets the separator solid.
-	 *
-	 * @return the separator solid
-	 */
-	public int getSeparatorSolid()
-	{
-		return separatorSolid;
-	}
+    /**
+     * Gets the arc height.
+     *
+     * @return the arc height
+     */
+    public int getArcHeight() {
+        return arcHeight;
+    }
 
-	/**
-	 * Sets the separator solid.
-	 *
-	 * @param separatorSolid the separator solid
-	 * @return the bE dashed round rec border
-	 */
-	public BEDashedRoundRecBorder setSeparatorSolid(int separatorSolid)
-	{
-		this.separatorSolid = separatorSolid;
-		return this;
-	}
+    /**
+     * Sets the arc height.
+     *
+     * @param arcHeight the arc height
+     * @return the bE dashed round rec border
+     */
+    public BEDashedRoundRecBorder setArcHeight(int arcHeight) {
+        this.arcHeight = arcHeight;
+        return this;
+    }
 
-	/**
-	 * Gets the separator space.
-	 *
-	 * @return the separator space
-	 */
-	public int getSeparatorSpace()
-	{
-		return separatorSpace;
-	}
+    /**
+     * Gets the separator solid.
+     *
+     * @return the separator solid
+     */
+    public int getSeparatorSolid() {
+        return separatorSolid;
+    }
 
-	/**
-	 * Sets the separator space.
-	 *
-	 * @param separatorSpace the separator space
-	 * @return the bE dashed round rec border
-	 */
-	public BEDashedRoundRecBorder setSeparatorSpace(int separatorSpace)
-	{
-		this.separatorSpace = separatorSpace;
-		return this;
-	}
-	
+    /**
+     * Sets the separator solid.
+     *
+     * @param separatorSolid the separator solid
+     * @return the bE dashed round rec border
+     */
+    public BEDashedRoundRecBorder setSeparatorSolid(int separatorSolid) {
+        this.separatorSolid = separatorSolid;
+        return this;
+    }
+
+    /**
+     * Gets the separator space.
+     *
+     * @return the separator space
+     */
+    public int getSeparatorSpace() {
+        return separatorSpace;
+    }
+
+    /**
+     * Sets the separator space.
+     *
+     * @param separatorSpace the separator space
+     * @return the bE dashed round rec border
+     */
+    public BEDashedRoundRecBorder setSeparatorSpace(int separatorSpace) {
+        this.separatorSpace = separatorSpace;
+        return this;
+    }
+
 }

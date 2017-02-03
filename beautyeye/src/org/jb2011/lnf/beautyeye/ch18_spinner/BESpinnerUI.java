@@ -26,16 +26,13 @@ import org.jb2011.lnf.beautyeye.ch18_spinner.BESpinnerUI.GlyphButton.Type;
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 
-// TODO: Auto-generated Javadoc
 /**
  * JSPinner的UI实现类。.
  *
  * @author Jack Jiang(jb2011@163.com)
  * @version 1.0
+ * @see com.sun.java.swing.plaf.windows.WindowsSpinnerUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//参考自WindowsSpinnerUI 由Jack Jiang修改
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BESpinnerUI extends BasicSpinnerUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("spinner");
@@ -50,8 +47,8 @@ public class BESpinnerUI extends BasicSpinnerUI {
         return new BESpinnerUI();
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicSpinnerUI#createEditor()
+    /**
+     * {@inheritDoc}
      */
     @Override
     protected JComponent createEditor() {
@@ -83,8 +80,8 @@ public class BESpinnerUI extends BasicSpinnerUI {
         super.paint(g, c);
     }
 
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicSpinnerUI#createPreviousButton()
+    /**
+     * {@inheritDoc}
      */
     @Override
     protected Component createPreviousButton() {
@@ -96,8 +93,8 @@ public class BESpinnerUI extends BasicSpinnerUI {
         return xpButton;
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicSpinnerUI#createNextButton()
+    /**
+     * {@inheritDoc}
      */
     @Override
     protected Component createNextButton() {
@@ -109,7 +106,9 @@ public class BESpinnerUI extends BasicSpinnerUI {
         return xpButton;
     }
 
-    //copy from com.sun.java.swing.plaf.windows.XPStyle.GlyphButton
+    /**
+     * @see com.sun.java.swing.plaf.windows.XPStyle.GlyphButton
+     */
     static class GlyphButton extends JButton {
 
         private Type type = null;
@@ -139,16 +138,16 @@ public class BESpinnerUI extends BasicSpinnerUI {
             setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
         }
 
-        /* (non-Javadoc)
-         * @see java.awt.Component#isFocusTraversable()
+        /**
+         * {@inheritDoc}
          */
         @Override
         public boolean isFocusTraversable() {
             return false;
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+        /**
+         * {@inheritDoc}
          */
         @Override
         public void paintComponent(Graphics g) {
@@ -156,8 +155,8 @@ public class BESpinnerUI extends BasicSpinnerUI {
                     draw((Graphics2D) g, 0, 0, getWidth(), getHeight());
         }
 
-        /* (non-Javadoc)
-         * @see javax.swing.AbstractButton#paintBorder(java.awt.Graphics)
+        /**
+         * {@inheritDoc}
          */
         @Override
         protected void paintBorder(Graphics g) {

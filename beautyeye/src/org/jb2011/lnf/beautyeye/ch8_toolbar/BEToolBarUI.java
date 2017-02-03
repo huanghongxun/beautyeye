@@ -75,15 +75,12 @@ public class BEToolBarUI extends BasicToolBarUI
         return new BEToolBarUI();
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicToolBarUI#installDefaults()
+    /**
+     * {@inheritDoc}
      */
     @Override
     protected void installDefaults() {
-//		if (XPStyle.getXP() != null) 
-        {
-            setRolloverBorders(true);
-        }
+        setRolloverBorders(true);
         super.installDefaults();
     }
 

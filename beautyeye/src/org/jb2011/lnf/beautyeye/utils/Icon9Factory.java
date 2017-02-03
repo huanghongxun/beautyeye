@@ -19,8 +19,8 @@ public class Icon9Factory extends RawCache<NinePatch> {
      */
     public final static String IMGS_ROOT = "imgs/np";
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.utils.RawCache#getResource(java.lang.String, java.lang.Class)
+    /**
+     * {@inheritDoc}
      */
     @Override
     protected NinePatch getResource(String relativePath, Class baseClass) {

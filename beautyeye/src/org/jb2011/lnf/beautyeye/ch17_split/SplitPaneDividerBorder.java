@@ -25,17 +25,16 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
 /**
  * 分隔条的border实现类.
  * <p>
- * Draws the border around the divider in a splitpane. To get the appropriate effect, this
- * needs to be used with a SplitPaneBorder.
- * 
+ * Draws the border around the divider in a splitpane. To get the appropriate
+ * effect, this needs to be used with a SplitPaneBorder.
+ *
+ * 本类参考自jdk1.6_u18的javax.swing.plaf.basic.BasicBorders
+ * .SplitPaneDividerBorder的源码，主要修改了UI填充实现部分
+ *
  * @author Jack Jiang(jb2011@163.com)
+ * @see javax.swing.plaf.basic.BasicBorders.SplitPaneBorder
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类参考自jdk1.6_u18的javax.swing.plaf.basic.BasicBorders
-//	.SplitPaneDividerBorder的源码，主要修改了UI填充实现部分
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
-public class SplitPaneDividerBorder implements Border, UIResource
-{
+public class SplitPaneDividerBorder implements Border, UIResource {
 //	javax.swing.plaf.basic.BasicBorders.SplitPaneDividerBorder
 //	private Color highlight;
 //	private Color shadow;
@@ -45,14 +44,13 @@ public class SplitPaneDividerBorder implements Border, UIResource
 //		this.highlight = highlight;
 //		this.shadow = shadow;
 //	}
-
-	/* (non-Javadoc)
- * @see javax.swing.border.Border#paintBorder(java.awt.Component, java.awt.Graphics, int, int, int, int)
- */
-public void paintBorder(Component c, Graphics g, int x, int y, int width,
-			int height)
-	{
-		//在目前的视觉效果下不需要这个border的绘制哦
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void paintBorder(Component c, Graphics g, int x, int y, int width,
+            int height) {
+        //在目前的视觉效果下不需要这个border的绘制哦
 //		Graphics2D g2d = (Graphics2D) g;
 //		Component child;
 //		Rectangle cBounds;
@@ -94,47 +92,43 @@ public void paintBorder(Component c, Graphics g, int x, int y, int width,
 ////
 ////			}
 //		}
-	}
+    }
 
-	/* (non-Javadoc)
-	 * @see javax.swing.border.Border#getBorderInsets(java.awt.Component)
-	 */
-	public Insets getBorderInsets(Component c)
-	{
-		Insets insets = new Insets(0, 0, 0, 0);
-		if (c instanceof BasicSplitPaneDivider)
-		{
-			BasicSplitPaneUI bspui = ((BasicSplitPaneDivider) c)
-					.getBasicSplitPaneUI();
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Insets getBorderInsets(Component c) {
+        Insets insets = new Insets(0, 0, 0, 0);
+        if (c instanceof BasicSplitPaneDivider) {
+            BasicSplitPaneUI bspui = ((BasicSplitPaneDivider) c)
+                    .getBasicSplitPaneUI();
 
-			if (bspui != null)
-			{
-				JSplitPane splitPane = bspui.getSplitPane();
+            if (bspui != null) {
+                JSplitPane splitPane = bspui.getSplitPane();
 
-				if (splitPane != null)
-				{
-					if (splitPane.getOrientation() == JSplitPane.HORIZONTAL_SPLIT)
-					{
-						insets.top = insets.bottom = 0;
-						insets.left = insets.right = 1;
-						return insets;
-					}
-					// VERTICAL_SPLIT
-					insets.top = insets.bottom = 1;
-					insets.left = insets.right = 0;
-					return insets;
-				}
-			}
-		}
-		insets.top = insets.bottom = insets.left = insets.right = 1;
-		return insets;
-	}
+                if (splitPane != null) {
+                    if (splitPane.getOrientation() == JSplitPane.HORIZONTAL_SPLIT) {
+                        insets.top = insets.bottom = 0;
+                        insets.left = insets.right = 1;
+                        return insets;
+                    }
+                    // VERTICAL_SPLIT
+                    insets.top = insets.bottom = 1;
+                    insets.left = insets.right = 0;
+                    return insets;
+                }
+            }
+        }
+        insets.top = insets.bottom = insets.left = insets.right = 1;
+        return insets;
+    }
 
-	/* (non-Javadoc)
-	 * @see javax.swing.border.Border#isBorderOpaque()
-	 */
-	public boolean isBorderOpaque()
-	{
-		return true;
-	}
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean isBorderOpaque() {
+        return true;
+    }
 }

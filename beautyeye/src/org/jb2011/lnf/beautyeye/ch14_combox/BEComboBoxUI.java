@@ -84,9 +84,8 @@ public class BEComboBoxUI extends BasicComboBoxUI
                 || !(comboBox.getBackground() instanceof UIResource));
     }
 
-    //copy from parent and modified by Jack Jiang
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicComboBoxUI#installUI(javax.swing.JComponent)
+    /**
+     * {@inheritDoc}
      */
     @Override
     public void installUI(JComponent c) {
@@ -123,28 +122,34 @@ public class BEComboBoxUI extends BasicComboBoxUI
         return this.comboBox;
     }
 
-    //copy from BasicComboBoxUI and modified by jb2011
-    //自定义下接框箭头按钮实现类
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicComboBoxUI#createArrowButton()
+    /**
+     * {@inheritDoc}
+     *
+     * 自定义下接框箭头按钮实现类
      */
     @Override
     protected JButton createArrowButton() {
         JButton button = new JButton() {
 
-            //不允许设置border
+            /**
+             * 不允许设置border
+             */
             @Override
             public void setBorder(Border b) {
             }
 
-            //背景填充
+            /**
+             * 背景填充
+             */
             @Override
             public void paint(Graphics g) {
                 ICON_9.getWithButtonState("", isEnabled(), getModel().isPressed())
                         .draw((Graphics2D) g, 0, 0, this.getWidth(), this.getHeight());
             }
 
-            // Don't want the button to participate in focus traversable.
+            /**
+             * Don't want the button to participate in focus traversable.
+             */
             @Override
             public boolean isFocusTraversable() {
                 return false;
@@ -184,9 +189,8 @@ public class BEComboBoxUI extends BasicComboBoxUI
         return button;
     }
 
-    //* copy from BasicComboBoxUI and modified by jb2011
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicComboBoxUI#paint(java.awt.Graphics, javax.swing.JComponent)
+    /**
+     * {@inheritDoc}
      */
     @Override
     public void paint(Graphics g, JComponent c) {
@@ -200,13 +204,13 @@ public class BEComboBoxUI extends BasicComboBoxUI
         }
     }
 
-    //* copy from BasicComboBoxUI and modified by jb2011
     /**
      * Paints the background of the currently selected item.
      *
      * @param g the g
      * @param bounds the bounds
      * @param hasFocus the has focus
+     * @see javax.swing.plaf.basic.BasicComboBoxUI#paintCurrentValueBackground(java.awt.Graphics, java.awt.Rectangle, boolean) 
      */
     @Override
     public void paintCurrentValueBackground(Graphics g, Rectangle bounds, boolean hasFocus) {
@@ -232,9 +236,10 @@ public class BEComboBoxUI extends BasicComboBoxUI
         return new BEComboBoxRenderer.UIResource(this);
     }
 
-    //* 由jb2011 Override本方法的目的是改变父类方法可见性，方便第3方调用
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicComboBoxUI#getInsets()
+    /**
+     * {@inheritDoc}
+     *
+     * 改变方法可见性
      */
     @Override
     public Insets getInsets() {
@@ -274,14 +279,15 @@ public class BEComboBoxUI extends BasicComboBoxUI
 //            }
 //        };
 //    }
-    //* 以下代码拷自父类，目的是修正弹出popup窗口的x、y坐标，不像菜单UI里有
-    //* Menu.menuPopupOffsetX等4个属性可设置以备对坐标进行调整，BeautyEye LNF中由Jack Jiang
-    //* 依照Menu中的实现自定义了2个属性，以便以后配置。参考自jdk1.6.0_u18源码.
     /**
      * Creates the popup portion of the combo box.
+     * 
+     * 目的是修正弹出popup窗口的x、y坐标，不像菜单UI里有
+     * Menu.menuPopupOffsetX等4个属性可设置以备对坐标进行调整，BeautyEye LNF中由Jack Jiang
+     * 依照Menu中的实现自定义了2个属性，以便以后配置。参考自jdk1.6.0_u18源码.
      *
      * @return an instance of <code>ComboPopup</code>
-     * @see ComboPopup
+     * @see javax.swing.plaf.basic.BasicComboBoxUI#createPopup()
      */
     @Override
     protected ComboPopup createPopup() {
@@ -295,9 +301,6 @@ public class BEComboBoxUI extends BasicComboBoxUI
              */
             private final int popupOffsetY = UIManager.getInt("ComboBox.popupOffsetY");
 
-            /**
-             * Implementation of ComboPopup.show().
-             */
             @Override
             public void show() {
                 setListSelection(comboBox.getSelectedIndex());
@@ -308,13 +311,13 @@ public class BEComboBoxUI extends BasicComboBoxUI
                 );
             }
 
-            //* copy from parent and no modified
             /**
              * Sets the list selection index to the selectedIndex. This method
              * is used to synchronize the list selection with the combo box
              * selection.
              *
              * @param selectedIndex the index to set the list
+             * @see javax.swing.plaf.basic.BasicComboPopup#setListSelection(int)
              */
             private void setListSelection(int selectedIndex) {
                 if (selectedIndex == -1)
@@ -325,9 +328,10 @@ public class BEComboBoxUI extends BasicComboBoxUI
                 }
             }
 
-            //* copy from parent and no modified
             /**
              * Calculates the upper left location of the Popup.
+             * 
+             * @see javax.swing.plaf.basic.BasicComboPopup#getPopupLocation() 
              */
             private Point getPopupLocation() {
                 Dimension popupSize = comboBox.getSize();
@@ -353,17 +357,20 @@ public class BEComboBoxUI extends BasicComboBoxUI
         };
     }
 
-    //## Bug FIX：Issue 49(https://code.google.com/p/beautyeye/issues/detail?id=49) 
-    //* 此方法由Jack Jiang于2012-10-12加入：重写父类方法的目的是使得默认的
-    //* Editor透明（即不填充默认背景），因为BE LNF中JTextField的LNF是用NP图
-    //* 实现的，此处不透明的话就会遮住NP背景图，从而使得外观难看。
     /**
      * Creates the default editor that will be used in editable combo boxes. A
      * default editor will be used only if an editor has not been explicitly set
      * with <code>setEditor</code>.
+     * 
+     * 重写父类方法的目的是使得默认的
+     * Editor透明（即不填充默认背景），因为BE LNF中JTextField的LNF是用NP图
+     * 实现的，此处不透明的话就会遮住NP背景图，从而使得外观难看。
+     * 
+     * Fixed Issue 49(https://code.google.com/p/beautyeye/issues/detail?id=49)
      *
      * @return a <code>ComboBoxEditor</code> used for the combo box
      * @see javax.swing.JComboBox#setEditor
+     * @see com.sun.java.swing.plaf.windows.WindowsComboBoxUI.WindowsComboBoxEditor
      */
     @Override
     protected ComboBoxEditor createEditor() {

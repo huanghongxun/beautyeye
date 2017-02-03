@@ -47,8 +47,8 @@ public class TranslucentPopupFactory extends PopupFactory {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("popup");
 
-    /* (non-Javadoc)
-	 * @see javax.swing.PopupFactory#getPopup(java.awt.Component, java.awt.Component, int, int)
+    /**
+     * {@inheritDoc}
      */
     @Override
     public Popup getPopup(Component owner, Component contents, int x, int y)
@@ -388,16 +388,16 @@ public class TranslucentPopupFactory extends PopupFactory {
                 }
             }
 
-            /* (non-Javadoc)
-			 * @see javax.swing.JWindow#update(java.awt.Graphics)
+            /**
+             * {@inheritDoc}
              */
             @Override
             public void update(Graphics g) {
                 paint(g);
             }
 
-            /* (non-Javadoc)
-			 * @see java.awt.Window#show()
+            /**
+             * {@inheritDoc}
              */
             @Override
             public void show() {

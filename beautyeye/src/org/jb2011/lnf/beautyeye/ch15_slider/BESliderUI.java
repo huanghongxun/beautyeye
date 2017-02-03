@@ -67,8 +67,8 @@ public class BESliderUI extends BasicSliderUI {
         return new BESliderUI((JSlider) b);
     }
 
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicSliderUI#paintTrack(java.awt.Graphics)
+    /**
+     * {@inheritDoc}
      */
     @Override
     public void paintTrack(Graphics g) {
@@ -104,8 +104,8 @@ public class BESliderUI extends BasicSliderUI {
         }
     }
 
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicSliderUI#paintFocus(java.awt.Graphics)
+    /**
+     * {@inheritDoc}
      */
     @Override
     public void paintFocus(Graphics g) {
@@ -114,9 +114,10 @@ public class BESliderUI extends BasicSliderUI {
                 focusRect.width, focusRect.height);
     }
 
-    //copy from BasicSliderUI and modified by jb2011
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicSliderUI#paintThumb(java.awt.Graphics)
+    /**
+     * {@inheritDoc}
+     * 
+     * @see javax.swing.plaf.basic.BasicSliderUI#paintThumb(java.awt.Graphics) 
      */
     @Override
     public void paintThumb(Graphics g) {
@@ -157,11 +158,9 @@ public class BESliderUI extends BasicSliderUI {
         g.translate(-knobBounds.x, -knobBounds.y);
     }
 
-    //* 本方法由jb2011提炼
-    //该thumb是否是无3角箭头的样式，true表示无3解箭头（即圆形thumb），false表示有3角箭头样式
     /**
      * Checks if is paint no trangle thumb.
-     *
+     * 该thumb是否是无3角箭头的样式，true表示无3解箭头（即圆形thumb），false表示有3角箭头样式
      * @return true, if is paint no trangle thumb
      */
     protected boolean isPaintNoTrangleThumb() {
@@ -173,9 +172,10 @@ public class BESliderUI extends BasicSliderUI {
                 || Boolean.FALSE.equals(paintThumbArrowShape);
     }
 
-    //copy from BasicSliderUI and modified by jb2011
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicSliderUI#getThumbSize()
+    /**
+     * {@inheritDoc}
+     * 
+     * @see javax.swing.plaf.basic.BasicSliderUI#getThumbSize() 
      */
     @Override
     protected Dimension getThumbSize() {
