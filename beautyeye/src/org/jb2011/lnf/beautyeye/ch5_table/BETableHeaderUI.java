@@ -66,9 +66,6 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
         return new BETableHeaderUI();
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTableHeaderUI#installUI(javax.swing.JComponent)
-     */
     @Override
     public void installUI(JComponent c) {
         super.installUI(c);
@@ -77,9 +74,6 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
             header.setDefaultRenderer(new XPDefaultRenderer());
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTableHeaderUI#uninstallUI(javax.swing.JComponent)
-     */
     @Override
     public void uninstallUI(JComponent c) {
         if (header.getDefaultRenderer() instanceof XPDefaultRenderer)
@@ -87,10 +81,6 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
         super.uninstallUI(c);
     }
 
-//	@Override
-    /* (non-Javadoc)
- * @see javax.swing.plaf.basic.BasicTableHeaderUI#rolloverColumnUpdated(int, int)
-     */
     @Override
     protected void rolloverColumnUpdated(int oldColumn, int newColumn) {
         header.repaint(header.getHeaderRect(oldColumn));
@@ -147,9 +137,6 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
             setVerticalAlignment(CENTER);
         }
 
-        /* (non-Javadoc)
-		 * @see sun.swing.table.DefaultTableCellHeaderRenderer#getTableCellRendererComponent(javax.swing.JTable, java.lang.Object, boolean, boolean, int, int)
-         */
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value,
                 boolean isSelected, boolean hasFocus, int row, int column) {
@@ -257,9 +244,6 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
             return this;
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.JComponent#paint(java.awt.Graphics)
-         */
         @Override
         public void paint(Graphics g) {
             Dimension size = getSize();
@@ -363,9 +347,6 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
             this.right = right;
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.border.Border#getBorderInsets(java.awt.Component)
-         */
         @Override
         public Insets getBorderInsets(Component c) {
             //原UI代码：原代码里为了仿vista样式，标头高度很高，现注释掉！
@@ -374,17 +355,11 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
             return new Insets(top, left, bottom, right);
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.border.Border#isBorderOpaque()
-         */
         @Override
         public boolean isBorderOpaque() {
             return false;
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.border.Border#paintBorder(java.awt.Component, java.awt.Graphics, int, int, int, int)
-         */
         @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             icon.paintIcon(c, g,

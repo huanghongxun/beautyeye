@@ -30,10 +30,8 @@ import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
  *
  * @author Jack Jiang(jb2011@163.com), 2012-01-12
  * @version 1.1
+ * @see com.sun.java.swing.plaf.windows.WindowsTabbedPaneUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了JDK1.6_u18中com.sun.java.swing.plaf.windows.WindowsTabbedPaneUI
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BETabbedPaneUI extends BasicTabbedPaneUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("tab");
@@ -48,39 +46,37 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
         return new BETabbedPaneUI();
     }
 
-    //* 本方法的重写copy自 com.sun.java.swing.plaf.windows.WindowsTabbedPaneUI，基本未修改代码
-    //* 重写父类方法实现rover状态下的tab的ui重绘（父类方法只是实现了rolloverTab
-    //* 的设置，不步及ui重绘制，因Basic LNF中没有实现rover状态的ui样式）
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#setRolloverTab(int)
+    /**
+     * 本方法的重写copy自 com.sun.java.swing.plaf.windows.WindowsTabbedPaneUI，基本未修改代码
+     * 重写父类方法实现rover状态下的tab的ui重绘（父类方法只是实现了rolloverTab 的设置，不步及ui重绘制，因Basic
+     * LNF中没有实现rover状态的ui样式）
+     *
+     * @see javax.swing.plaf.basic.BasicTabbedPaneUI#setRolloverTab(int)
      */
     @Override
     protected void setRolloverTab(int index) {
-        // Rollover is only supported on XP
-//		if (XPStyle.getXP() != null)
-        {
-            int oldRolloverTab = getRolloverTab();
-            super.setRolloverTab(index);
-            Rectangle r1 = null;
-            Rectangle r2 = null;
-            if ((oldRolloverTab >= 0) && (oldRolloverTab < tabPane.getTabCount()))
-                r1 = getTabBounds(tabPane, oldRolloverTab);
-            if (index >= 0)
-                r2 = getTabBounds(tabPane, index);
-            if (r1 != null)
-                if (r2 != null)
-                    tabPane.repaint(r1.union(r2));
-                else
-                    tabPane.repaint(r1);
-            else if (r2 != null)
-                tabPane.repaint(r2);
-        }
+        int oldRolloverTab = getRolloverTab();
+        super.setRolloverTab(index);
+        Rectangle r1 = null;
+        Rectangle r2 = null;
+        if ((oldRolloverTab >= 0) && (oldRolloverTab < tabPane.getTabCount()))
+            r1 = getTabBounds(tabPane, oldRolloverTab);
+        if (index >= 0)
+            r2 = getTabBounds(tabPane, index);
+        if (r1 != null)
+            if (r2 != null)
+                tabPane.repaint(r1.union(r2));
+            else
+                tabPane.repaint(r1);
+        else if (r2 != null)
+            tabPane.repaint(r2);
     }
 
-    //* copy from parent and modified by jb2011
     /**
      * this function draws the border around each tab note that this function
-     * does now draw the background of the tab. that is done elsewhere
+     * does now draw the background of the tab. that is done elsewhere.
+     *
+     * copy from parent and modified by jb2011
      *
      * @param g the g
      * @param tabPlacement the tab placement
@@ -143,16 +139,18 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
      * @param h the h
      */
     private void paintTabBorderImpl(Graphics2D g2d, boolean isEnableAt, boolean isSelected,
-             boolean isRover, int x, int y, int w, int h) {
+            boolean isRover, int x, int y, int w, int h) {
         //** modified by jb2011 改为NinePatch图片实现，Y + 1 的目的是使得选中时的底线能往下画一个像素（这样好看点）
         ICON_9.get("", isSelected ? "selected" : (isEnableAt && isRover ? "normal_rollover" : "normal"))
                 .draw(g2d, x, y + 1, w, h);
     }
 
-    //copy from BasicTabbedPaneUI and modified by Jack Jiang
-    //* 重写本方法的目的仅是把原来的默认实线变成虚线而已哦
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorder(java.awt.Graphics, int, int)
+    /**
+     * 重写本方法的目的仅是把原来的默认实线变成虚线而已哦
+     *
+     * @see
+     * javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorder(java.awt.Graphics,
+     * int, int)
      */
     @Override
     protected void paintContentBorder(Graphics g, int tabPlacement, int selectedIndex) {
@@ -172,10 +170,13 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
         //*** add by jb2011 2012-08-23 END
     }
 
-    //copy from BasicTabbedPaneUI and modified by Jack Jiang
-    //JTabbedPaneUI 内容面板的上边框绘制方法（默认就是内容面板上方的那条灰色）
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderTopEdge(java.awt.Graphics, int, int, int, int, int, int)
+    //
+    /**
+     * JTabbedPaneUI 内容面板的上边框绘制方法（默认就是内容面板上方的那条灰色）.
+     *
+     * @see
+     * javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderTopEdge(java.awt.Graphics,
+     * int, int, int, int, int, int)
      */
     @Override
     protected void paintContentBorderTopEdge(Graphics g, int tabPlacement,
@@ -186,11 +187,13 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
             //调用父类默认实现
             super.paintContentBorderTopEdge(g, tabPlacement, selectedIndex, x, y, w, h);
     }
-    //copy from BasicTabbedPaneUI and modified by Jack Jiang
-    //JTabbedPaneUI 内容面板的左边框绘制方法
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderLeftEdge(java.awt.Graphics, int, int, int, int, int, int)
+    /**
+     * JTabbedPaneUI 内容面板的左边框绘制方法.
+     *
+     * @see
+     * javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderLeftEdge(java.awt.Graphics,
+     * int, int, int, int, int, int)
      */
     @Override
     protected void paintContentBorderLeftEdge(Graphics g, int tabPlacement,
@@ -201,11 +204,13 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
             //调用父类默认实现
             super.paintContentBorderLeftEdge(g, tabPlacement, selectedIndex, x, y, w, h);
     }
-    //copy from BasicTabbedPaneUI and modified by Jack Jiang
-    //JTabbedPaneUI 内容面板的底边框绘制方法
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderBottomEdge(java.awt.Graphics, int, int, int, int, int, int)
+    /**
+     * JTabbedPaneUI 内容面板的底边框绘制方法.
+     *
+     * @see
+     * javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderBottomEdge(java.awt.Graphics,
+     * int, int, int, int, int, int)
      */
     @Override
     protected void paintContentBorderBottomEdge(Graphics g, int tabPlacement,
@@ -216,11 +221,13 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
             //调用父类默认实现
             super.paintContentBorderBottomEdge(g, tabPlacement, selectedIndex, x, y, w, h);
     }
-    //copy from BasicTabbedPaneUI and modified by Jack Jiang
-    //JTabbedPaneUI 内容面板的右边框绘制方法
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderRightEdge(java.awt.Graphics, int, int, int, int, int, int)
+    /**
+     * JTabbedPaneUI 内容面板的右边框绘制方法.
+     *
+     * @see
+     * javax.swing.plaf.basic.BasicTabbedPaneUI#paintContentBorderRightEdge(java.awt.Graphics,
+     * int, int, int, int, int, int)
      */
     @Override
     protected void paintContentBorderRightEdge(Graphics g, int tabPlacement,
@@ -232,10 +239,13 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
             super.paintContentBorderRightEdge(g, tabPlacement, selectedIndex, x, y, w, h);
     }
 
-    //copy from BasicTabbedPaneUI and modified by 2011
-    //获得焦点时的虚线框绘制方法
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintFocusIndicator(java.awt.Graphics, int, java.awt.Rectangle[], int, java.awt.Rectangle, java.awt.Rectangle, boolean)
+    /**
+     * 获得焦点时的虚线框绘制方法
+     *
+     * @see
+     * javax.swing.plaf.basic.BasicTabbedPaneUI#paintFocusIndicator(java.awt.Graphics,
+     * int, java.awt.Rectangle[], int, java.awt.Rectangle, java.awt.Rectangle,
+     * boolean)
      */
     @Override
     protected void paintFocusIndicator(Graphics g, int tabPlacement,
@@ -287,31 +297,25 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
         }
     }
 
-    //copy from BasicTabbedPaneUI and modified by 2011
-    //* 重写并修改本方法的目的是修正tab上的文本显示Y坐标方向上的偏移，以便与背景协调
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicTabbedPaneUI#getTabLabelShiftY(int, int, boolean)
+    /**
+     * 重写并修改本方法的目的是修正tab上的文本显示Y坐标方向上的偏移，以便与背景协调
+     * @see javax.swing.plaf.basic.BasicTabbedPaneUI#getTabLabelShiftY(int, int, boolean)
      */
     @Override
     protected int getTabLabelShiftY(int tabPlacement, int tabIndex, boolean isSelected) {
-        Rectangle tabRect = rects[tabIndex];
-        int nudge = 0;
         switch (tabPlacement) {
             case BOTTOM:
-                nudge = isSelected ? 1 : -1;
-                break;
+                return isSelected ? 1 : -1;
             case LEFT:
             case RIGHT:
-                nudge = tabRect.height % 2;
-                break;
+                return rects[tabIndex].height % 2;
             case TOP:
             default:
                 //** 由jb2011 2012-08-24修改：目的是使得选中时和未选中时的文本（包括图标
                 //** 默认实现中之所以要产生它个效果是为了营造立体效果，而BE LNF中并不需要
                 //** ）不要往上或往下偏移的太多（太多则相当难看）
 //				nudge = isSelected? -1 : 1;//本行是原父类中的默认实现哦
-                nudge = -2;//由jb2011修改，目的是让文本相对现在的背景往上偏移一点，好看一些
+                return -2;//由jb2011修改，目的是让文本相对现在的背景往上偏移一点，好看一些
         }
-        return nudge;
     }
 }

@@ -20,7 +20,6 @@ import javax.swing.plaf.UIResource;
 
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * 虚线圆角边框Border.
  * <p>
@@ -44,9 +43,6 @@ public class BEDashedRoundRecBorder extends LineBorder implements UIResource {
         super(color);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         Color oldColor = g.getColor();

@@ -27,26 +27,14 @@ import org.jb2011.ninepatch4j.NinePatch;
  */
 public class ImageBgPanel extends JPanel {
 
-    /**
-     * The draw bg.
-     */
     private boolean drawBg = true;
 
-    /**
-     * The n9.
-     */
     private NinePatch n9 = null;
 
-    /**
-     * Instantiates a new image bg panel.
-     */
     public ImageBgPanel() {
         this.setOpaque(false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintChildren(Graphics g) {
         if (drawBg && n9 != null)

@@ -146,9 +146,6 @@ public class BEButtonUI extends BasicButtonUI {
     // ********************************
     //            Defaults
     // ********************************
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicButtonUI#installDefaults(javax.swing.AbstractButton)
-     */
     @Override
     protected void installDefaults(AbstractButton b) {
         super.installDefaults(b);
@@ -172,9 +169,6 @@ public class BEButtonUI extends BasicButtonUI {
         }
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicButtonUI#uninstallDefaults(javax.swing.AbstractButton)
-     */
     @Override
     protected void uninstallDefaults(AbstractButton b) {
         super.uninstallDefaults(b);
@@ -200,10 +194,6 @@ public class BEButtonUI extends BasicButtonUI {
 //	{
 //		WindowsGraphicsUtils.paintText(g, b, textRect, text, getTextShiftOffset());
 //	} 
-
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicButtonUI#paintFocus(java.awt.Graphics, javax.swing.AbstractButton, java.awt.Rectangle, java.awt.Rectangle, java.awt.Rectangle)
-     */
     @Override
     protected void paintFocus(Graphics g, AbstractButton b, Rectangle viewRect, Rectangle textRect, Rectangle iconRect) {
         //* 由Jack Jiang于2012-10-16日注释掉以下行：目的是修正当JButton处于JToolBar时不能绘制焦点的问题
@@ -241,9 +231,6 @@ public class BEButtonUI extends BasicButtonUI {
     // ********************************
     //          Layout Methods
     // ********************************
-    /* (non-Javadoc)
- * @see javax.swing.plaf.basic.BasicButtonUI#getPreferredSize(javax.swing.JComponent)
-     */
     @Override
     public Dimension getPreferredSize(JComponent c) {
         Dimension d = super.getPreferredSize(c);
@@ -268,10 +255,6 @@ public class BEButtonUI extends BasicButtonUI {
 	 * it took paint to run.  Obviously, this method can't be re-entered.
      */
 //	private static Rectangle viewRect = new Rectangle();
-
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicButtonUI#paint(java.awt.Graphics, javax.swing.JComponent)
-     */
     @Override
     public void paint(Graphics g, JComponent c) {
 //		if (NLXPStyle.getXP() != null) 
@@ -465,17 +448,11 @@ public class BEButtonUI extends BasicButtonUI {
             super(m.top + 2, m.left + 2, m.bottom + 2, m.right + 2);
         }
 
-        /* (non-Javadoc)
-         * @see javax.swing.border.AbstractBorder#getBorderInsets(java.awt.Component)
-         */
         @Override
         public Insets getBorderInsets(Component c) {
             return getBorderInsets(c, getBorderInsets());
         }
 
-        /* (non-Javadoc)
-         * @see javax.swing.border.EmptyBorder#getBorderInsets(java.awt.Component, java.awt.Insets)
-         */
         @Override
         public Insets getBorderInsets(Component c, Insets insets) {
             insets = super.getBorderInsets(c, insets);

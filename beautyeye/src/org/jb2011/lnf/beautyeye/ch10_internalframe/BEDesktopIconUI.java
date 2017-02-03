@@ -55,9 +55,6 @@ public class BEDesktopIconUI extends BasicDesktopIconUI {
         width = UIManager.getInt("DesktopIcon.width");
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void installUI(JComponent c) {
         super.installUI(c);
@@ -76,9 +73,6 @@ public class BEDesktopIconUI extends BasicDesktopIconUI {
         thePane.uninstallListeners();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void installComponents() {
         iconPane = new BEInternalFrameTitlePane(frame) {

@@ -82,9 +82,7 @@ public class BEToggleButtonUI extends BasicToggleButtonUI//WindowsToggleButtonUI
     // ********************************
     //         Paint Methods
     // ********************************
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicToggleButtonUI#paint(java.awt.Graphics, javax.swing.JComponent)
-     */
+    
     @Override
     public void paint(Graphics g, JComponent c) {
 ////    	if (NLXPStyle.getXP() != null) 
@@ -145,10 +143,11 @@ public class BEToggleButtonUI extends BasicToggleButtonUI//WindowsToggleButtonUI
         }
     }
 
-    // Method signature defined here overriden in subclasses. 
-    // Perhaps this class should be abstract?
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicButtonUI#paintFocus(java.awt.Graphics, javax.swing.AbstractButton, java.awt.Rectangle, java.awt.Rectangle, java.awt.Rectangle)
+    /**
+     * {@inheritDoc}
+     * 
+     * Method signature defined here overriden in subclasses. 
+     * Perhaps this class should be abstract?
      */
     @Override
     protected void paintFocus(Graphics g, AbstractButton b,

@@ -28,7 +28,7 @@ import org.jb2011.ninepatch4j.NinePatch;
  * @author Jack Jiang(jb2011@163.com)
  */
 public class BETextAreaUI extends BasicTextAreaUI implements BgSwitchable,
-         org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsTextAreaUI
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsTextAreaUI
 {
     //默认是纯白色背景，因为JTextArea肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
     //如果JTextArea再有边框就很难看了，所以JTextArea在没有获得焦点时就已无边框效果出现会好看很多
@@ -87,13 +87,10 @@ public class BETextAreaUI extends BasicTextAreaUI implements BgSwitchable,
             //用新的NP图实现真正的背景填充
             JTextComponent editor = this.getComponent();
             BETextFieldUI.paintBg(g, 0, 0, editor.getWidth(), editor.getHeight(),
-                     editor.isEnabled(), bg);
+                    editor.isEnabled(), bg);
         }
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToNomal()
-     */
     @Override
     public void switchBgToNomal() {
         //默认是纯白色背景，因为JTextArea肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
@@ -101,9 +98,6 @@ public class BETextAreaUI extends BasicTextAreaUI implements BgSwitchable,
         this.bg = __UI__.ICON_9.get("white");
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToFocused()
-     */
     @Override
     public void switchBgToFocused() {
         this.bg = __UI__.ICON_9.get("pressed");

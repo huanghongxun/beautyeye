@@ -94,9 +94,6 @@ public class BETextPaneUI extends BasicTextPaneUI implements BgSwitchable,
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void switchBgToNomal() {
         //默认是纯白色背景，因为JTextPane肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
@@ -104,9 +101,6 @@ public class BETextPaneUI extends BasicTextPaneUI implements BgSwitchable,
         this.bg = __UI__.ICON_9.get("white");
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void switchBgToFocused() {
         this.bg = __UI__.ICON_9.get("pressed");

@@ -19,9 +19,6 @@ public class Icon9Factory extends RawCache<NinePatch> {
      */
     public final static String IMGS_ROOT = "imgs/np";
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected NinePatch getResource(String relativePath, Class baseClass) {
         return NinePatchHelper.createNinePatch(baseClass.getResource(relativePath), false);

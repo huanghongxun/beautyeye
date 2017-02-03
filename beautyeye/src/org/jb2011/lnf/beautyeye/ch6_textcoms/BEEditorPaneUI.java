@@ -31,7 +31,7 @@ import org.jb2011.ninepatch4j.NinePatch;
 //代码参考了WindowsEditorPaneUI的实现
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEEditorPaneUI extends BasicEditorPaneUI implements BgSwitchable,
-         org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsEditorPaneUI
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsEditorPaneUI
 {
     //默认是纯白色背景，因为JEditorPane肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
     //如果JEditorPane再有边框就很难看了，所以JEditorPane在没有获得焦点时就已无边框效果出现会好看很多
@@ -90,13 +90,10 @@ public class BEEditorPaneUI extends BasicEditorPaneUI implements BgSwitchable,
             //用新的NP图实现真正的背景填充
             JTextComponent editor = this.getComponent();
             BETextFieldUI.paintBg(g, 0, 0, editor.getWidth(), editor.getHeight(),
-                     editor.isEnabled(), bg);
+                    editor.isEnabled(), bg);
         }
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToNomal()
-     */
     @Override
     public void switchBgToNomal() {
         //默认是纯白色背景，因为JEditorPane肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
@@ -104,9 +101,6 @@ public class BEEditorPaneUI extends BasicEditorPaneUI implements BgSwitchable,
         this.bg = __UI__.ICON_9.get("white");
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToFocused()
-     */
     @Override
     public void switchBgToFocused() {
         this.bg = __UI__.ICON_9.get("pressed");

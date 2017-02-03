@@ -67,9 +67,6 @@ public class BESliderUI extends BasicSliderUI {
         return new BESliderUI((JSlider) b);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintTrack(Graphics g) {
         Rectangle trackBounds = trackRect;
@@ -104,9 +101,6 @@ public class BESliderUI extends BasicSliderUI {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintFocus(Graphics g) {
         g.setColor(getFocusColor());

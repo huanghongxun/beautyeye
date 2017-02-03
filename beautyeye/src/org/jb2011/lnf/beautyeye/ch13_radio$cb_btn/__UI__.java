@@ -54,9 +54,6 @@ public class __UI__ {
      */
     private static class CheckBoxIcon implements Icon, Serializable {
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
             JCheckBox cb = (JCheckBox) c;
@@ -86,17 +83,11 @@ public class __UI__ {
                         g.drawImage(__IconFactory__.getInstance().getCheckBoxButtonIcon_unchecked_normal().getImage(), x, y, null);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public int getIconWidth() {
             return 24;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public int getIconHeight() {
             return 24;
@@ -110,9 +101,6 @@ public class __UI__ {
      */
     private static class RadioButtonIcon implements Icon, UIResource, Serializable {
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
             AbstractButton b = (AbstractButton) c;
@@ -142,17 +130,11 @@ public class __UI__ {
                         g.drawImage(__IconFactory__.getInstance().getRadioButtonIcon_unchecked_normal().getImage(), x, y, null);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public int getIconWidth() {
             return 24;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public int getIconHeight() {
             return 24;

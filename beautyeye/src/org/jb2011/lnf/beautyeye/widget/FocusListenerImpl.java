@@ -83,9 +83,6 @@ public class FocusListenerImpl implements FocusListener {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void focusGained(FocusEvent e) {
         if (e.getSource() instanceof JComponent) {
@@ -162,9 +159,6 @@ public class FocusListenerImpl implements FocusListener {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void focusLost(FocusEvent e) {
         if (e.getSource() instanceof JComponent) {

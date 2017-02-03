@@ -86,9 +86,6 @@ public class BEInternalFrameUI extends BasicInternalFrameUI {
         return new BEInternalFrameUI((JInternalFrame) c);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void installUI(JComponent c) {
         super.installUI(c);
@@ -105,9 +102,6 @@ public class BEInternalFrameUI extends BasicInternalFrameUI {
         frame.setOpaque(false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void uninstallUI(JComponent c) {
         frame = (JInternalFrame) c;
@@ -121,27 +115,18 @@ public class BEInternalFrameUI extends BasicInternalFrameUI {
         super.uninstallUI(c);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void installListeners() {
         super.installListeners();
         frame.addPropertyChangeListener(metalPropertyChangeListener);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void uninstallListeners() {
         frame.removePropertyChangeListener(metalPropertyChangeListener);
         super.uninstallListeners();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void installKeyboardActions() {
         super.installKeyboardActions();
@@ -152,17 +137,11 @@ public class BEInternalFrameUI extends BasicInternalFrameUI {
             map.remove("showSystemMenu");
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void uninstallKeyboardActions() {
         super.uninstallKeyboardActions();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void uninstallComponents() {
         titlePane = null;
@@ -183,9 +162,6 @@ public class BEInternalFrameUI extends BasicInternalFrameUI {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JComponent createNorthPane(JInternalFrame w) {
         titlePane = new BEInternalFrameTitlePane(w);
@@ -225,9 +201,6 @@ public class BEInternalFrameUI extends BasicInternalFrameUI {
     private static class XZCMetalPropertyChangeHandler implements
             PropertyChangeListener {
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void propertyChange(PropertyChangeEvent e) {
             String name = e.getPropertyName();

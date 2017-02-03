@@ -75,9 +75,6 @@ public class BEToolBarUI extends BasicToolBarUI
         return new BEToolBarUI();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void installDefaults() {
         setRolloverBorders(true);
@@ -101,25 +98,16 @@ public class BEToolBarUI extends BasicToolBarUI
                 && (!(toolBar.getBackground() instanceof UIResource));
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicToolBarUI#createRolloverBorder()
-     */
     @Override
     protected Border createRolloverBorder() {
         return new EmptyBorder(3, 3, 3, 3);
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicToolBarUI#createNonRolloverBorder()
-     */
     @Override
     protected Border createNonRolloverBorder() {
         return new EmptyBorder(3, 3, 3, 3);
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.ComponentUI#paint(java.awt.Graphics, javax.swing.JComponent)
-     */
     @Override
     public void paint(Graphics g, JComponent c) {
         //~* @since 3.4, add by Jack Jiang 2012-11-05
@@ -198,10 +186,7 @@ public class BEToolBarUI extends BasicToolBarUI
         // ContainerListener
         //
 
-        /* (non-Javadoc)
- 	     * @see java.awt.event.ContainerListener#componentAdded(java.awt.event.ContainerEvent)
-         */
-        @Override
+    @Override
         public void componentAdded(ContainerEvent evt) {
             Component c = evt.getChild();
 
@@ -223,10 +208,7 @@ public class BEToolBarUI extends BasicToolBarUI
 //            	((JComponent)c).setOpaque(false);
         }
 
-        /* (non-Javadoc)
-         * @see java.awt.event.ContainerListener#componentRemoved(java.awt.event.ContainerEvent)
-         */
-        @Override
+    @Override
         public void componentRemoved(ContainerEvent evt) {
             Component c = evt.getChild();
 
@@ -269,10 +251,7 @@ public class BEToolBarUI extends BasicToolBarUI
             this.insets = insets;
         }
 
-        /* (non-Javadoc)
-	     * @see javax.swing.border.AbstractBorder#paintBorder(java.awt.Component, java.awt.Graphics, int, int, int, int)
-         */
-        @Override
+    @Override
         public void paintBorder(Component c, Graphics g, int x, int y,
                 int width, int height) {
             g.translate(x, y);
@@ -343,10 +322,7 @@ public class BEToolBarUI extends BasicToolBarUI
             g.drawLine(x1 + 1, y1 + 3, x2, y2 + 3);
         }
 
-        /* (non-Javadoc)
-	     * @see javax.swing.border.AbstractBorder#getBorderInsets(java.awt.Component)
-         */
-        @Override
+    @Override
         public Insets getBorderInsets(Component c) {
             //** 根据toolbar所放面板的方位不同而设置不一样的border（参照的目标是水平toolbar时的insets）！
             //tollbar上下设置的空白多一点看起来大气一些（它也将决定toolbar的整体高度和宽度哦）
@@ -374,10 +350,7 @@ public class BEToolBarUI extends BasicToolBarUI
             return getBorderInsets(c, is);//5, 0, 10, 0));//默认是 1,1,1,1
         }
 
-        /* (non-Javadoc)
-	     * @see javax.swing.border.AbstractBorder#getBorderInsets(java.awt.Component, java.awt.Insets)
-         */
-        @Override
+    @Override
         public Insets getBorderInsets(Component c, Insets insets) {
 //    		insets.top = insets.left = insets.bottom = insets.right = 1;
             if (((JToolBar) c).isFloatable()) {

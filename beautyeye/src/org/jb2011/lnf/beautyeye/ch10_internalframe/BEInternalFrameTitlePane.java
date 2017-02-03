@@ -95,9 +95,6 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
         super(f);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void addNotify() {
         super.addNotify();
@@ -108,9 +105,6 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
         updateOptionPaneState();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void installDefaults() {
         super.installDefaults();
@@ -124,9 +118,6 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
             setOpaque(false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void uninstallDefaults() {
         super.uninstallDefaults();
@@ -134,9 +125,6 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
             frame.setClosable(wasClosable);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void createButtons() {
         super.createButtons();
@@ -199,17 +187,11 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
         add(closeButton);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected PropertyChangeListener createPropertyChangeListener() {
         return new MetalPropertyChangeHandler();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected LayoutManager createLayout() {
         return new XMetalTitlePaneLayout();
@@ -218,9 +200,6 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
     class MetalPropertyChangeHandler extends
             BasicInternalFrameTitlePane.PropertyChangeHandler {
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void propertyChange(PropertyChangeEvent evt) {
             String prop = (String) evt.getPropertyName();
@@ -239,31 +218,19 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
 
     class XMetalTitlePaneLayout extends TitlePaneLayout {
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void addLayoutComponent(String name, Component c) {
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void removeLayoutComponent(Component c) {
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Dimension preferredLayoutSize(Container c) {
             return minimumLayoutSize(c);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public Dimension minimumLayoutSize(Container c) {
             // Compute width.
@@ -312,9 +279,6 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
             return new Dimension(width, height);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void layoutContainer(Container c) {
             boolean leftToRight = WinUtils.isLeftToRight(frame);
@@ -383,9 +347,7 @@ public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
 //		NLTitlePane.paintTitlePane(g, 0, 0, width , height, false
 //				, background, darkShadow);
 //	}
-    /**
-     * {@inheritDoc}
-     */
+    
     @Override
     public void paintComponent(Graphics g) {
 //		if (isPalette)

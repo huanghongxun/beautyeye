@@ -57,25 +57,16 @@ public class BeautyEyeLookAndFeelCross extends MetalLookAndFeel {
 //		JDialog.setDefaultLookAndFeelDecorated(true);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getName() {
         return "BeautyEyeCross";
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getID() {
         return "BeautyEyeCross";
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getDescription() {
         return "BeautyEye cross-platform L&F developed by Jack Jiang(jb2011@163.com).";
@@ -91,25 +82,16 @@ public class BeautyEyeLookAndFeelCross extends MetalLookAndFeel {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isNativeLookAndFeel() {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isSupportedLookAndFeel() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void initComponentDefaults(UIDefaults table) {
         super.initComponentDefaults(table);

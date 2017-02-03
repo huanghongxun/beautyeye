@@ -48,9 +48,6 @@ public class BEToolBarSeparatorUI extends BasicToolBarSeparatorUI {
         return new BEToolBarSeparatorUI();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Dimension getPreferredSize(JComponent c) {
         Dimension size = ((JToolBar.Separator) c).getSeparatorSize();
@@ -76,9 +73,6 @@ public class BEToolBarSeparatorUI extends BasicToolBarSeparatorUI {
         return size;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Dimension getMaximumSize(JComponent c) {
         Dimension pref = getPreferredSize(c);
@@ -88,9 +82,6 @@ public class BEToolBarSeparatorUI extends BasicToolBarSeparatorUI {
             return new Dimension(Short.MAX_VALUE, pref.height);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paint(Graphics g, JComponent c) {
         boolean vertical = ((JSeparator) c).getOrientation() == SwingConstants.VERTICAL;

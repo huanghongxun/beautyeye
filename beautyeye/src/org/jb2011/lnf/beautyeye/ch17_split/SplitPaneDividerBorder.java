@@ -44,9 +44,6 @@ public class SplitPaneDividerBorder implements Border, UIResource {
 //		this.highlight = highlight;
 //		this.shadow = shadow;
 //	}
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width,
             int height) {
@@ -94,9 +91,6 @@ public class SplitPaneDividerBorder implements Border, UIResource {
 //		}
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Insets getBorderInsets(Component c) {
         Insets insets = new Insets(0, 0, 0, 0);
@@ -124,9 +118,6 @@ public class SplitPaneDividerBorder implements Border, UIResource {
         return insets;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean isBorderOpaque() {
         return true;

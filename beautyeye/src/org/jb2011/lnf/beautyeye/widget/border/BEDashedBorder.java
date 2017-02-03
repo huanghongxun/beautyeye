@@ -76,9 +76,6 @@ public class BEDashedBorder extends LineBorder implements UIResource {
         this.right = right;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         Color oldColor = g.getColor();

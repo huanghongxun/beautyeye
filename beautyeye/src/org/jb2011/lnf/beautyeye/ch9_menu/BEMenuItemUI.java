@@ -9,7 +9,6 @@
  * BEMenuItemUI.java at 2015-2-1 20:25:38, original version by Jack Jiang.
  * You can contact author with jb2011@163.com.
  */
-
 package org.jb2011.lnf.beautyeye.ch9_menu;
 
 import java.awt.Color;
@@ -37,51 +36,42 @@ import javax.swing.plaf.basic.BasicMenuItemUI;
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEMenuItemUI extends BasicMenuItemUI//WindowsMenuItemUI
 {
-	
-	/** 是否强制单项透明(当强制不透明时，在普通状态下该item将不会被绘制背景）. */
-	private static boolean enforceTransparent = true;// TODO 可以提炼成UI属性
-	
-	/**
-	 * Creates the ui.
-	 *
-	 * @param c the c
-	 * @return the component ui
-	 */
-	public static ComponentUI createUI(JComponent c)
-	{
-		return new BEMenuItemUI();
-	}
 
+    /**
+     * 是否强制单项透明(当强制不透明时，在普通状态下该item将不会被绘制背景）.
+     */
+    private static boolean enforceTransparent = true;// TODO 可以提炼成UI属性
 
-	/* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicMenuItemUI#paintBackground(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Color)
-	 */
-	@Override
-	protected void paintBackground(Graphics g, JMenuItem menuItem, Color bgColor)
-	{
-		// see parent!
-		ButtonModel model = menuItem.getModel();
-		Color oldColor = g.getColor();
-		int menuWidth = menuItem.getWidth();
-		int menuHeight = menuItem.getHeight();
-		
-		Graphics2D g2 = (Graphics2D)g;
-		
-		if (model.isArmed()
-				|| (menuItem instanceof JMenu && model.isSelected()))
-		{
-			//菜单项的样式绘制(用NinePatch图来填充)
-			BEMenuUI.ICON_9.get("selected")
-					.draw(g2, 0, 0, menuWidth, menuHeight);
-		}
-		else
-		{
-			if(!enforceTransparent)
-			{
-				g.setColor(menuItem.getBackground());
-				g.fillRect(0, 0, menuWidth, menuHeight);
-			}
-		}
-		g.setColor(oldColor);
-	}
+    /**
+     * Creates the ui.
+     *
+     * @param c the c
+     * @return the component ui
+     */
+    public static ComponentUI createUI(JComponent c) {
+        return new BEMenuItemUI();
+    }
+
+    @Override
+    protected void paintBackground(Graphics g, JMenuItem menuItem, Color bgColor) {
+        // see parent!
+        ButtonModel model = menuItem.getModel();
+        Color oldColor = g.getColor();
+        int menuWidth = menuItem.getWidth();
+        int menuHeight = menuItem.getHeight();
+
+        Graphics2D g2 = (Graphics2D) g;
+
+        if (model.isArmed()
+                || (menuItem instanceof JMenu && model.isSelected()))
+            //菜单项的样式绘制(用NinePatch图来填充)
+            BEMenuUI.ICON_9.get("selected")
+                    .draw(g2, 0, 0, menuWidth, menuHeight);
+        else
+            if (!enforceTransparent) {
+                g.setColor(menuItem.getBackground());
+                g.fillRect(0, 0, menuWidth, menuHeight);
+            }
+        g.setColor(oldColor);
+    }
 }

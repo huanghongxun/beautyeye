@@ -52,9 +52,6 @@ public class MyDefaultListCellRenderer extends DefaultListCellRenderer {
 //      setBorder(BorderFactory.createEmptyBorder(5, 8, 5, 8));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintComponent(Graphics g) {
         if (isSelected)
@@ -81,9 +78,6 @@ public class MyDefaultListCellRenderer extends DefaultListCellRenderer {
         super.paintComponent(g);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Component getListCellRendererComponent(
             JList list,

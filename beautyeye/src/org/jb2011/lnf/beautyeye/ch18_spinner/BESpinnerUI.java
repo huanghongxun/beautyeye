@@ -47,9 +47,6 @@ public class BESpinnerUI extends BasicSpinnerUI {
         return new BESpinnerUI();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected JComponent createEditor() {
         JComponent e = super.createEditor();
@@ -80,9 +77,6 @@ public class BESpinnerUI extends BasicSpinnerUI {
         super.paint(g, c);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Component createPreviousButton() {
         JButton xpButton = new GlyphButton(spinner, Type.down);
@@ -93,9 +87,6 @@ public class BESpinnerUI extends BasicSpinnerUI {
         return xpButton;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Component createNextButton() {
         JButton xpButton = new GlyphButton(spinner, Type.up);
@@ -138,26 +129,17 @@ public class BESpinnerUI extends BasicSpinnerUI {
             setMaximumSize(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public boolean isFocusTraversable() {
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void paintComponent(Graphics g) {
             ICON_9.get("button_" + type.name(), !isEnabled() || getModel().isPressed() ? "pressed" : "").
                     draw((Graphics2D) g, 0, 0, getWidth(), getHeight());
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         protected void paintBorder(Graphics g) {
         }

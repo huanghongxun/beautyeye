@@ -78,17 +78,11 @@ public class BERoundBorder extends LineBorder implements UIResource {
         super(color, thickness);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Insets getBorderInsets(Component c) {
         return getBorderInsets(c, new Insets(0, 0, 0, 0));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Insets getBorderInsets(Component c, Insets insets) {
         Insets margin = null;
@@ -107,9 +101,6 @@ public class BERoundBorder extends LineBorder implements UIResource {
         return insets;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         Color oldColor = g.getColor();
@@ -151,9 +142,6 @@ public class BERoundBorder extends LineBorder implements UIResource {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Color getLineColor() {
         return lineColor;
@@ -170,9 +158,6 @@ public class BERoundBorder extends LineBorder implements UIResource {
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Object clone() {
         BERoundBorder bb = new BERoundBorder(this.getLineColor(), this.getThickness());

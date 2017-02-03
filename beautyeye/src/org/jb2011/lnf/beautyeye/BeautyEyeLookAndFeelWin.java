@@ -90,25 +90,16 @@ public class BeautyEyeLookAndFeelWin extends WindowsLookAndFeel {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getName() {
         return "BeautyEyeWin";
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getID() {
         return "BeautyEyeWin";
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public String getDescription() {
         return "BeautyEye windows-platform L&F developed by Jack Jiang(jb2011@163.com).";
@@ -124,9 +115,7 @@ public class BeautyEyeLookAndFeelWin extends WindowsLookAndFeel {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     protected void initComponentDefaults(UIDefaults table) {
         super.initComponentDefaults(table);
         initOtherResourceBundle(table);

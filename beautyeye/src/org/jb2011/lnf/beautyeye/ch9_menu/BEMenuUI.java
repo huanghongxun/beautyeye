@@ -82,9 +82,10 @@ public class BEMenuUI extends BasicMenuUI {
         return new BEMenuUI();
     }
 
-    //* 本方法由Jack Jiang 2012-09-13修改自WindowsMenuUI
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicMenuUI#installDefaults()
+    /**
+     * {@inheritDoc}
+     *
+     * @see com.sun.java.swing.plaf.windows.WindowsMenuUI#installDefaults()
      */
     @Override
     protected void installDefaults() {
@@ -247,27 +248,26 @@ public class BEMenuUI extends BasicMenuUI {
         g.setColor(oldColor);
     }
 
-    //* copy of WindowsMenuUI, 没有被修改
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicMenuUI#createMouseInputListener(javax.swing.JComponent)
+    /**
+     * {@inheritDoc}
+     *
+     * @see
+     * com.sun.java.swing.plaf.windows.WindowsMenuUI#createMouseInputListener(javax.swing.JComponent)
      */
     @Override
     protected MouseInputListener createMouseInputListener(JComponent c) {
         return new BEMouseInputHandler();
     }
 
-    //* copy of WindowsMenuUI, 没有被修改
     /**
      * This class implements a mouse handler that sets the rollover flag to true
      * when the mouse enters the menu and false when it exits.
      *
      * @since 1.4
+     * @see com.sun.java.swing.plaf.windows.WindowsMenuUI.MouseInputHandler
      */
     protected class BEMouseInputHandler extends BasicMenuUI.MouseInputHandler {
 
-        /* (non-Javadoc)
-	     * @see javax.swing.plaf.basic.BasicMenuUI.MouseInputHandler#mouseEntered(java.awt.event.MouseEvent)
-         */
         @Override
         public void mouseEntered(MouseEvent evt) {
             super.mouseEntered(evt);
@@ -279,9 +279,6 @@ public class BEMenuUI extends BasicMenuUI {
             }
         }
 
-        /* (non-Javadoc)
-	     * @see javax.swing.plaf.basic.BasicMenuUI.MouseInputHandler#mouseExited(java.awt.event.MouseEvent)
-         */
         @Override
         public void mouseExited(MouseEvent evt) {
             super.mouseExited(evt);
@@ -295,9 +292,12 @@ public class BEMenuUI extends BasicMenuUI {
         }
     }
 
-    //* copy of WindowsMenuUI, 没有被修改
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicMenuItemUI#getPreferredMenuItemSize(javax.swing.JComponent, javax.swing.Icon, javax.swing.Icon, int)
+    /**
+     * {@inheritDoc}
+     *
+     * @see
+     * com.sun.java.swing.plaf.windows.WindowsMenuUI#getPreferredMenuItemSize(javax.swing.JComponent,
+     * javax.swing.Icon, javax.swing.Icon, int)
      */
     @Override
     protected Dimension getPreferredMenuItemSize(JComponent c,

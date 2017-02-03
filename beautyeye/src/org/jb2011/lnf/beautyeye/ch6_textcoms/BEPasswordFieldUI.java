@@ -90,17 +90,11 @@ public class BEPasswordFieldUI extends BasicPasswordFieldUI implements BgSwitcha
         }
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToNomal()
-     */
     @Override
     public void switchBgToNomal() {
         this.bg = __UI__.ICON_9.get("normal");
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToFocused()
-     */
     @Override
     public void switchBgToFocused() {
         this.bg = __UI__.ICON_9.get("pressed");

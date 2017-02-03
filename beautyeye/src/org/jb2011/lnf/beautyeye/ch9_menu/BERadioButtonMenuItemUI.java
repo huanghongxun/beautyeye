@@ -28,7 +28,6 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicRadioButtonMenuItemUI;
 
-// TODO: Auto-generated Javadoc
 /**
  * JRadioButtonMenuItem的UI实现.
  *
@@ -47,7 +46,6 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
         return new BERadioButtonMenuItemUI();
     }
 
-    //copy from BasicMenuItemUI.paintBackground(..),modified by Jack Jiang
     /**
      * Draws the background of the menu item.
      *
@@ -55,7 +53,9 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
      * @param menuItem menu item to be painted
      * @param bgColor selection background color
      * @since 1.4
+     * @see javax.swing.plaf.basic.BasicMenuItemUI#paintBackground(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Color) 
      */
+    @Override
     protected void paintBackground(Graphics g, JMenuItem menuItem, Color bgColor) {
         ButtonModel model = menuItem.getModel();
         Color oldColor = g.getColor();
@@ -109,9 +109,7 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
         private Image normalImg = __IconFactory__.getInstance()
                 .getRadioButtonMenuItemNormalIcon().getImage();
 
-        /* (non-Javadoc)
-	     * @see javax.swing.Icon#paintIcon(java.awt.Component, java.awt.Graphics, int, int)
-         */
+    @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
             AbstractButton b = (AbstractButton) c;
 //    		ButtonModel model = b.getModel();
@@ -128,16 +126,12 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
                          y + (usedForVista ? -3 : -4), null);
         }
 
-        /* (non-Javadoc)
-	     * @see javax.swing.Icon#getIconWidth()
-         */
+    @Override
         public int getIconWidth() {
             return 16;
         }//default 6
 
-        /* (non-Javadoc)
-	     * @see javax.swing.Icon#getIconHeight()
-         */
+    @Override
         public int getIconHeight() {
             return 16;
         }//default 6

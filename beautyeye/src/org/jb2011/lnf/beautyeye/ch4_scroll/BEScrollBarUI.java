@@ -55,9 +55,6 @@ public class BEScrollBarUI extends BasicScrollBarUI {
         return new BEScrollBarUI();
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicScrollBarUI#createDecreaseButton(int)
-     */
     @Override
     protected JButton createDecreaseButton(int orientation) {
         return new WindowsArrowButton(orientation,
@@ -67,9 +64,6 @@ public class BEScrollBarUI extends BasicScrollBarUI {
                 UIManager.getColor("ScrollBar.thumbHighlight"));
     }
 
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicScrollBarUI#createIncreaseButton(int)
-     */
     @Override
     protected JButton createIncreaseButton(int orientation) {
         return new WindowsArrowButton(orientation,
@@ -109,9 +103,6 @@ public class BEScrollBarUI extends BasicScrollBarUI {
             super(direction);
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.plaf.basic.BasicArrowButton#paint(java.awt.Graphics)
-         */
         @Override
         public void paint(Graphics g) {
 //			NLXPStyle xp = NLXPStyle.getXP();
@@ -184,9 +175,6 @@ public class BEScrollBarUI extends BasicScrollBarUI {
             }
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.plaf.basic.BasicArrowButton#getPreferredSize()
-         */
         @Override
         public Dimension getPreferredSize() {
             int size = 16;
@@ -207,9 +195,6 @@ public class BEScrollBarUI extends BasicScrollBarUI {
     //----------------------------------------------------------------------------------- END
 
     //----------------------------------------------------------------------------------- 本次改造的主体部分
-    /* (non-Javadoc)
-	 * @see javax.swing.plaf.basic.BasicScrollBarUI#paintTrack(java.awt.Graphics, javax.swing.JComponent, java.awt.Rectangle)
-     */
     @Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
         if (c == null || g == null)

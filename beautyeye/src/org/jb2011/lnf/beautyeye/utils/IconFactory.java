@@ -25,9 +25,7 @@ public class IconFactory extends RawCache<ImageIcon> {
     }
 
     String ns;
-    /* (non-Javadoc)
-	 * @see org.jb2011.lnf.beautyeye.utils.RawCache#getResource(java.lang.String, java.lang.Class)
-     */
+
     @Override
     protected ImageIcon getResource(String relativePath, Class baseClass) {
         return new ImageIcon(baseClass.getResource(relativePath));
@@ -50,7 +48,7 @@ public class IconFactory extends RawCache<ImageIcon> {
             return;
         icons.put(namespace + ":" + key, get(IMGS_ROOT + "/" + filename + ".png"));
     }
-    
+
     void init() {
         put("menu", "radio_check", "RadioButtonMenuItemCheckIcon2");
         put("menu", "radio_normal", "RadioButtonMenuItemCheckIcon_none");

@@ -51,25 +51,16 @@ public class NinePatchBorder extends AbstractBorder {
         this.np = np;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Insets getBorderInsets(Component c) {
         return insets;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Insets getBorderInsets(Component c, Insets insets) {
         return insets;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         this.np.draw((Graphics2D) g, x, y, width, height);

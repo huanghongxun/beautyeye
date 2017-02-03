@@ -84,9 +84,6 @@ public class BEComboBoxUI extends BasicComboBoxUI
                 || !(comboBox.getBackground() instanceof UIResource));
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void installUI(JComponent c) {
         super.installUI(c);
@@ -189,9 +186,6 @@ public class BEComboBoxUI extends BasicComboBoxUI
         return button;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void paint(Graphics g, JComponent c) {
         hasFocus = comboBox.hasFocus();

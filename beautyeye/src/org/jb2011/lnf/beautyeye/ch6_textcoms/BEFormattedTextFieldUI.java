@@ -30,7 +30,7 @@ import org.jb2011.ninepatch4j.NinePatch;
  * @since 3.7
  */
 public class BEFormattedTextFieldUI extends BasicFormattedTextFieldUI implements BgSwitchable,
-         org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
 
     /**
      * The bg.
@@ -85,21 +85,15 @@ public class BEFormattedTextFieldUI extends BasicFormattedTextFieldUI implements
             //用新的NP图实现真正的背景填充
             JTextComponent editor = this.getComponent();
             BETextFieldUI.paintBg(g, 0, 0, editor.getWidth(), editor.getHeight(),
-                     editor.isEnabled(), bg);
+                    editor.isEnabled(), bg);
         }
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToNomal()
-     */
     @Override
     public void switchBgToNomal() {
         this.bg = __UI__.ICON_9.get("normal");
     }
 
-    /* (non-Javadoc)
-     * @see org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable#switchBgToFocused()
-     */
     @Override
     public void switchBgToFocused() {
         this.bg = __UI__.ICON_9.get("pressed");

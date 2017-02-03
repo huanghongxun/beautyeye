@@ -28,9 +28,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
 
-// TODO: Auto-generated Javadoc
 /**
- * JCheckBoxMenuItem的UI实现类。.
+ * JCheckBoxMenuItem的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
  */
@@ -51,9 +50,7 @@ public class BECheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
         return new BECheckBoxMenuItemUI();
     }
 
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.basic.BasicMenuItemUI#paintBackground(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Color)
-     */
+    @Override
     protected void paintBackground(Graphics g, JMenuItem menuItem,
             Color bgColor) {
 //        if (WindowsMenuItemUI.isVistaPainting()) {
@@ -96,10 +93,10 @@ public class BECheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
         g.setColor(oldColor);
     }
 
-    //copy from com.sun.java.swing.plaf.windows.WindowsIconFactory.CheckBoxMenuItemIcon
-    //* 由Jack Jiang修改
     /**
      * The Class CheckBoxMenuItemIcon.
+     * 
+     * @see com.sun.java.swing.plaf.windows.WindowsIconFactory.CheckBoxMenuItemIcon
      */
     public static class CheckBoxMenuItemIcon implements Icon, UIResource, Serializable {
 
@@ -112,9 +109,7 @@ public class BECheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
          */
         private boolean usedForVista = false;
 
-        /* (non-Javadoc)
-	     * @see javax.swing.Icon#paintIcon(java.awt.Component, java.awt.Graphics, int, int)
-         */
+    @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
             AbstractButton b = (AbstractButton) c;
             ButtonModel model = b.getModel();
@@ -135,16 +130,12 @@ public class BECheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
                      null);
         }
 
-        /* (non-Javadoc)
-	     * @see javax.swing.Icon#getIconWidth()
-         */
+    @Override
         public int getIconWidth() {
             return 16;
         }// default if 9
 
-        /* (non-Javadoc)
-	     * @see javax.swing.Icon#getIconHeight()
-         */
+    @Override
         public int getIconHeight() {
             return 16;
         }// default if 9

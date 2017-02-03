@@ -17,15 +17,12 @@ import javax.swing.JComponent;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicMenuBarUI;
 
-// TODO: Auto-generated Javadoc
 /**
  * JMenuBar的UI实现类。.
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see com.sun.java.swing.plaf.windows.WindowsMenuBarUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//* 本类的实现参考了WindowsMenuBarUI
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEMenuBarUI extends BasicMenuBarUI//WindowsMenuBarUI
 {
     
@@ -40,9 +37,6 @@ public class BEMenuBarUI extends BasicMenuBarUI//WindowsMenuBarUI
     	return new BEMenuBarUI();
     }
     
-    /* (non-Javadoc)
-     * @see javax.swing.plaf.ComponentUI#paint(java.awt.Graphics, javax.swing.JComponent)
-     */
     @Override
     public void paint(Graphics g, JComponent c) 
     {

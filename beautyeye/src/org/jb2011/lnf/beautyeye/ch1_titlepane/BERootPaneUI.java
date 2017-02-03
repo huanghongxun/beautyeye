@@ -314,9 +314,9 @@ public class BERootPaneUI extends BasicRootPaneUI {
     private void installClientDecorations(JRootPane root) {
         installBorder(root);
 
-        JComponent titlePane = createTitlePane(root);
+        JComponent p = createTitlePane(root);
 
-        setTitlePane(root, titlePane);
+        setTitlePane(root, p);
         installWindowListeners(root, root.getParent());
         installLayout(root);
 
@@ -475,16 +475,16 @@ public class BERootPaneUI extends BasicRootPaneUI {
             return;
 
         if (propertyName.equals("windowDecorationStyle")) {
-            JRootPane root = (JRootPane) e.getSource();
-            int style = root.getWindowDecorationStyle();
+            JRootPane r = (JRootPane) e.getSource();
+            int style = r.getWindowDecorationStyle();
 
             // This is potentially more than needs to be done,
             // but it rarely happens and makes the install/uninstall process
             // simpler. MetalTitlePane also assumes it will be recreated if
             // the decoration style changes.
-            uninstallClientDecorations(root);
+            uninstallClientDecorations(r);
             if (style != JRootPane.NONE)
-                installClientDecorations(root);
+                installClientDecorations(r);
         } else if (propertyName.equals("ancestor")) {
             uninstallWindowListeners(root);
             if (((JRootPane) e.getSource()).getWindowDecorationStyle()
@@ -671,7 +671,7 @@ public class BERootPaneUI extends BasicRootPaneUI {
          *
          * @param parent the parent
          */
-        @SuppressWarnings("deprecation")
+        @Override
         public void layoutContainer(Container parent) {
             JRootPane root = (JRootPane) parent;
             Rectangle b = root.getBounds();
@@ -722,46 +722,28 @@ public class BERootPaneUI extends BasicRootPaneUI {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void addLayoutComponent(String name, Component comp) {
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void removeLayoutComponent(Component comp) {
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void addLayoutComponent(Component comp, Object constraints) {
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public float getLayoutAlignmentX(Container target) {
             return 0.0f;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public float getLayoutAlignmentY(Container target) {
             return 0.0f;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void invalidateLayout(Container target) {
         }
@@ -849,10 +831,7 @@ public class BERootPaneUI extends BasicRootPaneUI {
             }
         };
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
+        @Override
         public void mousePressed(MouseEvent ev) {
             JRootPane rootPane = getRootPane();
 
@@ -877,7 +856,6 @@ public class BERootPaneUI extends BasicRootPaneUI {
 
             if (getTitlePane() != null
                     && getTitlePane().contains(convertedDragWindowOffset)) {
-                Insets insets = w.getInsets();
                 if ((f != null && ((frameState & Frame.MAXIMIZED_BOTH) == 0) || (d != null))
                         && dragWindowOffset.y >= BORDER_DRAG_THICKNESS
                         && dragWindowOffset.x >= BORDER_DRAG_THICKNESS
@@ -901,9 +879,6 @@ public class BERootPaneUI extends BasicRootPaneUI {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void mouseReleased(MouseEvent ev) {
             if (dragCursor != 0 && window != null && !window.isValid()) {
@@ -916,9 +891,6 @@ public class BERootPaneUI extends BasicRootPaneUI {
             dragCursor = 0;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void mouseMoved(MouseEvent ev) {
             JRootPane root = getRootPane();
@@ -982,9 +954,6 @@ public class BERootPaneUI extends BasicRootPaneUI {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void mouseDragged(MouseEvent ev) {
             Window w = (Window) ev.getSource();
@@ -1056,9 +1025,6 @@ public class BERootPaneUI extends BasicRootPaneUI {
             }
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void mouseEntered(MouseEvent ev) {
             Window w = (Window) ev.getSource();
@@ -1066,9 +1032,6 @@ public class BERootPaneUI extends BasicRootPaneUI {
             mouseMoved(ev);
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void mouseExited(MouseEvent ev) {
             Window w = (Window) ev.getSource();
@@ -1081,9 +1044,6 @@ public class BERootPaneUI extends BasicRootPaneUI {
             w.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public void mouseClicked(MouseEvent ev) {
             Window w = (Window) ev.getSource();

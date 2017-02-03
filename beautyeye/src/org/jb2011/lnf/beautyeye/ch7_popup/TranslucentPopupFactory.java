@@ -47,9 +47,6 @@ public class TranslucentPopupFactory extends PopupFactory {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("popup");
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Popup getPopup(Component owner, Component contents, int x, int y)
             throws IllegalArgumentException {
@@ -388,17 +385,11 @@ public class TranslucentPopupFactory extends PopupFactory {
                 }
             }
 
-            /**
-             * {@inheritDoc}
-             */
             @Override
             public void update(Graphics g) {
                 paint(g);
             }
 
-            /**
-             * {@inheritDoc}
-             */
             @Override
             public void show() {
                 this.pack();
