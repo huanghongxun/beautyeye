@@ -53,7 +53,7 @@ public class BeautyEyeLookAndFeelWin extends WindowsLookAndFeel {
         BeautyEyeLNFHelper.implLNF();
 
         //自定义JFileChooser的L&F实现（为了解决windows LNF下文件选择框UI未实现背景填充问题）
-        org.jb2011.lnf.beautyeye.ch20_filechooser.__UI__.uiImpl_win();
+        org.jb2011.lnf.beautyeye.filechooser.__UI__.uiImpl_win();
 
         //针对Vista及更新的windows平台进行特殊设置
         initForVista();
@@ -84,9 +84,9 @@ public class BeautyEyeLookAndFeelWin extends WindowsLookAndFeel {
 //			UIManager.put("PopupMenu.border",new BorderUIResource(BorderFactory.createEmptyBorder(20,10,20,10)));//	
 
             UIManager.put("CheckBoxMenuItem.checkIcon",
-                     new org.jb2011.lnf.beautyeye.ch9_menu.BECheckBoxMenuItemUI.CheckBoxMenuItemIcon().setUsedForVista(true));//javax.swing.plaf.basic.BasicIconFactory.CheckBoxMenuItemIcon);
+                     new org.jb2011.lnf.beautyeye.menu.BECheckBoxMenuItemUI.CheckBoxMenuItemIcon().setUsedForVista(true));//javax.swing.plaf.basic.BasicIconFactory.CheckBoxMenuItemIcon);
             UIManager.put("RadioButtonMenuItem.checkIcon",
-                     new org.jb2011.lnf.beautyeye.ch9_menu.BERadioButtonMenuItemUI.RadioButtonMenuItemIcon().setUsedForVista(true));
+                     new org.jb2011.lnf.beautyeye.menu.BERadioButtonMenuItemUI.RadioButtonMenuItemIcon().setUsedForVista(true));
         }
     }
 

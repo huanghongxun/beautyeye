@@ -51,7 +51,7 @@ public class BeautyEyeLookAndFeelCross extends MetalLookAndFeel {
         BeautyEyeLNFHelper.implLNF();
 
         //自定义JFileChooser的L&F实现（为了解决JFileChooser中的文件查看列表的行高问题）
-        org.jb2011.lnf.beautyeye.ch20_filechooser.__UI__.uiImpl_cross();
+        org.jb2011.lnf.beautyeye.filechooser.__UI__.uiImpl_cross();
 
 //		JFrame.setDefaultLookAndFeelDecorated(true);
 //		JDialog.setDefaultLookAndFeelDecorated(true);

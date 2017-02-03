@@ -28,7 +28,7 @@ import javax.swing.UIManager;
 import javax.swing.border.Border;
 import javax.swing.plaf.ComponentUI;
 
-import org.jb2011.lnf.beautyeye.ch6_textcoms.__UI__.BgSwitchable;
+import org.jb2011.lnf.beautyeye.textcoms.__UI__.BgSwitchable;
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.widget.border.BERoundBorder;
 
