@@ -30,7 +30,7 @@ import javax.swing.JColorChooser;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 
-import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+import org.jb2011.lnf.beautyeye.button.BEButtonUI;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -92,7 +92,7 @@ public class ColorChooserDemo extends DemoModule {
 	bezAnim = new BezierAnimationPanel();
 
 	outerColorButton = new JButton(getString("ColorChooserDemo.outer_line"));
-	outerColorButton.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
+	outerColorButton.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.light_blue));
 	outerColorButton.setForeground(Color.white);
 	outerColorButton.setIcon(new ColorSwatch("OuterLine", bezAnim));
 

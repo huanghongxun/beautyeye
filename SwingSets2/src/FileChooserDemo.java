@@ -46,8 +46,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 
-import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
-import org.jb2011.lnf.beautyeye.widget.N9ComponentFactory;
+import org.jb2011.lnf.beautyeye.button.BEButtonUI;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -129,7 +128,7 @@ public class FileChooserDemo extends DemoModule {
 	buttonPanel.add(createPlainFileChooserButton());
 	buttonPanel.add(Box.createRigidArea(VGAP15));
 	JButton btn = createPreviewFileChooserButton();
-	btn.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
+	btn.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.light_blue));
 	btn.setForeground(Color.white);
 	buttonPanel.add(btn);
 	buttonPanel.add(Box.createRigidArea(VGAP15));

@@ -36,7 +36,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+import org.jb2011.lnf.beautyeye.button.BEButtonUI;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -238,7 +238,7 @@ public class InternalFrameDemo extends DemoModule {
 	// * Create create frame maker buttons *
 	// *************************************
 	JButton b1 = new JButton(smIcon1);
-	b1.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
+	b1.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.light_blue));
 	b1.setForeground(Color.white);
 	JButton b2 = new JButton(smIcon2);
 	JButton b3 = new JButton(smIcon3);

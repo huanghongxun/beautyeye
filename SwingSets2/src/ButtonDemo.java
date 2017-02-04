@@ -41,7 +41,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import org.jb2011.lnf.beautyeye.ch3_button.BEButtonUI;
+import org.jb2011.lnf.beautyeye.button.BEButtonUI;
 import org.jb2011.lnf.beautyeye.widget.N9ComponentFactory;
 
 // TODO: Auto-generated Javadoc
@@ -182,7 +182,7 @@ public class ButtonDemo extends DemoModule implements ChangeListener {
 //							  TitledBorder.LEFT, TitledBorder.TOP), border5));
 
 	JButton btn0 = new JButton(getString("ButtonDemo.button1"));
-	btn0.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.lightBlue));
+	btn0.setUI(new BEButtonUI().setNormalColor(BEButtonUI.NormalColor.light_blue));
 	btn0.setForeground(Color.white);
 	buttons.add(p2.add(btn0));
 	p2.add(Box.createRigidArea(HGAP10));
