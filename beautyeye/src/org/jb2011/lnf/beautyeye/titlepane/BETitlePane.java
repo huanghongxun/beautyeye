@@ -298,6 +298,7 @@ public class BETitlePane extends JComponent {
      *
      * @return the root pane
      */
+    @Override
     public JRootPane getRootPane() {
         return rootPane;
     }
@@ -487,10 +488,10 @@ public class BETitlePane extends JComponent {
      * Closes the Window.
      */
     private void close() {
-        Window window = getWindow();
+        Window w = getWindow();
 
-        if (window != null)
-            window.dispatchEvent(new WindowEvent(window,
+        if (w != null)
+            w.dispatchEvent(new WindowEvent(w,
                     WindowEvent.WINDOW_CLOSING));
     }
 
@@ -540,6 +541,7 @@ public class BETitlePane extends JComponent {
 
             setupAction = new AbstractAction(//"Setup  ")
                     UIManager.getString("BETitlePane.setupButtonText", getLocale())) {
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     JOptionPane.showMessageDialog(rootPane, "This button just used for demo."
                             + "In the future,you can customize it.\n"
@@ -765,17 +767,17 @@ public class BETitlePane extends JComponent {
             Frame frame = getFrame();
 
             if (frame != null) {
-                JRootPane rootPane = getRootPane();
+                JRootPane p = getRootPane();
 
                 if (((state & Frame.MAXIMIZED_BOTH) != 0)
-                        && (rootPane.getBorder() == null || (rootPane
+                        && (p.getBorder() == null || (p
                         .getBorder() instanceof UIResource))
                         && frame.isShowing())
-                    rootPane.setBorder(null);
+                    p.setBorder(null);
                 else if ((state & Frame.MAXIMIZED_BOTH) == 0)
                     // This is a croak, if state becomes bound, this can
                     // be nuked.
-                    rootPaneUI.installBorder(rootPane);
+                    rootPaneUI.installBorder(p);
                 if (frame.isResizable()) {
                     if ((state & Frame.MAXIMIZED_BOTH) != 0) {
                         updateToggleButton(restoreAction, minimizeIcon, minimizeIcon_rover, minimizeIcon_pressed);
@@ -842,10 +844,10 @@ public class BETitlePane extends JComponent {
      * @return the frame
      */
     private Frame getFrame() {
-        Window window = getWindow();
+        Window w = getWindow();
 
-        if (window instanceof Frame)
-            return (Frame) window;
+        if (w instanceof Frame)
+            return (Frame) w;
         return null;
     }
 
@@ -880,17 +882,18 @@ public class BETitlePane extends JComponent {
      *
      * @param g the g
      */
+    @Override
     public void paintComponent(Graphics g) {
         // As state isn't bound, we need a convenience place to check
         // if it has changed. Changing the state typically changes the
         if (getFrame() != null)
             setState(getFrame().getExtendedState());
-        JRootPane rootPane = getRootPane();
-        Window window = getWindow();
-        boolean leftToRight = (window == null) ? rootPane
-                .getComponentOrientation().isLeftToRight() : window
+        JRootPane p = getRootPane();
+        Window w = getWindow();
+        boolean leftToRight = (w == null) ? p
+                .getComponentOrientation().isLeftToRight() : w
                         .getComponentOrientation().isLeftToRight();
-        boolean isSelected = (window == null) ? true : window.isActive();
+        boolean isSelected = (w == null) ? true : w.isActive();
         int width = getWidth();
         int height = getHeight();
 
@@ -919,7 +922,7 @@ public class BETitlePane extends JComponent {
 
         String theTitle = getTitle();
         if (theTitle != null) {
-            FontMetrics fm = MySwingUtilities2.getFontMetrics(rootPane, g);
+            FontMetrics fm = MySwingUtilities2.getFontMetrics(p, g);
             int yOffset = ((height - fm.getHeight()) / 2) + fm.getAscent();
 
             Rectangle rect = new Rectangle(0, 0, 0, 0);
@@ -929,20 +932,20 @@ public class BETitlePane extends JComponent {
 
             if (leftToRight) {
                 if (rect.x == 0)
-                    rect.x = window.getWidth() - window.getInsets().right - 2;
+                    rect.x = w.getWidth() - w.getInsets().right - 2;
                 titleW = rect.x - xOffset - 4;
-                theTitle = MySwingUtilities2.clipStringIfNecessary(rootPane, fm,
+                theTitle = MySwingUtilities2.clipStringIfNecessary(p, fm,
                         theTitle, titleW);
             } else {
                 titleW = xOffset - rect.x - rect.width - 4;
-                theTitle = MySwingUtilities2.clipStringIfNecessary(rootPane, fm,
+                theTitle = MySwingUtilities2.clipStringIfNecessary(p, fm,
                         theTitle, titleW);
-                xOffset -= MySwingUtilities2.stringWidth(rootPane, fm, theTitle);
+                xOffset -= MySwingUtilities2.stringWidth(p, fm, theTitle);
             }
 
-            int titleLength = MySwingUtilities2.stringWidth(rootPane, fm, theTitle);
+            int titleLength = MySwingUtilities2.stringWidth(p, fm, theTitle);
             g.setColor(foreground);
-            MySwingUtilities2.drawString(rootPane, g, theTitle, xOffset, yOffset);
+            MySwingUtilities2.drawString(p, g, theTitle, xOffset, yOffset);
             xOffset += leftToRight ? titleLength + 5 : -5;
         }
     }
@@ -964,8 +967,7 @@ public class BETitlePane extends JComponent {
         //是用图形进行填充的
         Paint oldpaint = g2.getPaint();
         g2.setPaint(BEUtils.createTexturePaint(
-                actived ? __IconFactory__.getInstance().getFrameTitleHeadBg_active().getImage()
-                        : __IconFactory__.getInstance().getFrameTitleHeadBg_inactive().getImage()));
+                 __UI__.ICON.get("title", actived ? "active" : "inactive").getImage()));
         g2.fillRect(x, y, width, height);
         g2.setPaint(oldpaint);
     }
@@ -1244,20 +1246,26 @@ public class BETitlePane extends JComponent {
         public void propertyChange(PropertyChangeEvent pce) {
             String name = pce.getPropertyName();
 
-            // Frame.state isn't currently bound.
-            if ("resizable".equals(name) || "state".equals(name)) {
-                Frame frame = getFrame();
-
-                if (frame != null)
-                    setState(frame.getExtendedState(), true);
-                if ("resizable".equals(name))
-                    getRootPane().repaint();
-            } else if ("title".equals(name))
-                repaint();
-            else if ("componentOrientation".equals(name)
-                    || "iconImage".equals(name)) {
-                revalidate();
-                repaint();
+            if (null != name) // Frame.state isn't currently bound.
+            switch (name) {
+                case "resizable":
+                case "state":
+                    Frame frame = getFrame();
+                    if (frame != null)
+                        setState(frame.getExtendedState(), true);
+                    if ("resizable".equals(name))
+                        getRootPane().repaint();
+                    break;
+                case "title":
+                    repaint();
+                    break;
+                case "componentOrientation":
+                case "iconImage":
+                    revalidate();
+                    repaint();
+                    break;
+                default:
+                    break;
             }
         }
     }

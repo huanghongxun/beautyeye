@@ -15,7 +15,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.io.Serializable;
 
 import javax.swing.AbstractButton;
@@ -27,6 +26,7 @@ import javax.swing.JMenuItem;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicRadioButtonMenuItemUI;
+import org.jb2011.lnf.beautyeye.utils.IconFactory;
 
 /**
  * JRadioButtonMenuItem的UI实现.
@@ -35,6 +35,8 @@ import javax.swing.plaf.basic.BasicRadioButtonMenuItemUI;
  * @version 1.0
  */
 public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
+
+    private static final IconFactory ICON = new IconFactory("menu_radio");
 
     /**
      * Creates the ui.
@@ -53,7 +55,9 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
      * @param menuItem menu item to be painted
      * @param bgColor selection background color
      * @since 1.4
-     * @see javax.swing.plaf.basic.BasicMenuItemUI#paintBackground(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Color) 
+     * @see
+     * javax.swing.plaf.basic.BasicMenuItemUI#paintBackground(java.awt.Graphics,
+     * javax.swing.JMenuItem, java.awt.Color)
      */
     @Override
     protected void paintBackground(Graphics g, JMenuItem menuItem, Color bgColor) {
@@ -82,10 +86,8 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
                     .draw((Graphics2D) g, 0, 0, menuWidth, menuHeight);
     }
 
-    //copy from com.sun.java.swing.plaf.windows.WindowsIconFactory.RadioButtonMenuItemIcon 
-    //* 由Jack Jiang修改
     /**
-     * The Class RadioButtonMenuItemIcon.
+     * @see com.sun.java.swing.plaf.windows.WindowsIconFactory.RadioButtonMenuItemIcon
      */
     public static class RadioButtonMenuItemIcon implements Icon, UIResource, Serializable {
 
@@ -98,40 +100,19 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
          */
         private boolean usedForVista = false;
 
-        /**
-         * The selected img.
-         */
-        private Image selectedImg = __IconFactory__.getInstance()
-                .getRadioButtonMenuItemCheckIcon().getImage();
-        /**
-         * The normal img.
-         */
-        private Image normalImg = __IconFactory__.getInstance()
-                .getRadioButtonMenuItemNormalIcon().getImage();
-
-    @Override
+        @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
-            AbstractButton b = (AbstractButton) c;
-//    		ButtonModel model = b.getModel();
-            if (b.isSelected() == true)
-//    			g.fillRoundRect(x+3,y+3, getIconWidth()-6, getIconHeight()-6,4, 4);
-                g.drawImage(selectedImg,
-                         x + (usedForVista ? 5 : -4)//* 注意：当用于windows平台专用主类且处于Vista及更高版win时要做不一样的处理哦
-                        ,
-                         y + (usedForVista ? -3 : -4), null);
-            else
-                g.drawImage(normalImg,
-                         x + (usedForVista ? 5 : -4)//* 注意：当用于windows平台专用主类且处于Vista及更高版win时要做不一样的处理哦
-                        ,
-                         y + (usedForVista ? -3 : -4), null);
+            //* 注意：当用于windows平台专用主类且处于Vista及更高版win时要做不一样的处理哦
+            g.drawImage(ICON.get(((AbstractButton) c).getModel().isSelected() ? "checked" : "normal").getImage(),
+                    x + (usedForVista ? 5 : -4), y + (usedForVista ? -3 : -4), null);
         }
 
-    @Override
+        @Override
         public int getIconWidth() {
             return 16;
         }//default 6
 
-    @Override
+        @Override
         public int getIconHeight() {
             return 16;
         }//default 6

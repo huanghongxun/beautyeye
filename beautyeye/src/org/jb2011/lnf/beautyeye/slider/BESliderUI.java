@@ -23,6 +23,7 @@ import javax.swing.plaf.basic.BasicSliderUI;
 
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
+import org.jb2011.lnf.beautyeye.utils.IconFactory;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -37,6 +38,7 @@ import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 public class BESliderUI extends BasicSliderUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("slider_track");
+    private static final IconFactory ICON = new IconFactory("slider");
 
     /**
      * 水平Slider的Thumb高度.
@@ -125,39 +127,19 @@ public class BESliderUI extends BasicSliderUI {
         else
             g.setColor(slider.getBackground().darker());
 
-        //* 该4行代码被Jack Jiang提炼成了方法 isPaintArrowThumb()
-//		Boolean paintThumbArrowShape = (Boolean) slider
-//				.getClientProperty("Slider.paintThumbArrowShape");
-//		if ((!slider.getPaintTicks() && paintThumbArrowShape == null)
-//				|| paintThumbArrowShape == Boolean.FALSE)
-        if (isPaintNoTrangleThumb())
-            if (slider.getOrientation() == JSlider.HORIZONTAL)
-                g.drawImage(
-                        slider.isEnabled() ? __IconFactory__.getInstance().getSliderTick1_notrangle().getImage()
-                        : __IconFactory__.getInstance().getSliderTick1_notrangle_disable().getImage(),
-                        0, 0, null);
-            else
-                g.drawImage(slider.isEnabled() ? __IconFactory__.getInstance().getSliderTick1_notrangle_vertical().getImage()
-                        : __IconFactory__.getInstance().getSliderTick1_notrangle_VERTICAL_disable().getImage(),
-                        0, 0, null);
-        else if (slider.getOrientation() == JSlider.HORIZONTAL)
-            g.drawImage(slider.isEnabled() ? __IconFactory__.getInstance().getSliderTick1().getImage()
-                    : __IconFactory__.getInstance().getSliderTick1_disable().getImage(),
-                    0, 0, null);
-        else // vertical
-            g.drawImage(slider.isEnabled() ? __IconFactory__.getInstance().getSliderTick1_vertical().getImage()
-                    : __IconFactory__.getInstance().getSliderTick1_VERTICAL_disable().getImage(),
-                    0, 0, null);
-
+        g.drawImage(ICON.get(isPaintNoTriangleThumb() ? "notriangle" : "",
+                slider.getOrientation() == JSlider.HORIZONTAL ? "" : "vertical",
+                slider.isEnabled() ? "" : "disabled").getImage(), 0, 0, null);
+        
         g.translate(-knobBounds.x, -knobBounds.y);
     }
 
     /**
-     * Checks if is paint no trangle thumb.
+     * Checks if is paint no triangle thumb.
      * 该thumb是否是无3角箭头的样式，true表示无3解箭头（即圆形thumb），false表示有3角箭头样式
      * @return true, if is paint no trangle thumb
      */
-    protected boolean isPaintNoTrangleThumb() {
+    protected boolean isPaintNoTriangleThumb() {
         Boolean paintThumbArrowShape = (Boolean) slider
                 .getClientProperty("Slider.paintThumbArrowShape");
 
@@ -173,7 +155,7 @@ public class BESliderUI extends BasicSliderUI {
      */
     @Override
     protected Dimension getThumbSize() {
-        boolean isPaintNoTrangle = isPaintNoTrangleThumb();
+        boolean isPaintNoTrangle = isPaintNoTriangleThumb();
 
         Dimension size = new Dimension();
         if (slider.getOrientation() == JSlider.VERTICAL) {

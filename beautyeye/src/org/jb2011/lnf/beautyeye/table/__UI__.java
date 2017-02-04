@@ -23,18 +23,13 @@ import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.InsetsUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
-import org.jb2011.lnf.beautyeye.separator.__IconFactory__;
+import org.jb2011.lnf.beautyeye.utils.IconFactory;
 import org.jb2011.lnf.beautyeye.utils.JVM;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class __UI__.
- */
 public class __UI__ {
 
-    /**
-     * Ui impl.
-     */
+    private static final IconFactory ICON = new IconFactory("table");
+
     public static void uiImpl() {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> JTable的相关ui属性设定
         //JTable所属的滚动面板的border实现（不像JList，JTable的UI自动为它配备的一个JScrollPane）
@@ -44,11 +39,11 @@ public class __UI__ {
         UIManager.put("Table.focusCellHighlightBorderColor", new ColorUIResource(Color.white));//new ColorUIResource(Color.red));
         /* ~~注：这个属性是jb2011为了更好的ui效果自已加的属性，目的是使Table.focusCellHighlightBorder有点立体效果哦 */
         UIManager.put("Table.focusCellHighlightBorderHighlightColor",
-                 new ColorUIResource(new Color(255, 255, 255, 70)));//注意：这个颜色是半透明的哦
+                new ColorUIResource(new Color(255, 255, 255, 70)));//注意：这个颜色是半透明的哦
         UIManager.put("Table.background", new ColorUIResource(Color.white));
         //** 2011-03-16 add by jb2011 为了使JDK1.6及以上表格头在排序时能显示排序箭头（1.6里的排序图标是在UI里设定的）
-        UIManager.put("Table.descendingSortIcon", __IconFactory__.getInstance().getTableDescendingSortIcon());
-        UIManager.put("Table.ascendingSortIcon", __IconFactory__.getInstance().getTableAscendingSortIcon());
+        UIManager.put("Table.descendingSortIcon", ICON.get("descending_sort"));
+        UIManager.put("Table.ascendingSortIcon", ICON.get("ascending_sort"));
         UIManager.put("Table.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
         UIManager.put("Table.gridColor", new ColorUIResource(new Color(220, 220, 220)));
         UIManager.put("Table.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
@@ -82,20 +77,14 @@ public class __UI__ {
         }
     }
 
-    //* 本border实现参考了javax.swing.plaf.metal.TableHeaderBorder
     /**
      * Border for a Table Header.
+     * @see javax.swing.plaf.metal.TableHeaderBorder
      */
     public static class TableHeaderBorder extends javax.swing.border.AbstractBorder {
 
-        /**
-         * The editor border insets.
-         */
         protected Insets editorBorderInsets = new Insets(7, 0, 7, 0);//默认是2, 2, 2, 0 );
 
-        /* (non-Javadoc)
-		 * @see javax.swing.border.AbstractBorder#paintBorder(java.awt.Component, java.awt.Graphics, int, int, int, int)
-         */
         @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int w, int h) {
             g.translate(x, y);
@@ -119,9 +108,6 @@ public class __UI__ {
             g.translate(-x, -y);
         }
 
-        /* (non-Javadoc)
-		 * @see javax.swing.border.AbstractBorder#getBorderInsets(java.awt.Component)
-         */
         @Override
         public Insets getBorderInsets(Component c) {
             return editorBorderInsets;
