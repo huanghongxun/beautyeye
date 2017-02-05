@@ -37,16 +37,13 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 
-// TODO: Auto-generated Javadoc
 /**
- * JComboBox的UI实现类。.
+ * JComboBox的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com), 2012-06-30
  * @version 1.0
+ * @see com.sun.java.swing.plaf.windows.WindowsComboBoxUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了WindowsComboBoxUI
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEComboBoxUI extends BasicComboBoxUI
         implements org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
 

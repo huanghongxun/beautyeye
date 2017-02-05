@@ -34,42 +34,27 @@ import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
 
-// TODO: Auto-generated Javadoc
 /**
- * JMenuU的UI实现类。.
+ * JMenuU的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see com.sun.java.swing.plaf.windows.WindowsMenuUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//* 本类的实现参考了WindowsMenuUI
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEMenuUI extends BasicMenuUI {
 
     public static final Icon9Factory ICON_9 = new Icon9Factory("menu");
+    
     //JMenuBar的顶层菜单项的装饰底线高度
-    /**
-     * The Constant DECORATED_UNDERLINE_HEIGHT.
-     */
     public final static int DECORATED_UNDERLINE_HEIGHT = 2;// TODO 可以提炼成Ui属性哦
+    
     //顶层菜单项被选中的颜色
-    /**
-     * The Constant MENU_SELECTED_UNDERLINE_COLOR.
-     */
     public final static Color MENU_SELECTED_UNDERLINE_COLOR = new Color(37, 147, 217);// TODO 可以提炼成Ui属性哦
+    
     //顶层菜单项未被选中的颜色
-    /**
-     * The Constant MENU_UNSELECTED_UNDERLINE_COLOR.
-     */
     public final static Color MENU_UNSELECTED_UNDERLINE_COLOR = new Color(226, 230, 232);// TODO 可以提炼成Ui属性哦
 
-    /**
-     * The menu bar height.
-     */
     protected Integer menuBarHeight;
 
-    /**
-     * The hot tracking on.
-     */
     protected boolean hotTrackingOn;
 
     /**
@@ -100,7 +85,6 @@ public class BEMenuUI extends BasicMenuUI {
         hotTrackingOn = (obj instanceof Boolean) ? (Boolean) obj : true;
     }
 
-    //copy of WindowsMenuUI, modified by jb2011
     /**
      * Draws the background of the menu.
      *
@@ -108,6 +92,8 @@ public class BEMenuUI extends BasicMenuUI {
      * @param menuItem the menu item
      * @param bgColor the bg color
      * @since 1.4
+     * 
+     * @see com.sun.java.swing.plaf.windows.WindowsMenuUI#paintBackground(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Color)
      */
     @Override
     protected void paintBackground(Graphics g, JMenuItem menuItem, Color bgColor) {
@@ -194,7 +180,7 @@ public class BEMenuUI extends BasicMenuUI {
         g.setColor(oldColor);
     }
 
-    //copy of WindowsMenuUI, modified by jb2011
+    
     /**
      * Method which renders the text of the current menu item.
      * <p>
@@ -203,6 +189,8 @@ public class BEMenuUI extends BasicMenuUI {
      * @param textRect Bounding rectangle to render the text.
      * @param text String to render
      * @since 1.4
+     * 
+     * @see com.sun.java.swing.plaf.windows.WindowsMenuUI#paintText(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Rectangle, java.lang.String) 
      */
     @Override
     protected void paintText(Graphics g, JMenuItem menuItem,

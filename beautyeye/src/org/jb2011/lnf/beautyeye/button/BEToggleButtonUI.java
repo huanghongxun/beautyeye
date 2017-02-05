@@ -30,27 +30,19 @@ import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
 
 import sun.awt.AppContext;
 
-// TODO: Auto-generated Javadoc
 /**
- * JToggleButton的UI实现类。.
+ * JToggleButton的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see com.sun.java.swing.plaf.windows.WindowsToggleButtonUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了JDK1.6_u18的WindowsToggleButtonUI代码
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
-public class BEToggleButtonUI extends BasicToggleButtonUI//WindowsToggleButtonUI//
+public class BEToggleButtonUI extends BasicToggleButtonUI
 {
     protected static final Icon9Factory ICON_9 = new Icon9Factory("toggle_button");
-    /**
-     * The Constant WINDOWS_TOGGLE_BUTTON_UI_KEY.
-     */
+    
     private static final Object WINDOWS_TOGGLE_BUTTON_UI_KEY = new Object();
 
-    /**
-     * The nomal color.
-     */
-    private NormalColor nomalColor = BEButtonUI.NormalColor.normal;
+    private final NormalColor normalColor = BEButtonUI.NormalColor.normal;
 
     /**
      * Creates the ui.
@@ -85,14 +77,10 @@ public class BEToggleButtonUI extends BasicToggleButtonUI//WindowsToggleButtonUI
     
     @Override
     public void paint(Graphics g, JComponent c) {
-////    	if (NLXPStyle.getXP() != null) 
-//    	{
-        BEButtonUI.paintXPButtonBackground(nomalColor, g, c);
-//    	}
+        BEButtonUI.paintXPButtonBackground(normalColor, g, c);
         super.paint(g, c);
     }
 
-    //copy from BasicToggleButtonUI,modified by jb2011 2012-06-15
     //修改的目的是让它在获得焦点（或说点中时）改变前景色，可惜父类中没有实现它，只能自已来解决了
     /**
      * As of Java 2 platform v 1.4 this method should not be used or overriden.
@@ -102,6 +90,7 @@ public class BEToggleButtonUI extends BasicToggleButtonUI//WindowsToggleButtonUI
      * @param c the c
      * @param textRect the text rect
      * @param text the text
+     * @see javax.swing.plaf.basic.BasicToggleButtonUI#paintText(java.awt.Graphics, javax.swing.JComponent, java.awt.Rectangle, java.lang.String) 
      */
     @Override
     protected void paintText(Graphics g, JComponent c, Rectangle textRect, String text) {

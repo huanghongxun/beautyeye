@@ -21,7 +21,6 @@ import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
-// TODO: Auto-generated Javadoc
 /**
  * 分隔条的border实现类.
  * <p>

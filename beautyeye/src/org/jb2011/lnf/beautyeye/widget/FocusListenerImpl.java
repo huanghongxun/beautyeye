@@ -32,7 +32,6 @@ import org.jb2011.lnf.beautyeye.textcoms.__UI__.BgSwitchable;
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.widget.border.BERoundBorder;
 
-// TODO: Auto-generated Javadoc
 /**
  * 焦点改变时的监听器实现类.
  * <p>
@@ -41,7 +40,6 @@ import org.jb2011.lnf.beautyeye.widget.border.BERoundBorder;
  * @author Jack Jiang(jb2011@163.com)
  */
 public class FocusListenerImpl implements FocusListener {
-//		private final static FocusListenerImpl INSTANCE = new FocusListenerImpl();  
 
     /**
      * 文本组件等获得焦点后的边框线条宽度.

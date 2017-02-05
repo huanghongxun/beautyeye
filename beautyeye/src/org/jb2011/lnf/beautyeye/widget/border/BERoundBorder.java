@@ -24,7 +24,6 @@ import javax.swing.plaf.UIResource;
 import javax.swing.text.JTextComponent;
 
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
-// TODO: Auto-generated Javadoc
 
 /**
  * 圆角实线边框Border.

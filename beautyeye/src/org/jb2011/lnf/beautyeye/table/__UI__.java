@@ -24,7 +24,6 @@ import javax.swing.plaf.InsetsUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
-import org.jb2011.lnf.beautyeye.utils.JVM;
 
 public class __UI__ {
 
@@ -54,31 +53,21 @@ public class __UI__ {
 //		UIManager.put("TableHeader.font",new Font("宋体",Font.PLAIN,12));//此属性将决定表头的字体
         UIManager.put("TableHeader.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
         UIManager.put("TableHeader.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        //表头的定制在JDK1.6及以后版本好定制一些，1.5及以前版本因父类缺很多关键的代码很难定制，何况还要考虑兼容性，
-        //所以定制表头只支持到1.6及以后版本，1.5及以前版本就只支持边框自定义等设置了
-        if (JVM.current().isOrLater(JVM.JDK1_6)) {
-            //不建议完全定制表头ui，因为BasicTableHeaderUI里的关键方法都是private，无法继承重写，要实现自已
-            //的绘制逻辑需要重写大段代码，而因JTabel在不同jdk版本里的变动较大：比如1.6里才有的排序（及图标）及相关方法
-            //在不同的版本里都不尽相同，而且调用了若干sun的非公开包里的api。虽存在兼容性问题，为了UI美观，还是自定义实现吧
-            UIManager.put("TableHeaderUI", "org.jb2011.lnf.beautyeye.ch5_table.BETableHeaderUI");
-            //** BE LNF的本属性只在Java版本高于1.5时起效
-            //* 由jb2011自已加的属性，因原BasicTableHeaderUI里用TableHeader.cellBorder来设置
-            //border，但WindowsTableHeaderUI的border则是自已实现的IconBorder，而BE LNF中则是仿
-            //照Windows LNF实现，所以只能实现一个自已的属性来供以后的使用者灵活设定（否则只能像Windows LNF一样硬编码在代码里）
-            UIManager.put("TableHeader.cellMargin", new InsetsUIResource(7, 0, 7, 0));
-        } else {
-//			UIManager.put("TableHeader.font", userTextValue);
-            //** BE LNF的本属性只在Java版本等于或低于1.5时起效
-            UIManager.put("TableHeader.cellBorder",
-                    //					new SwingLazyValue("javax.swing.plaf.metal.MetalBorders$TableHeaderBorder")
-                    new BorderUIResource(new org.jb2011.lnf.beautyeye.table.__UI__.TableHeaderBorder())
-            );
-            UIManager.put("TableHeaderUI", javax.swing.plaf.basic.BasicTableHeaderUI.class.getName());
-        }
+
+        //不建议完全定制表头ui，因为BasicTableHeaderUI里的关键方法都是private，无法继承重写，要实现自已
+        //的绘制逻辑需要重写大段代码，而因JTable在不同jdk版本里的变动较大：比如1.6里才有的排序（及图标）及相关方法
+        //在不同的版本里都不尽相同，而且调用了若干sun的非公开包里的api。虽存在兼容性问题，为了UI美观，还是自定义实现吧
+        UIManager.put("TableHeaderUI", "org.jb2011.lnf.beautyeye.table.BETableHeaderUI");
+        //** BE LNF的本属性只在Java版本高于1.5时起效
+        //* 由jb2011自已加的属性，因原BasicTableHeaderUI里用TableHeader.cellBorder来设置
+        //border，但WindowsTableHeaderUI的border则是自已实现的IconBorder，而BE LNF中则是仿
+        //照Windows LNF实现，所以只能实现一个自已的属性来供以后的使用者灵活设定（否则只能像Windows LNF一样硬编码在代码里）
+        UIManager.put("TableHeader.cellMargin", new InsetsUIResource(7, 0, 7, 0));
     }
 
     /**
      * Border for a Table Header.
+     *
      * @see javax.swing.plaf.metal.TableHeaderBorder
      */
     public static class TableHeaderBorder extends javax.swing.border.AbstractBorder {

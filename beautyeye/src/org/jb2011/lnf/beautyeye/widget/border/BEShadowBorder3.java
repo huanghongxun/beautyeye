@@ -14,30 +14,24 @@ package org.jb2011.lnf.beautyeye.widget.border;
 import java.awt.Insets;
 import org.jb2011.lnf.beautyeye.widget.N9ComponentFactory;
 
-// TODO: Auto-generated Javadoc
 /**
- * 一个用9格图实现的边框阴影效果，目前主要用于窗口的边框（阴影效果是半透明的）。.
+ * 一个用9格图实现的边框阴影效果，目前主要用于窗口的边框（阴影效果是半透明的）.
  *
  * @author Jack Jiang(jb201@163.com)
- * @see org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.FrameBorderStyle#translucencyAppleLike
+ * @see
+ * org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.FrameBorderStyle#translucencyAppleLike
  */
-public class BEShadowBorder3 extends NinePatchBorder//AbstractBorder
-{
-	
-	/** The Constant BOTTOM. */
-	private final static int TOP = 17,LEFT = 27,RIGHT = 27,BOTTOM = 37;
-	
-	/**
-	 * Instantiates a new bE shadow border3.
-	 */
-	public BEShadowBorder3()
-	{
-		super(new Insets(TOP, LEFT, BOTTOM, RIGHT)
-		, N9ComponentFactory.ICON_9.get("border_shadow3")); 
-	}
-	
-	//* 2012-09-19 在BeautyEye v3.2中的BERootPaneUI，Jack Jiang启用了相比
-	//* 原MetalRootPaneUI中更精确更好的边框拖放算法，以下方法暂时弃用，以后可以删除了！
+public class BEShadowBorder3 extends NinePatchBorder {
+
+    private final static int TOP = 17, LEFT = 27, RIGHT = 27, BOTTOM = 37;
+
+    public BEShadowBorder3() {
+        super(new Insets(TOP, LEFT, BOTTOM, RIGHT),
+                 N9ComponentFactory.ICON_9.get("border_shadow3"));
+    }
+
+    //* 2012-09-19 在BeautyEye v3.2中的BERootPaneUI，Jack Jiang启用了相比
+    //* 原MetalRootPaneUI中更精确更好的边框拖放算法，以下方法暂时弃用，以后可以删除了！
 //	//当用本border作边框时，窗口可拖动敏感触点区大小值
 //	public static int BORDER_DRAG_THICKNESS()
 //	{

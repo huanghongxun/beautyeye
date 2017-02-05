@@ -20,7 +20,6 @@ import javax.swing.plaf.UIResource;
 
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * 虚线边框Border.
  *
@@ -33,20 +32,8 @@ public class BEDashedBorder extends LineBorder implements UIResource {
      */
     private int step = 3;
 
-    /**
-     * The right.
-     */
     private boolean top = true, left = true, bottom = true, right = true;
 
-    /**
-     * Instantiates a new bE dashed border.
-     *
-     * @param color the color
-     * @param top the top
-     * @param left the left
-     * @param bottom the bottom
-     * @param right the right
-     */
     public BEDashedBorder(Color color, boolean top, boolean left, boolean bottom, boolean right) {
         super(color);
         this.top = top;
@@ -67,7 +54,7 @@ public class BEDashedBorder extends LineBorder implements UIResource {
      * @param right the right
      */
     public BEDashedBorder(Color color, int thickness, int step,
-             boolean top, boolean left, boolean bottom, boolean right) {
+            boolean top, boolean left, boolean bottom, boolean right) {
         super(color, thickness);
         this.step = step;
         this.top = top;

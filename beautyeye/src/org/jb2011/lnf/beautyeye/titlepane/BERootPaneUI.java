@@ -250,15 +250,13 @@ public class BERootPaneUI extends BasicRootPaneUI {
                         @Override
                         public void windowActivated(WindowEvent e) {
                             if (window != null)
-                                //AWTUtilities.setWindowOpacity(window, 1.0f);
-                                WindowTranslucencyHelper.setOpacity(window, 1.0f);
+                                window.setOpacity(1);
                         }
 
                         @Override
                         public void windowDeactivated(WindowEvent e) {
                             if (window != null)
-                                //AWTUtilities.setWindowOpacity(window, 0.94f);
-                                WindowTranslucencyHelper.setOpacity(window, 0.94f);
+                                window.setOpacity(0.94f);
                         }
                     };
                 window.addWindowListener(windowsListener);

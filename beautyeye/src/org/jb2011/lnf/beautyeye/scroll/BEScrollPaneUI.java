@@ -16,20 +16,13 @@ import javax.swing.JScrollPane;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicScrollPaneUI;
 
-// TODO: Auto-generated Javadoc
 /**
- * 滚动面板的UI实现类。.
+ * 滚动面板的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com
  */
 public class BEScrollPaneUI extends BasicScrollPaneUI {
 
-    /**
-     * Creates the ui.
-     *
-     * @param x the x
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent x) {
         return new BEScrollPaneUI();
     }

@@ -27,15 +27,12 @@ import javax.swing.UIManager;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicToolBarSeparatorUI;
 
-// TODO: Auto-generated Javadoc
 /**
- * JToolBar的分隔条UI实现类。.
+ * JToolBar的分隔条UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see com.sun.java.swing.plaf.windows.WindowsToolBarSeparatorUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类实现代码参考了WindowsToolBarSeparatorUI
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEToolBarSeparatorUI extends BasicToolBarSeparatorUI {
 
     /**
@@ -56,14 +53,6 @@ public class BEToolBarSeparatorUI extends BasicToolBarSeparatorUI {
             size = size.getSize();
         else {
             size = new Dimension(6, 6);
-            //			XPStyle xp = XPStyle.getXP();
-            //			if (xp != null) {
-            //				boolean vertical = ((JSeparator)c).getOrientation() == SwingConstants.VERTICAL;
-            //				Part part = vertical ? Part.TP_SEPARATOR : Part.TP_SEPARATORVERT;
-            //				Skin skin = xp.getSkin(c, part);
-            //				size.width = skin.getWidth();
-            //				size.height = skin.getHeight();
-            //			}
 
             if (((JSeparator) c).getOrientation() == SwingConstants.VERTICAL)
                 size.height = 0;
@@ -126,7 +115,6 @@ public class BEToolBarSeparatorUI extends BasicToolBarSeparatorUI {
         }
         g.setColor(temp);
 
-        //
         ((Graphics2D) g).setStroke(oldStroke);
     }
 

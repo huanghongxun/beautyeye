@@ -16,22 +16,16 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSplitPaneDivider;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
 
-// TODO: Auto-generated Javadoc
 /**
  * 分栏面板的UI实现.
- * 
+ *
  * @author Jack Jiang(jb2011@163.com), 2012-07-10
  * @version 1.0
  */
-public class BESplitPaneUI  extends BasicSplitPaneUI
-{
-    
-    /**
-     * Instantiates a new bE split pane ui.
-     */
-    public BESplitPaneUI() 
-    {
-    	super();
+public class BESplitPaneUI extends BasicSplitPaneUI {
+
+    public BESplitPaneUI() {
+        super();
     }
 
     /**
@@ -40,9 +34,8 @@ public class BESplitPaneUI  extends BasicSplitPaneUI
      * @param x the x
      * @return the component ui
      */
-    public static ComponentUI createUI(JComponent x) 
-    {
-    	return new BESplitPaneUI();
+    public static ComponentUI createUI(JComponent x) {
+        return new BESplitPaneUI();
     }
 
     /**
@@ -50,8 +43,8 @@ public class BESplitPaneUI  extends BasicSplitPaneUI
      *
      * @return the basic split pane divider
      */
-    public BasicSplitPaneDivider createDefaultDivider() 
-    {
-    	return new BESplitPaneDivider(this);
+    @Override
+    public BasicSplitPaneDivider createDefaultDivider() {
+        return new BESplitPaneDivider(this);
     }
 }

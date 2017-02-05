@@ -19,10 +19,6 @@ import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
 import org.jb2011.lnf.beautyeye.widget.border.BEShadowBorder;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class __UI__.
- */
 public class __UI__ {
 
     private static final IconFactory ICON = new IconFactory("internal_frame");

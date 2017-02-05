@@ -15,22 +15,15 @@ import java.awt.Insets;
 
 import org.jb2011.lnf.beautyeye.widget.border.NinePatchBorder;
 
-// TODO: Auto-generated Javadoc
 /**
  * 表格UI所在滚动条的边框实现类.
- * 
+ *
  * @author Jack Jiang(jb2011@163.com), 2012-08-30
  * @version 1.0
  */
-class TableScrollBorder extends NinePatchBorder
-{
-	
-	/**
-	 * Instantiates a new table scroll border.
-	 */
-	public TableScrollBorder()
-	{
-		super(new Insets(3, 5, 10, 5)//3, 2, 5, 2
-				, BETableHeaderUI.ICON_9.get("scroll_border"));
-	}
+class TableScrollBorder extends NinePatchBorder {
+
+    public TableScrollBorder() {
+        super(new Insets(3, 5, 10, 5), BETableHeaderUI.ICON_9.get("scroll_border"));
+    }
 }

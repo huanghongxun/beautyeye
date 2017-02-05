@@ -17,32 +17,28 @@ import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 
-// TODO: Auto-generated Javadoc
 /**
- * JTree的UI实现类。.
+ * JTree的UI实现类.
+ *
+ * 目前，本类中暂未对UI方面代码进行修改，对Tree的UI修改主要是基于UIManager对应Tree
+ * 属性的配置，目前已经足够达到预期效果，如有必要可开放本类中的代码进行深入修改。
  *
  * @author Jack Jiang(jb2011@163.com)
  * @version 1.0
+ * @see com.sun.java.swing.plaf.windows.WindowsTreeUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了WindowsTreeUI
-//目前，本类中暂未对UI方面代码进行修改，对Tree的UI修改主要是基于UIManager对应Tree
-//属性的配置，目前已经足够达到预期效果，如有必要可开放本类中的代码进行深入修改。
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
-public class BETreeUI extends BasicTreeUI 
-{
-	
-	/**
-	 * Creates the ui.
-	 *
-	 * @param c the c
-	 * @return the component ui
-	 */
-	public static ComponentUI createUI( JComponent c )
-	{
-		return new BETreeUI();
-	}
-	
+public class BETreeUI extends BasicTreeUI {
+
+    /**
+     * Creates the ui.
+     *
+     * @param c the c
+     * @return the component ui
+     */
+    public static ComponentUI createUI(JComponent c) {
+        return new BETreeUI();
+    }
+
 //	//copy from BasicTreeUI and modified by jb2011
 //	// This method is slow -- revisit when Java2D is ready.
 //	// assumes x1 <= x2
@@ -94,20 +90,20 @@ public class BETreeUI extends BasicTreeUI
 //			g.drawLine(x, y, x, y);
 //		}
 //	}
-
 //	static protected final int HALF_SIZE = 4;
 //	static protected final int SIZE = 9;
-
-	//copy from WindowsTreeUI
-	/**
- * Returns the default cell renderer that is used to do the
- * stamping of each node.
- *
- * @return the tree cell renderer
- */
-	protected TreeCellRenderer createDefaultCellRenderer() {
-		return new WindowsTreeCellRenderer();
-	}
+    /**
+     * Returns the default cell renderer that is used to do the stamping of each
+     * node.
+     *
+     * @return the tree cell renderer
+     * @see
+     * com.sun.java.swing.plaf.windows.WindowsTreeUI#createDefaultCellRenderer()
+     */
+    @Override
+    protected TreeCellRenderer createDefaultCellRenderer() {
+        return new WindowsTreeCellRenderer();
+    }
 
 //	/**
 //	 * The minus sign button icon
@@ -168,7 +164,6 @@ public class BETreeUI extends BasicTreeUI
 //				SIZE;
 //		}
 //	}
-
 //	/**
 //	 * The plus sign button icon
 //	 * <p>
@@ -198,14 +193,14 @@ public class BETreeUI extends BasicTreeUI
 //			}
 //		}
 //	}
-
-	//copy from WindowsTreeUI
-	/**
- * The Class WindowsTreeCellRenderer.
- */
-public class WindowsTreeCellRenderer extends DefaultTreeCellRenderer 
-	{//目前没有定制内容，本来想让render绘制成圆角，但尝试后发现DefaultTreeCellRenderer类里
-	 //的代码设计欠佳，很难继承，要改的代码非常多，干脆作罢
+    /**
+     * The Class WindowsTreeCellRenderer.
+     *
+     * @see
+     * com.sun.java.swing.plaf.windows.WindowsTreeUI.WindowsTreeCellRenderer
+     */
+    public class WindowsTreeCellRenderer extends DefaultTreeCellRenderer {//目前没有定制内容，本来想让render绘制成圆角，但尝试后发现DefaultTreeCellRenderer类里
+        //的代码设计欠佳，很难继承，要改的代码非常多，干脆作罢
 //		/**
 //		 * Configures the renderer based on the passed in components.
 //		 * The value is set from messaging the tree with
@@ -245,5 +240,5 @@ public class WindowsTreeCellRenderer extends DefaultTreeCellRenderer
 //			}
 //			return this;
 //		}
-	}
+    }
 }

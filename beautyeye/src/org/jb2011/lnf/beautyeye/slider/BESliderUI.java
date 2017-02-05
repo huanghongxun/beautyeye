@@ -25,16 +25,14 @@ import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
 
-// TODO: Auto-generated Javadoc
 /**
- * JSlider的ui实现类。.
+ * JSlider的ui实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
  * @version 1.0
+ *
+ * @see com.sun.java.swing.plaf.windows.WindowsComboBoxUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了WindowsComboBoxUI
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BESliderUI extends BasicSliderUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("slider_track");
@@ -50,11 +48,6 @@ public class BESliderUI extends BasicSliderUI {
      */
     protected final int THUMB_WIDTH_VERTICAL = 7;// TODO 此属性可提取为Ui属性，方便以后配置（大小应是NP图的最小高度，最大值得看JSlider的高度了）
 
-    /**
-     * Instantiates a new bE slider ui.
-     *
-     * @param b the b
-     */
     public BESliderUI(JSlider b) {
         super(b);
     }
@@ -112,8 +105,8 @@ public class BESliderUI extends BasicSliderUI {
 
     /**
      * {@inheritDoc}
-     * 
-     * @see javax.swing.plaf.basic.BasicSliderUI#paintThumb(java.awt.Graphics) 
+     *
+     * @see javax.swing.plaf.basic.BasicSliderUI#paintThumb(java.awt.Graphics)
      */
     @Override
     public void paintThumb(Graphics g) {
@@ -130,13 +123,14 @@ public class BESliderUI extends BasicSliderUI {
         g.drawImage(ICON.get(isPaintNoTriangleThumb() ? "notriangle" : "",
                 slider.getOrientation() == JSlider.HORIZONTAL ? "" : "vertical",
                 slider.isEnabled() ? "" : "disabled").getImage(), 0, 0, null);
-        
+
         g.translate(-knobBounds.x, -knobBounds.y);
     }
 
     /**
      * Checks if is paint no triangle thumb.
      * 该thumb是否是无3角箭头的样式，true表示无3解箭头（即圆形thumb），false表示有3角箭头样式
+     *
      * @return true, if is paint no trangle thumb
      */
     protected boolean isPaintNoTriangleThumb() {
@@ -150,8 +144,8 @@ public class BESliderUI extends BasicSliderUI {
 
     /**
      * {@inheritDoc}
-     * 
-     * @see javax.swing.plaf.basic.BasicSliderUI#getThumbSize() 
+     *
+     * @see javax.swing.plaf.basic.BasicSliderUI#getThumbSize()
      */
     @Override
     protected Dimension getThumbSize() {

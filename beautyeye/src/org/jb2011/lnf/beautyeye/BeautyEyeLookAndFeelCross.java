@@ -15,19 +15,18 @@ import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
-// TODO: Auto-generated Javadoc
 /**
  * <p>
  * BeautyEye Swing外观实现方案 - 跨平台通用外观实现主类.<br>
  * <p>
  * 本主题主类仅供跨平台时使用，它可用于Java支持的所有操作系统.
+ * 
+ * 如果要继承BasicLookAndFeel实现跨平台lnf 则还需要做更多的工作，目前
+ * 跨平台时干脆继承MetalLookAndFeel以便站在巨人的肩膀上，节省一些工作量
  *
  * @author Jack Jiang(jb2011@163.com)
  * @version 1.0
  */
-// * 参考源码基于JDK_1.6.0_u18.
-//如果要继承BasicLookAndFeel实现跨平台lnf 则还需要做更多的工作，目前
-//跨平台时干脆继承MetalLookAndFeel以便站在巨人的肩膀上，节省一些工作量
 public class BeautyEyeLookAndFeelCross extends MetalLookAndFeel {
 
     static {

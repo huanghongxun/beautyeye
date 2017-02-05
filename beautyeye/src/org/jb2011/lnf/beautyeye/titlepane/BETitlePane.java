@@ -59,7 +59,6 @@ import javax.swing.plaf.UIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
-import org.jb2011.lnf.beautyeye.utils.JVM;
 import org.jb2011.lnf.beautyeye.utils.LogHelper;
 import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
 import org.jb2011.lnf.beautyeye.utils.ReflectHelper;
@@ -828,7 +827,7 @@ public class BETitlePane extends JComponent {
      * @param icon the icon
      */
     private void updateToggleButton(Action action, Icon icon,
-             Icon iconRover, Icon iconPressed) {
+            Icon iconRover, Icon iconPressed) {
         toggleButton.setAction(action);
         toggleButton.setIcon(icon);
 //		setButtonIcon(toggleButton, toggleButton.getIcon());// @since 3.5：同时设置rover和pressed时的icon效果：同时设置rover和pressed时的icon效果
@@ -961,13 +960,13 @@ public class BETitlePane extends JComponent {
      * @param actived the actived
      */
     public static void paintTitlePane(Graphics g, int x, int y, int width,
-             int height, boolean actived) {
+            int height, boolean actived) {
         Graphics2D g2 = (Graphics2D) g;
 
         //是用图形进行填充的
         Paint oldpaint = g2.getPaint();
         g2.setPaint(BEUtils.createTexturePaint(
-                 __UI__.ICON.get("title", actived ? "active" : "inactive").getImage()));
+                __UI__.ICON.get("title", actived ? "active" : "inactive").getImage()));
         g2.fillRect(x, y, width, height);
         g2.setPaint(oldpaint);
     }
@@ -981,8 +980,7 @@ public class BETitlePane extends JComponent {
          * Instantiates a new close action.
          */
         public CloseAction() {
-            super(//"关闭(C)");
-                    UIManager.getString("BETitlePane.closeButtonToolTipext", getLocale()));
+            super(UIManager.getString("BETitlePane.closeButtonToolTipext", getLocale()));
         }
 
         @Override
@@ -1000,8 +998,7 @@ public class BETitlePane extends JComponent {
          * Instantiates a new iconify action.
          */
         public IconifyAction() {
-            super(//"最小化(N)");
-                    UIManager.getString("BETitlePane.iconifyButtonText", getLocale()));
+            super(UIManager.getString("BETitlePane.iconifyButtonText", getLocale()));
         }
 
         @Override
@@ -1019,8 +1016,7 @@ public class BETitlePane extends JComponent {
          * Instantiates a new restore action.
          */
         public RestoreAction() {
-            super(//"还原(R)");
-                    UIManager.getString("BETitlePane.restoreButtonText", getLocale()));
+            super(UIManager.getString("BETitlePane.restoreButtonText", getLocale()));
         }
 
         @Override
@@ -1034,12 +1030,8 @@ public class BETitlePane extends JComponent {
      */
     private class MaximizeAction extends AbstractAction {
 
-        /**
-         * Instantiates a new maximize action.
-         */
         public MaximizeAction() {
-            super(//"最大化(X)");
-                    UIManager.getString("BETitlePane.maximizeButtonText", getLocale()));
+            super(UIManager.getString("BETitlePane.maximizeButtonText", getLocale()));
         }
 
         @Override
@@ -1075,24 +1067,12 @@ public class BETitlePane extends JComponent {
                 // 图标（跨平台时可能尺寸不一样，此方法返回最合适的）
                 if (frame instanceof Frame)
                     image = ((Frame) frame).getIconImage();
-                // 其它情况那就Dialog及其子类了，因它们没有getIconImage方法
-                // ，那就只取frame.getIconImages()里的第1个图标吧（如蛤存在多个图标的话）
-                // ，它样处理虽跨平台考虑不足但总比MetalTitlePane里不显示Dialog图标强
+                // 其它情况那就Dialog及其子类了，因它们没有getIconImage方法，
+                // 那就只取frame.getIconImages()里的第1个图标吧（如蛤存在多个图标的话），
+                // 它样处理虽跨平台考虑不足但总比MetalTitlePane里不显示Dialog图标强
                 else
-                    try {
-                        //* JDK1.6 or later
-//						if(frame.getIconImages()!=null && frame.getIconImages().size()>0)
-//							image = frame.getIconImages().get(0);
-                        //* Use reflect for compatible to JDK1.5 - by Jack Jiang at 2013-03-20, @since v3.5
-                        if (JVM.current().isOrLater(JVM.JDK1_6)) {
-                            List<Image> iis = (List<Image>) (ReflectHelper.invokeMethod(JFrame.class, frame, "getIconImages", new Class[] {},
-                                     new Object[] {}));
-                            if (iis != null && iis.size() > 0)
-                                image = iis.get(0);
-                        }
-                    } catch (Exception e) {
-                        LogHelper.debug("Exception at BETitlePane.SystemMenuBar.paint," + e.getMessage());
-                    }
+                    if (frame.getIconImages() != null && frame.getIconImages().size() > 0)
+                        image = frame.getIconImages().get(0);
 
             if (image != null)
                 g.drawImage(image, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT, null);
@@ -1149,7 +1129,7 @@ public class BETitlePane extends JComponent {
             fontHeight += 7;
             int iconHeight = 0;
             if (getWindowDecorationStyle() == JRootPane.FRAME) //					||getWindowDecorationStyle() == JRootPane.PLAIN_DIALOG)//
-            
+
                 iconHeight = IMAGE_HEIGHT;
 
             int finalHeight = Math.max(fontHeight, iconHeight);
@@ -1187,7 +1167,7 @@ public class BETitlePane extends JComponent {
                 //* js 2010-03-30
                 //* 原MetalTitledPane的Bug:当存在关闭按钮时，窗口图标的大小是已关闭按钮的大小来决定的，这样不合理
                 menuBar.setBounds(x,
-                         y + 2//+2偏移量由Jack Jiang于2012-09-24日加上，目的是使得图标与文本保持在同一中心位置
+                        y + 2//+2偏移量由Jack Jiang于2012-09-24日加上，目的是使得图标与文本保持在同一中心位置
                         // TODO 目前BueautyEye和MetalLookAndFeel的标题图标位置算法都有优化的余地：y轴坐标自动按title高度居中会
                         //	        适用更多场景，现在的算法如果title高度变的很大，则这些位置都是固定。不过按MetalLNF的思路，这些高度
                         //	        是与整体美感一样，不应被随意改动的，也可以说不需要优化，目前就这么的吧，没有关系。
@@ -1247,26 +1227,26 @@ public class BETitlePane extends JComponent {
             String name = pce.getPropertyName();
 
             if (null != name) // Frame.state isn't currently bound.
-            switch (name) {
-                case "resizable":
-                case "state":
-                    Frame frame = getFrame();
-                    if (frame != null)
-                        setState(frame.getExtendedState(), true);
-                    if ("resizable".equals(name))
-                        getRootPane().repaint();
-                    break;
-                case "title":
-                    repaint();
-                    break;
-                case "componentOrientation":
-                case "iconImage":
-                    revalidate();
-                    repaint();
-                    break;
-                default:
-                    break;
-            }
+                switch (name) {
+                    case "resizable":
+                    case "state":
+                        Frame frame = getFrame();
+                        if (frame != null)
+                            setState(frame.getExtendedState(), true);
+                        if ("resizable".equals(name))
+                            getRootPane().repaint();
+                        break;
+                    case "title":
+                        repaint();
+                        break;
+                    case "componentOrientation":
+                    case "iconImage":
+                        revalidate();
+                        repaint();
+                        break;
+                    default:
+                        break;
+                }
         }
     }
 

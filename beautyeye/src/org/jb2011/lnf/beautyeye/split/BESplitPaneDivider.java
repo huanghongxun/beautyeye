@@ -31,7 +31,6 @@ import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 
 import sun.swing.DefaultLookup;
 
-// TODO: Auto-generated Javadoc
 /**
  * 分栏面板上的分隔线实现类.
  * <p>

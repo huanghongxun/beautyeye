@@ -13,21 +13,11 @@ package org.jb2011.lnf.beautyeye.popup;
 
 import javax.swing.PopupFactory;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class __UI__.
- */
-public class __UI__
-{
-	
-	/** The popup factory diy. */
-	public static PopupFactory popupFactoryDIY = new TranslucentPopupFactory();
-	
-	/**
-	 * Ui impl.
-	 */
-	public static void uiImpl()
-	{
-		PopupFactory.setSharedInstance(popupFactoryDIY);
-	}
+public class __UI__ {
+
+    public static PopupFactory popupFactoryDIY = new TranslucentPopupFactory();
+
+    public static void uiImpl() {
+        PopupFactory.setSharedInstance(popupFactoryDIY);
+    }
 }

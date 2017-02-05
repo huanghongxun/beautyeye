@@ -36,9 +36,10 @@ import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 import org.jb2011.lnf.beautyeye.utils.WindowTranslucencyHelper;
 import org.jb2011.lnf.beautyeye.widget.ImageBgPanel;
 
-// TODO: Auto-generated Javadoc
 /**
- * 自定义透明背景的弹出工厂实现类. 本类其实与Swing的UI机制关联不大，完全可以独立于L&F使用。
+ * 自定义透明背景的弹出工厂实现类.
+ *
+ * 本类其实与Swing的UI机制关联不大，完全可以独立于L&F使用。
  *
  * @author Jack Jiang(jb2011@163.com), 2012-05-18
  * @version 1.0
@@ -95,7 +96,6 @@ public class TranslucentPopupFactory extends PopupFactory {
             reset(owner, contents, x, y);
         }
 
-        //copy all from parent class
         /**
          * Creates a <code>Popup</code>. This is provided for subclasses.
          */
@@ -124,7 +124,6 @@ public class TranslucentPopupFactory extends PopupFactory {
             }
         }
 
-        //copy all from parent class
         /**
          * Hides and disposes of the <code>Popup</code>. Once a
          * <code>Popup</code> has been disposed you should no longer invoke
@@ -144,7 +143,6 @@ public class TranslucentPopupFactory extends PopupFactory {
             dispose();
         }
 
-        //copy all from parent class
         /**
          * Frees any resources the <code>Popup</code> may be holding onto.
          */
@@ -187,13 +185,9 @@ public class TranslucentPopupFactory extends PopupFactory {
                 boolean isComboBoxPopup = (contents instanceof BasicComboPopup);
 
                 //每像素透明
-//				com.sun.awt.AWTUtilities.setWindowOpaque(component, false);
                 WindowTranslucencyHelper.setWindowOpaque(w, false);
                 //内容组件半透明
-//				com.sun.awt.AWTUtilities.setWindowOpacity(component,
-//						isTooltip ? 1.0f : 0.95f);//0.85f : 0.95f);//0.8f : 0.95f);
-                WindowTranslucencyHelper.setOpacity(w,
-                        isTooltip ? 1.0f : isComboBoxPopup ? 0.95f : 0.95f);//0.85f : 0.95f);//0.8f : 0.95f);
+                w.setOpacity(isTooltip ? 1.0f : isComboBoxPopup ? 0.95f : 0.95f);//0.85f : 0.95f);//0.8f : 0.95f);
 
 //				component.getContentPane().add(contents, BorderLayout.CENTER);
 //				contents.invalidate();
@@ -254,8 +248,7 @@ public class TranslucentPopupFactory extends PopupFactory {
                 //挡住，不好看（另注：本JScrollPane在BEComboBoxUI中被设置了一个EmptyBorder，所以
                 //没有在ScrollPaneUI中定认的那个ScrollBorder哦，没有那个border的目的就是为了在些使用
                 //pop的背景撒）
-                if (isComboBoxPopup)//contents instanceof BasicComboPopup)//* add by jb2011 2012-08-31
-                {
+                if (isComboBoxPopup) {
                     Component[] cs = ((BasicComboPopup) contents).getComponents();
                     //该JScrollPane就是contents的第一层子组件里
                     if (cs != null && cs.length > 0)
@@ -263,7 +256,6 @@ public class TranslucentPopupFactory extends PopupFactory {
                         for (Component com : cs)
                             if (com instanceof JScrollPane)
                                 ((JScrollPane) com).setOpaque(false);
-//					BEUtils.componentsOpaque(((BasicComboPopup)contents).getComponents(), false);
                 } //如果是菜单父宿主则所有JMenuItem也设置透明,jb2011 2009-08-29
                 else if (contents instanceof JPopupMenu) {
                     MenuElement[] mes = ((JPopupMenu) contents).getSubElements();
@@ -283,7 +275,6 @@ public class TranslucentPopupFactory extends PopupFactory {
             }
         }
 
-        //copy all from parent class
         /**
          * Causes the <code>Popup</code> to be sized to fit the preferred size
          * of the <code>Component</code> it contains.
@@ -295,7 +286,6 @@ public class TranslucentPopupFactory extends PopupFactory {
                 ((Window) c).pack();
         }
 
-        //copy all from parent class
         /**
          * Returns the <code>Window</code> to use as the parent of the
          * <code>Window</code> created for the <code>Popup</code>. This creates
@@ -316,7 +306,6 @@ public class TranslucentPopupFactory extends PopupFactory {
             return window;
         }
 
-        //copy all from parent class
         /**
          * Creates the Component to use as the parent of the <code>Popup</code>.
          * The default implementation creates a <code>Window</code>, subclasses
@@ -333,7 +322,6 @@ public class TranslucentPopupFactory extends PopupFactory {
             return new HeavyWeightWindow(getParentWindow(owner));
         }
 
-        //copy all from parent class
         /**
          * Returns the <code>Component</code> returned from
          * <code>createComponent</code> that will hold the <code>Popup</code>.
@@ -344,7 +332,6 @@ public class TranslucentPopupFactory extends PopupFactory {
             return component;
         }
 
-        //copy all from parent class
         /**
          * Used if no valid Window ancestor of the supplied owner is found.
          * <p>
@@ -354,12 +341,10 @@ public class TranslucentPopupFactory extends PopupFactory {
         protected class DefaultFrame extends Frame {
         }
 
-        //copy all from parent class
         /**
          * Component used to house window.
          */
-        protected class HeavyWeightWindow extends JWindow// implements ModalExclude
-        {
+        protected class HeavyWeightWindow extends JWindow {
 
             /**
              * Instantiates a new heavy weight window.

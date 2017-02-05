@@ -14,7 +14,6 @@ package org.jb2011.lnf.beautyeye.widget.border;
 import java.awt.Insets;
 import org.jb2011.lnf.beautyeye.widget.N9ComponentFactory;
 
-// TODO: Auto-generated Javadoc
 /**
  * 一个NinePatch图实现的不透明边框border.
  * <p>
@@ -27,17 +26,11 @@ import org.jb2011.lnf.beautyeye.widget.N9ComponentFactory;
  */
 public class PlainGrayBorder extends NinePatchBorder {
 
-    /**
-     * The Constant IS.
-     */
     private final static int IS = 5;
 
-    /**
-     * Instantiates a new plain gray border.
-     */
     public PlainGrayBorder() {
         super(new Insets(IS, IS, IS, IS),
-                 N9ComponentFactory.ICON_9.get("border_plain_gray"));
+                N9ComponentFactory.ICON_9.get("border_plain_gray"));
     }
 
     //* 2012-09-19 在BeautyEye v3.2中的BERootPaneUI，Jack Jiang启用了相比

@@ -22,20 +22,17 @@ import javax.swing.JMenuItem;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicMenuItemUI;
 
-// TODO: Auto-generated Javadoc
 /**
- * JMenuItem的UI实现类。.
+ * JMenuItem的UI实现类.
+ * 
+ * 特别注意：BasicMenuItemUI中针对Vista及后来的Windows版本预设了很多其它LNF不需要的属性，
+ * 预设的属性详见BasicMenuItemUI及WindowsLookAndFeel中的initVistaComponentDefaults(..)方法.
+ * 这些属性只能会在vista及更新的windows平台上过运行时才会起效，所以除此之外的windows测不出来,
+ * 容易出现ui视觉差异.
  *
  * @author Jack Jiang(jb2011@163.com)
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//特别注意：BasicMenuItemUI中针对Vista及后来的Windows版本预设了很多其它LNF不需要的属性，
-//预设的属性详见BasicMenuItemUI及WindowsLookAndFeel中的initVistaComponentDefaults(..)方法.
-//这些属性只能会在vista及更新的windows平台上过运行时才会起效，所以除此之外的windows测不出来,
-//容易出现ui视觉差异.
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
-public class BEMenuItemUI extends BasicMenuItemUI//WindowsMenuItemUI
-{
+public class BEMenuItemUI extends BasicMenuItemUI {
 
     /**
      * 是否强制单项透明(当强制不透明时，在普通状态下该item将不会被绘制背景）.
@@ -67,11 +64,10 @@ public class BEMenuItemUI extends BasicMenuItemUI//WindowsMenuItemUI
             //菜单项的样式绘制(用NinePatch图来填充)
             BEMenuUI.ICON_9.get("selected")
                     .draw(g2, 0, 0, menuWidth, menuHeight);
-        else
-            if (!enforceTransparent) {
-                g.setColor(menuItem.getBackground());
-                g.fillRect(0, 0, menuWidth, menuHeight);
-            }
+        else if (!enforceTransparent) {
+            g.setColor(menuItem.getBackground());
+            g.fillRect(0, 0, menuWidth, menuHeight);
+        }
         g.setColor(oldColor);
     }
 }

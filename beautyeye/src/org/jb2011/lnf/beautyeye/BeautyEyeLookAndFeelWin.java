@@ -20,7 +20,6 @@ import javax.swing.plaf.BorderUIResource;
 import javax.swing.plaf.InsetsUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.FrameBorderStyle;
-import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
 
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
@@ -44,8 +43,8 @@ public class BeautyEyeLookAndFeelWin extends WindowsLookAndFeel {
      * Instantiates a new beauty eye look and feel win.
      *
      * @see BeautyEyeLNFHelper#implLNF()
-     * @see org.jb2011.lnf.beautyeye.ch20_filechooser.__UI__#uiImpl_win()
-     * @see #initForVista()
+     * @see org.jb2011.lnf.beautyeye.filechooser.__UI__#uiImpl_win()
+     * @see #init()
      */
     public BeautyEyeLookAndFeelWin() {
         super();
@@ -56,7 +55,7 @@ public class BeautyEyeLookAndFeelWin extends WindowsLookAndFeel {
         org.jb2011.lnf.beautyeye.filechooser.__UI__.uiImpl_win();
 
         //针对Vista及更新的windows平台进行特殊设置
-        initForVista();
+        init();
     }
 
     /**
@@ -70,24 +69,22 @@ public class BeautyEyeLookAndFeelWin extends WindowsLookAndFeel {
      *
      * @see WindowsLookAndFeel.initVistaComponentDefaults(..)
      */
-    protected void initForVista() {
-        if (WinUtils.isOnVista()) {
-            UIManager.put("CheckBoxMenuItem.margin", new InsetsUIResource(0, 0, 0, 0));
-            UIManager.put("RadioButtonMenuItem.margin", new InsetsUIResource(0, 0, 0, 0));
-            UIManager.put("Menu.margin", new InsetsUIResource(0, 0, 0, 0));//windows lnf xp中默认是2，2，2，2
-            UIManager.put("MenuItem.margin", new InsetsUIResource(0, 0, 0, 0));//windows lnf中  xp默认是2，2，2，2
+    protected void init() {
+        UIManager.put("CheckBoxMenuItem.margin", new InsetsUIResource(0, 0, 0, 0));
+        UIManager.put("RadioButtonMenuItem.margin", new InsetsUIResource(0, 0, 0, 0));
+        UIManager.put("Menu.margin", new InsetsUIResource(0, 0, 0, 0));//windows lnf xp中默认是2，2，2，2
+        UIManager.put("MenuItem.margin", new InsetsUIResource(0, 0, 0, 0));//windows lnf中  xp默认是2，2，2，2
 
-            UIManager.put("Menu.border", new BorderUIResource(BorderFactory.createEmptyBorder(1, 3, 2, 3)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;
-            UIManager.put("MenuItem.border", new BorderUIResource(BorderFactory.createEmptyBorder(1, 0, 2, 0)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;
-            UIManager.put("CheckBoxMenuItem.border", new BorderUIResource(BorderFactory.createEmptyBorder(4, 2, 4, 2)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;
-            UIManager.put("RadioButtonMenuItem.border", new BorderUIResource(BorderFactory.createEmptyBorder(4, 0, 4, 0)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;		
+        UIManager.put("Menu.border", new BorderUIResource(BorderFactory.createEmptyBorder(1, 3, 2, 3)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;
+        UIManager.put("MenuItem.border", new BorderUIResource(BorderFactory.createEmptyBorder(1, 0, 2, 0)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;
+        UIManager.put("CheckBoxMenuItem.border", new BorderUIResource(BorderFactory.createEmptyBorder(4, 2, 4, 2)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;
+        UIManager.put("RadioButtonMenuItem.border", new BorderUIResource(BorderFactory.createEmptyBorder(4, 0, 4, 0)));//javax.swing.plaf.basic.BasicBorders.MarginBorder;		
 //			UIManager.put("PopupMenu.border",new BorderUIResource(BorderFactory.createEmptyBorder(20,10,20,10)));//	
 
-            UIManager.put("CheckBoxMenuItem.checkIcon",
-                     new org.jb2011.lnf.beautyeye.menu.BECheckBoxMenuItemUI.CheckBoxMenuItemIcon().setUsedForVista(true));//javax.swing.plaf.basic.BasicIconFactory.CheckBoxMenuItemIcon);
-            UIManager.put("RadioButtonMenuItem.checkIcon",
-                     new org.jb2011.lnf.beautyeye.menu.BERadioButtonMenuItemUI.RadioButtonMenuItemIcon().setUsedForVista(true));
-        }
+        UIManager.put("CheckBoxMenuItem.checkIcon",
+                new org.jb2011.lnf.beautyeye.menu.BECheckBoxMenuItemUI.CheckBoxMenuItemIcon().setUsedForVista(true));//javax.swing.plaf.basic.BasicIconFactory.CheckBoxMenuItemIcon);
+        UIManager.put("RadioButtonMenuItem.checkIcon",
+                new org.jb2011.lnf.beautyeye.menu.BERadioButtonMenuItemUI.RadioButtonMenuItemIcon().setUsedForVista(true));
     }
 
     @Override

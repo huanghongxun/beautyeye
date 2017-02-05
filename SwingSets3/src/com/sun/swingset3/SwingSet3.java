@@ -88,6 +88,7 @@ import javax.swing.event.ChangeListener;
 import com.sun.swingset3.codeview.CodeViewer;
 import com.sun.swingset3.utilities.RoundedBorder;
 import com.sun.swingset3.utilities.RoundedPanel;
+import sun.swing.SwingUtilities2;
 
 /**
  *

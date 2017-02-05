@@ -19,7 +19,6 @@ import java.awt.Graphics2D;
 
 import javax.swing.JComponent;
 
-// TODO: Auto-generated Javadoc
 /**
  * 本类中的方法一一对应于SUN未公开的类SwingUtilities2中的方法。
  * <p>

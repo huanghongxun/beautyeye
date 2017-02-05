@@ -40,6 +40,8 @@ import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
 
 /**
  * 内部窗体的标题栏UI实现.
+ * 
+ * @see com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane
  *
  * @author Jack Jiang
  */
