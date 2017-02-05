@@ -41,17 +41,15 @@ import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
 /**
  * 内部窗体的标题栏UI实现.
  * 
+ * BeautyEye外观实现中取消了isPalette的所有特殊处理，isPalette及相关属性在
+ *该外观中将失去意义，请注意！
+ *虽然beautyEye是参考自MetalLookAndFeel，但因beautyEye使用了Insets很大的立体边框，
+ * 则如果还要像MetalLookAndFeel实现Palette类型的JInternalFrame则效果会很难看，干脆就就像
+ * WindowsLookAndFeel一样，不去理会什么Palette，在当前的L&F下没有任何减分。
+ * 
  * @see com.sun.java.swing.plaf.windows.WindowsInternalFrameTitlePane
- *
  * @author Jack Jiang
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//BeautyEye外观实现中取消了isPalette的所有特殊处理，isPalette及相关属性在
-//该外观中将失去意义，请注意！
-//虽然beautyEye是参考自MetalLookAndFeel，但因beautyEye使用了Insets很大的立体边框，
-//则如果还要像MetalLookAndFeel实现Palette类型的JInternalFrame则效果会很难看，干脆就就像
-//WindowsLookAndFeel一样，不去理会什么Palette，在当前的L&F下没有任何减分。
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEInternalFrameTitlePane extends BasicInternalFrameTitlePane {
 //	protected boolean isPalette = false;
 //	protected Icon paletteCloseIcon;

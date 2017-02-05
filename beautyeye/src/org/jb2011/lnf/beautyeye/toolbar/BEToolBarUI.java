@@ -51,26 +51,19 @@ import org.jb2011.ninepatch4j.NinePatch;
  * Boolean.FALSE)（UIManager中默认是false）
  * 或者通过JToolBar.putClientProperty("ToolBar.isPaintPlainBackground",
  * Boolean.FALSE) 独立控制，ClientProperty中的设置拥有最高优先级。
+ * 
+ * 特别说明：JToolBar比较特殊，加入到JToolBar中的组件，其UI（主要是Border）将由ToolBarUI额
+ * 外控制而不受自身UI控制，比如放入到JToolBar中的JToggleButton，它的border就是受ToolBarUI
+ * 控制，这些JToggleButton将无论如何修改ToolgleButtonUI.border也不会起效。
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see com.sun.java.swing.plaf.windows.WindowsToolBarUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类实现代码参考了WindowsToolBarUI。
-//特别说明：JToolBar比较特殊，加入到JToolBar中的组件，其UI（主要是Border）将由ToolBarUI额
-//外控制而不受自身UI控制，比如放入到JToolBar中的JToggleButton，它的border就是受ToolBarUI
-//控制，这些JToggleButton将无论如何修改ToolgleButtonUI.border也不会起效。
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEToolBarUI extends BasicToolBarUI
         implements org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("toolbar");
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BEToolBarUI();
     }
@@ -158,7 +151,6 @@ public class BEToolBarUI extends BasicToolBarUI
      *
      * @param b the b
      * @return the rollover border {@inheritDoc}
-     * @since 1.6
      */
     @Override
     protected Border getRolloverBorder(AbstractButton b) {

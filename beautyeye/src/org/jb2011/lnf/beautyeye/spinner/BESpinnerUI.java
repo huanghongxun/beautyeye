@@ -67,7 +67,6 @@ public class BESpinnerUI extends BasicSpinnerUI {
      *
      * @param g the g
      * @param c the c {@inheritDoc}
-     * @since 1.6
      */
     @Override
     public void paint(Graphics g, JComponent c) {

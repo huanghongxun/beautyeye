@@ -26,10 +26,8 @@ import org.jb2011.ninepatch4j.NinePatch;
  * 文本组件JEditorPane的UI实现类。.
  *
  * @author Jack Jiang(jb2011@163.com), 2012-08-25
+ * @see com.sun.java.swing.plaf.windows.WindowsEditorPaneUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//代码参考了WindowsEditorPaneUI的实现
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEEditorPaneUI extends BasicEditorPaneUI implements BgSwitchable,
         org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsEditorPaneUI
 {

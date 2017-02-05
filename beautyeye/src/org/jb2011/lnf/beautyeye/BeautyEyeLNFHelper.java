@@ -62,8 +62,7 @@ public class BeautyEyeLNFHelper {
      *
      * @see FrameBorderStyle
      */
-    public static FrameBorderStyle frameBorderStyle
-            = FrameBorderStyle.translucencyAppleLike;
+    public static FrameBorderStyle frameBorderStyle = FrameBorderStyle.translucencyAppleLike;
 
     /**
      * 颜色全局变量：正常情况下的窗口文本颜色.

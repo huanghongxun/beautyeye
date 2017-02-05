@@ -17,13 +17,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Window;
 
 /**
- * The Class WindowTranslucencyHelper.
- * 
  * 关于java支持窗口透明的详细信息请见：http://docs.oracle.com/javase/tutorial/uiswing/misc/trans_shaped_windows.html#uniform
- * 关于java1.6.0_10里的窗口透明存在一个BUG：
- * BUG出的错误：Exception in thread "AWT-EventQueue-0" java.lang.IllegalArgumentException: Width (0) and height (0) cannot be &lt;= 0
- * 官方BUG ID ：6750920，地址：http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6750920
- * 该BUG被解决于:java1.6.0_12，realease note地址：http://www.oracle.com/technetwork/java/javase/6u12-137788.html
  */
 public class WindowTranslucencyHelper {
 

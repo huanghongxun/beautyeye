@@ -34,13 +34,12 @@ import org.jb2011.ninepatch4j.NinePatch;
 /**
  * 本类是滚动条的UI实现.
  *
+ * 注：滚动条的两端箭头按钮参考自xp主题的实现，未作修改，因而这部分逻辑代码与WindowsScrollBarUI中是完全一样的.
+ * 
  * @author Jack Jiang(jb2011@163.com), 2009-09-01
  * @version 1.0
+ * @see com.sun.java.swing.plaf.windows.WindowsScrollBarUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了Windows LNF中的WindowsScrollBarUI.
-//注：滚动条的两端箭头按钮参考自xp主题的实现，未作修改，因而这部分逻辑代码与WindowsScrollBarUI中是完全一样的.
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEScrollBarUI extends BasicScrollBarUI {
 
     public static final Icon9Factory ICON_9 = new Icon9Factory("scroll_bar");

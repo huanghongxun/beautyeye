@@ -45,22 +45,15 @@ import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
  *
  * @author Jack Jiang(jb2011@163.com)
  * @version 1.0
+ * @see com.sun.java.swing.plaf.windows.WindowsButtonUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了JDK1.6_u18中WindowsButtonUI的源码.
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEButtonUI extends BasicButtonUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("button");
-    /**
-     * The Constant xWindowsButtonUI.
-     */
+    
     private final static BEButtonUI xWindowsButtonUI = new BEButtonUI();
 
-    /**
-     * The nomal color.
-     */
-    private NormalColor nomalColor = NormalColor.normal;
+    private NormalColor normalColor = NormalColor.normal;
 
     /**
      * 按钮颜色方案枚举类型。.
@@ -96,7 +89,7 @@ public class BEButtonUI extends BasicButtonUI {
      * @return the bE button ui
      */
     public BEButtonUI setNormalColor(NormalColor nc) {
-        this.nomalColor = nc;
+        this.normalColor = nc;
         return this;
     }
 
@@ -259,7 +252,7 @@ public class BEButtonUI extends BasicButtonUI {
     public void paint(Graphics g, JComponent c) {
 //		if (NLXPStyle.getXP() != null) 
         {
-            paintXPButtonBackground(nomalColor, g, c);
+            paintXPButtonBackground(normalColor, g, c);
         }
         super.paint(g, c);
     }

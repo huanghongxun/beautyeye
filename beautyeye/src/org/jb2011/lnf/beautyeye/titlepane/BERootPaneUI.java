@@ -55,10 +55,8 @@ import org.jb2011.lnf.beautyeye.utils.WindowTranslucencyHelper;
  * 窗体的UI实现.
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see javax.swing.plaf.metal.MetalRootPaneUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//* 本类的实现参考了java1.5中的MetalRootPaneUI.
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BERootPaneUI extends BasicRootPaneUI {
 
     /**

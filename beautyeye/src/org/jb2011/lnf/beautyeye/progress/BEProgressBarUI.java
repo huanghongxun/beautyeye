@@ -14,6 +14,9 @@ package org.jb2011.lnf.beautyeye.progress;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.geom.AffineTransform;
 
 import javax.swing.JComponent;
 import javax.swing.JProgressBar;
@@ -21,8 +24,8 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
+import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
 
-import org.jb2011.lnf.beautyeye.utils.ReflectHelper;
 import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
 import org.jb2011.ninepatch4j.NinePatch;
 
@@ -30,10 +33,8 @@ import org.jb2011.ninepatch4j.NinePatch;
  * 进度条的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see com.sun.java.swing.plaf.windows.WindowsProgressBarUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//本类的实现参考了WindowsProgressBarUI，完全进行了重新实现（基本上没有WindowsProgressBarUI的代码了）
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BEProgressBarUI extends BasicProgressBarUI
         implements org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
 
@@ -235,7 +236,6 @@ public class BEProgressBarUI extends BasicProgressBarUI
                 .draw((Graphics2D) g, b.left, b.top, barRectWidth, barRectHeight);
     }
 
-    //* 原方法在本子类中不可见，无法调用，所以只能复制过来罗
     /**
      * Paints the progress string.
      *
@@ -252,12 +252,38 @@ public class BEProgressBarUI extends BasicProgressBarUI
      */
     private void paintString(Graphics g, int x, int y, int width, int height,
             int fillStart, int amountFull, Insets b) {
-        //* 由Jack Jiang修改：因父类中的本方法是private（其实完全可以弄成protected），而如果要全部把该方法拷贝过来
-        //* 则会因它调用了sun的非公开api而使得在不同的java版本里有兼容性问题（就是SwingUtilities2类，在1.5里
-        //* 位于com.sun.swing.**而在1.6及1.7里是放在sun.swing里的，而且以后果的版本它还会不会改位置也说不定），
-        //* 所以为了兼容性，此处利用反射来非正常的调用父类私有方法paintString(正常情况下子类是调用不到了父类的私有方法的撒)
-        ReflectHelper.invokeMethod(BasicProgressBarUI.class, this, "paintString",
-                new Class[] { Graphics.class, int.class, int.class, int.class, int.class, int.class, int.class, Insets.class },
-                new Object[] { g, x, y, width, height, fillStart, amountFull, b });
+        if (!(g instanceof Graphics2D))
+            return;
+
+        Graphics2D g2 = (Graphics2D) g;
+        String progressString = progressBar.getString();
+        g2.setFont(progressBar.getFont());
+        Point renderLocation = getStringPlacement(g2, progressString,
+                x, y, width, height);
+        Rectangle oldClip = g2.getClipBounds();
+
+        if (progressBar.getOrientation() == JProgressBar.HORIZONTAL) {
+            g2.setColor(getSelectionBackground());
+            MySwingUtilities2.drawString(progressBar, g2, progressString,
+                    renderLocation.x, renderLocation.y);
+            g2.setColor(getSelectionForeground());
+            g2.clipRect(fillStart, y, amountFull, height);
+            MySwingUtilities2.drawString(progressBar, g2, progressString,
+                    renderLocation.x, renderLocation.y);
+        } else { // VERTICAL
+            g2.setColor(getSelectionBackground());
+            AffineTransform rotate
+                    = AffineTransform.getRotateInstance(Math.PI / 2);
+            g2.setFont(progressBar.getFont().deriveFont(rotate));
+            renderLocation = getStringPlacement(g2, progressString,
+                    x, y, width, height);
+            MySwingUtilities2.drawString(progressBar, g2, progressString,
+                    renderLocation.x, renderLocation.y);
+            g2.setColor(getSelectionForeground());
+            g2.clipRect(x, fillStart, width, amountFull);
+            MySwingUtilities2.drawString(progressBar, g2, progressString,
+                    renderLocation.x, renderLocation.y);
+        }
+        g2.setClip(oldClip);
     }
 }

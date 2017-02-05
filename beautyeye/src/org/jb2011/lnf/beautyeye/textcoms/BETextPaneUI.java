@@ -26,19 +26,13 @@ import org.jb2011.ninepatch4j.NinePatch;
  * 文本组件JTextPane的UI实现类。.
  *
  * @author Jack Jiang(jb2011@163.com), 2012-08-25
+ * @see com.sun.java.swing.plaf.windows.WindowsTextPaneUI
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//代码参考了WindowsTextPaneUI的实现
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BETextPaneUI extends BasicTextPaneUI implements BgSwitchable,
-        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsTextPaneUI
-{
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
     //默认是纯白色背景，因为JTextPane肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
     //如果JTextPane再有边框就很难看了，所以JTextPane在没有获得焦点时就已无边框效果出现会好看很多
 
-    /**
-     * The bg.
-     */
     private NinePatch bg = __UI__.ICON_9.get("white");
 
     /**

@@ -27,11 +27,10 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
  * Draws the border around the divider in a splitpane. To get the appropriate
  * effect, this needs to be used with a SplitPaneBorder.
  *
- * 本类参考自jdk1.6_u18的javax.swing.plaf.basic.BasicBorders
- * .SplitPaneDividerBorder的源码，主要修改了UI填充实现部分
+ * 主要修改了UI填充实现部分
  *
  * @author Jack Jiang(jb2011@163.com)
- * @see javax.swing.plaf.basic.BasicBorders.SplitPaneBorder
+ * @see javax.swing.plaf.basic.BasicBorders
  */
 public class SplitPaneDividerBorder implements Border, UIResource {
 //	javax.swing.plaf.basic.BasicBorders.SplitPaneDividerBorder

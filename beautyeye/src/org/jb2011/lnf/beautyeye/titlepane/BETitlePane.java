@@ -34,7 +34,6 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.List;
 import java.util.Locale;
 
 import javax.swing.AbstractAction;
@@ -44,7 +43,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -59,18 +57,14 @@ import javax.swing.plaf.UIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
-import org.jb2011.lnf.beautyeye.utils.LogHelper;
 import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
-import org.jb2011.lnf.beautyeye.utils.ReflectHelper;
 
 /**
  * 窗体的标题栏UI实现.
  *
  * @author Jack Jiang(jb2011@163.com)
+ * @see javax.swing.plaf.metal.MetalTitlePane//(Java 1.5)
  */
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 Start
-//* 本类的实现参考了java1.5中的MetalTitlePane.
-//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 一些说明 END
 public class BETitlePane extends JComponent {
 //	MetalTitlePane
 
@@ -538,8 +532,7 @@ public class BETitlePane extends JComponent {
             restoreAction = new RestoreAction();
             maximizeAction = new MaximizeAction();
 
-            setupAction = new AbstractAction(//"Setup  ")
-                    UIManager.getString("BETitlePane.setupButtonText", getLocale())) {
+            setupAction = new AbstractAction(UIManager.getString("BETitlePane.setupButtonText", getLocale())) {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JOptionPane.showMessageDialog(rootPane, "This button just used for demo."
@@ -559,7 +552,6 @@ public class BETitlePane extends JComponent {
      */
     private JMenu createMenu() {
         JMenu menu = new JMenu("");
-//		menu.setRolloverEnabled(false);//本行一定要！这是Java 1.5之Metal主题的Bug! -- jack,2009-09-11
         menu.setOpaque(false);//本行一定要，否则将导致窗口图标区会绘制Menu的背景！这是Java Metal主题的Bug! -- jack,2009-09-11
         if (getWindowDecorationStyle() == JRootPane.FRAME
                 || getWindowDecorationStyle() == JRootPane.PLAIN_DIALOG//现在也给dialog加上菜单项（但只有关闭项）
@@ -1070,9 +1062,8 @@ public class BETitlePane extends JComponent {
                 // 其它情况那就Dialog及其子类了，因它们没有getIconImage方法，
                 // 那就只取frame.getIconImages()里的第1个图标吧（如蛤存在多个图标的话），
                 // 它样处理虽跨平台考虑不足但总比MetalTitlePane里不显示Dialog图标强
-                else
-                    if (frame.getIconImages() != null && frame.getIconImages().size() > 0)
-                        image = frame.getIconImages().get(0);
+                else if (frame.getIconImages() != null && frame.getIconImages().size() > 0)
+                    image = frame.getIconImages().get(0);
 
             if (image != null)
                 g.drawImage(image, 0, 0, IMAGE_WIDTH, IMAGE_HEIGHT, null);

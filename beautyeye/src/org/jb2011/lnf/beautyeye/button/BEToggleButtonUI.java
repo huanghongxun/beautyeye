@@ -36,10 +36,10 @@ import sun.awt.AppContext;
  * @author Jack Jiang(jb2011@163.com)
  * @see com.sun.java.swing.plaf.windows.WindowsToggleButtonUI
  */
-public class BEToggleButtonUI extends BasicToggleButtonUI
-{
+public class BEToggleButtonUI extends BasicToggleButtonUI {
+
     protected static final Icon9Factory ICON_9 = new Icon9Factory("toggle_button");
-    
+
     private static final Object WINDOWS_TOGGLE_BUTTON_UI_KEY = new Object();
 
     private final NormalColor normalColor = BEButtonUI.NormalColor.normal;
@@ -74,7 +74,6 @@ public class BEToggleButtonUI extends BasicToggleButtonUI
     // ********************************
     //         Paint Methods
     // ********************************
-    
     @Override
     public void paint(Graphics g, JComponent c) {
         BEButtonUI.paintXPButtonBackground(normalColor, g, c);
@@ -90,7 +89,9 @@ public class BEToggleButtonUI extends BasicToggleButtonUI
      * @param c the c
      * @param textRect the text rect
      * @param text the text
-     * @see javax.swing.plaf.basic.BasicToggleButtonUI#paintText(java.awt.Graphics, javax.swing.JComponent, java.awt.Rectangle, java.lang.String) 
+     * @see
+     * javax.swing.plaf.basic.BasicToggleButtonUI#paintText(java.awt.Graphics,
+     * javax.swing.JComponent, java.awt.Rectangle, java.lang.String)
      */
     @Override
     protected void paintText(Graphics g, JComponent c, Rectangle textRect, String text) {
@@ -108,25 +109,22 @@ public class BEToggleButtonUI extends BasicToggleButtonUI
                 g.setColor(UIManager.getColor(getPropertyPrefix() + "focus"));
             else
                 /**
-                 * * paint the text normally
+                 * paint the text normally
                  */
                 g.setColor(b.getForeground());
             //=================== modified by jb2011 END
 
-//    		SwingUtilities2 *不要直接调用该类（因为它是sun未公开api，1.5里与1.6及以后版它放在不同的包里，某天它会消失也说不好）
             MySwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex,
                     textRect.x + getTextShiftOffset(),
                     textRect.y + fm.getAscent() + getTextShiftOffset());
         } else {
             /**
-             * * paint the text disabled **
+             * paint the text disabled
              */
             g.setColor(b.getBackground().brighter());
-            //SwingUtilities2 *不要直接调用该类（因为它是sun未公开api，1.5里与1.6及以后版它放在不同的包里，某天它会消失也说不好）
             MySwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex,
                     textRect.x, textRect.y + fm.getAscent());
             g.setColor(b.getBackground().darker());
-            //SwingUtilities2 *不要直接调用该类（因为它是sun未公开api，1.5里与1.6及以后版它放在不同的包里，某天它会消失也说不好）
             MySwingUtilities2.drawStringUnderlineCharAt(c, g, text, mnemonicIndex,
                     textRect.x - 1, textRect.y + fm.getAscent() - 1);
         }
@@ -134,9 +132,9 @@ public class BEToggleButtonUI extends BasicToggleButtonUI
 
     /**
      * {@inheritDoc}
-     * 
-     * Method signature defined here overriden in subclasses. 
-     * Perhaps this class should be abstract?
+     *
+     * Method signature defined here overriden in subclasses. Perhaps this class
+     * should be abstract?
      */
     @Override
     protected void paintFocus(Graphics g, AbstractButton b,
