@@ -6,7 +6,7 @@
  * 
  * Jack Jiang PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  * 
- * BEFileChooserUIWin.java at 2015-2-1 20:25:37, original version by Jack Jiang.
+ * BEFileChooserUI.java at 2015-2-1 20:25:39, original version by Jack Jiang.
  * You can contact author with jb2011@163.com.
  */
 package org.jb2011.lnf.beautyeye.filechooser;
@@ -21,36 +21,28 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 import javax.swing.plaf.ComponentUI;
-
-import com.sun.java.swing.plaf.windows.WindowsFileChooserUI;
+import javax.swing.plaf.metal.MetalFileChooserUI;
 
 /**
  * BeautyEye L&F implementation of a FileChooser.
  * <p>
- * 目前属windows平台专用UI实现类.
+ * 目前属通用跨平台专用UI实现类.
  *
- * @author Jack Jiang(jb2011@163.com), 2012-09-09
+ * @author Jack Jiang(jb2011@163.com), 2012-09-17
  * @version 1.0
  */
-public class BEFileChooserUIWin extends WindowsFileChooserUI {
+public class BEFileChooserUI extends MetalFileChooserUI {
 
-    /**
-     * Instantiates a new bE file chooser ui win.
-     *
-     * @param filechooser the filechooser
-     */
-    public BEFileChooserUIWin(JFileChooser filechooser) {
+    public BEFileChooserUI(JFileChooser filechooser) {
         super(filechooser);
     }
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
+    //
+    // ComponentUI Interface Implementation methods
+    //
+    
     public static ComponentUI createUI(JComponent c) {
-        return new BEFileChooserUIWin((JFileChooser) c);
+        return new BEFileChooserUI((JFileChooser) c);
     }
 
     /**
@@ -66,6 +58,7 @@ public class BEFileChooserUIWin extends WindowsFileChooserUI {
         g.fillRect(0, 0, c.getWidth(), c.getHeight());
     }
 
+    //* modified by Jack Jiang 2012-09-17
     /**
      * 重写父类方法，以实现对文件查看列表的额外设置.
      * <p>
@@ -79,7 +72,6 @@ public class BEFileChooserUIWin extends WindowsFileChooserUI {
      * @param fc the fc
      * @return the j panel
      */
-    @Override
     protected JPanel createList(JFileChooser fc) {
         JPanel p = super.createList(fc);
 

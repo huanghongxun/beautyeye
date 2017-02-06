@@ -224,39 +224,12 @@ public class BeautyEyeLNFHelper {
     }
 
     /**
-     * Gets the beauty eye lnf str cross platform.
+     * Gets the beauty eye lnf platform.
      *
-     * @return "org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelCross"
+     * @return {@code new BeautyEyeLookAndFeel()}
      */
-    public static String getBeautyEyeLNFStrCrossPlatform() {
-        return "org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelCross";
-    }
-
-    /**
-     * Gets the beauty eye lnf str windows platform.
-     *
-     * @return "org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin"
-     */
-    public static String getBeautyEyeLNFStrWindowsPlatform() {
-        return "org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin";
-    }
-
-    /**
-     * Gets the beauty eye lnf cross platform.
-     *
-     * @return {@code new BeautyEyeLookAndFeelCross()}
-     */
-    public static LookAndFeel getBeautyEyeLNFCrossPlatform() {
-        return new BeautyEyeLookAndFeelCross();
-    }
-
-    /**
-     * Gets the beauty eye lnf windows platform.
-     *
-     * @return {@code new BeautyEyeLookAndFeelWin()}
-     */
-    public static LookAndFeel getBeautyEyeLNFWindowsPlatform() {
-        return new BeautyEyeLookAndFeelWin();
+    public static LookAndFeel getBeautyEyeLNFPlatform() {
+        return new BeautyEyeLookAndFeel();
     }
 
     /**
@@ -268,11 +241,12 @@ public class BeautyEyeLNFHelper {
      *
      * @throws Exception {@link UIManager#setLookAndFeel(String)}过程中出现的任何异常
      * @see #getBeautyEyeLNFStrWindowsPlatform()
-     * @see #getBeautyEyeLNFStrCrossPlatform()
+     * @see #getBeautyEyeLNFPlatform()
      * @see org.jb2011.lnf.beautyeye.utils.Platform
      */
     public static void launchBeautyEyeLNF() throws Exception {
-        UIManager.setLookAndFeel(getBeautyEyeLNFStrCrossPlatform());
+        System.setProperty("sun.java2d.noddraw", "true");
+        UIManager.setLookAndFeel(getBeautyEyeLNFPlatform());
     }
 
     /**
@@ -290,7 +264,7 @@ public class BeautyEyeLNFHelper {
      * @return true, if successful
      * @since 3.2
      */
-    public static boolean __isFrameBorderOpaque() {
+    public static boolean isFrameBorderOpaque() {
         return frameBorderStyle == FrameBorderStyle.osLookAndFeelDecorated
                 || frameBorderStyle == FrameBorderStyle.generalNoTranslucencyShadow;
     }

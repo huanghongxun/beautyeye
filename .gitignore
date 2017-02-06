@@ -24,3 +24,4 @@ hs_err_pid*
 /beautyeye/build
 /beautyeye/build.xml
 /beautyeye/manifest.mf
+/beautyeye/dist/

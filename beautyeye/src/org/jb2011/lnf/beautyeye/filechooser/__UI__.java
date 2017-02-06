@@ -16,43 +16,39 @@ import java.awt.Color;
 import javax.swing.UIManager;
 import javax.swing.plaf.BorderUIResource;
 import javax.swing.plaf.ColorUIResource;
+import org.jb2011.lnf.beautyeye.utils.IconFactory;
 
 /**
  * The Class __UI__.
  */
-public class __UI__
-{
-	//
-	/**
-	 * Ui impl.
-	 */
-	public static void uiImpl()
-	{
-		//文件查看列表的边框实现
-		UIManager.put("FileChooser.listViewBorder"
-				, new BorderUIResource(new org.jb2011.lnf.beautyeye.scroll.ScrollPaneBorder()));//com.sun.java.swing.plaf.windows.XPStyle.XPFillBorder);
-		//此颜色将决定windows平台下文件选择面板的左边WindowsPlaceBar的背景色
-		UIManager.put("ToolBar.shadow",new ColorUIResource(new Color(249,248,243)));
-	}
-	
-	//本方法仅供Windows平台使用
-	/**
-	 * Ui impl_win.
-	 */
-	public static void uiImpl_win()
-	{
-		//JFileChooser的UI实现使用windows平台外观和行为UI，提高用户体验
-		UIManager.put("FileChooserUI"
-				,org.jb2011.lnf.beautyeye.filechooser.BEFileChooserUIWin.class.getName());
-	}
-	
-	//本方法仅供通用跨平台主类使用
-	/**
-	 * Ui impl_cross.
-	 */
-	public static void uiImpl_cross()
-	{
-		UIManager.put("FileChooserUI"
-				,org.jb2011.lnf.beautyeye.filechooser.BEFileChooserUICross.class.getName());
-	}
+public class __UI__ {
+    private static final IconFactory ICON = new IconFactory("tree");
+
+    public static void uiImpl() {
+        //文件查看列表的边框实现
+        UIManager.put("FileChooser.listViewBorder",
+                 new BorderUIResource(new org.jb2011.lnf.beautyeye.scroll.ScrollPaneBorder()));//com.sun.java.swing.plaf.windows.XPStyle.XPFillBorder);
+        //此颜色将决定windows平台下文件选择面板的左边WindowsPlaceBar的背景色
+        UIManager.put("ToolBar.shadow", new ColorUIResource(new Color(249, 248, 243)));
+        UIManager.put("FileChooserUI",
+                 org.jb2011.lnf.beautyeye.filechooser.BEFileChooserUI.class.getName());
+        
+        UIManager.put("FileView.directoryIcon", ICON.get("closed"));
+        UIManager.put("FileView.fileIcon", ICON.get("leaf"));
+        
+        /*
+        "FileView.directoryIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getTreeFolderIcon"),
+        "FileView.fileIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getTreeLeafIcon"),
+        "FileView.computerIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getTreeComputerIcon"),
+        "FileView.hardDriveIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getTreeHardDriveIcon"),
+        "FileView.floppyDriveIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getTreeFloppyDriveIcon"),
+
+        // File Chooser
+        "FileChooser.detailsViewIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserDetailViewIcon"),
+        "FileChooser.homeFolderIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserHomeFolderIcon"),
+        "FileChooser.listViewIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserListViewIcon"),
+        "FileChooser.newFolderIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserNewFolderIcon"),
+        "FileChooser.upFolderIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserUpFolderIcon"),
+        */
+    }
 }

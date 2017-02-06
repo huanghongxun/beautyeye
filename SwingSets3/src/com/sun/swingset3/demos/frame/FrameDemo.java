@@ -28,7 +28,6 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package com.sun.swingset3.demos.frame;
 
 import java.awt.BorderLayout;
@@ -47,6 +46,7 @@ import javax.swing.event.ChangeListener;
 
 import com.sun.swingset3.DemoProperties;
 import com.sun.swingset3.demos.DemoUtilities;
+import java.io.IOException;
 
 /**
  * Demo for Swing's JFrame toplevel component.
@@ -58,21 +58,21 @@ import com.sun.swingset3.demos.DemoUtilities;
         category = "Toplevel Containers",
         description = "Demonstrates JFrame, Swing's top-level primary window container.",
         sourceFiles = {
-                "com/sun/swingset3/demos/frame/BusyGlass.java",
-                "com/sun/swingset3/demos/frame/FrameDemo.java",
-                "com/sun/swingset3/demos/DemoUtilities.java",
-                "com/sun/swingset3/demos/frame/resources/FrameDemo.html",
-                "com/sun/swingset3/demos/frame/resources/images/FrameDemo.gif"
-                }
+            "com/sun/swingset3/demos/frame/BusyGlass.java",
+            "com/sun/swingset3/demos/frame/FrameDemo.java",
+            "com/sun/swingset3/demos/DemoUtilities.java",
+            "com/sun/swingset3/demos/frame/resources/FrameDemo.html",
+            "com/sun/swingset3/demos/frame/resources/images/FrameDemo.gif"
+        }
 )
 public class FrameDemo extends JPanel {
+
     //<snip>Ensure system menubar is used on Mac OSX
     static {
         // Property must be set *early* due to Apple Bug#3909714
         // ignored on other platforms
-        if (System.getProperty("os.name").equals("Mac OS X")) {
+        if (System.getProperty("os.name").equals("Mac OS X"))
             System.setProperty("apple.laf.useScreenMenuBar", "true");
-        }
     }
     //</snip>
 
@@ -154,6 +154,25 @@ public class FrameDemo extends JPanel {
         menubar.add(menu);
         menu.add("Open");
         menu.add("Save");
+
+        menu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fc = new JFileChooser();
+                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                fc.setDialogTitle("233");
+                fc.setMultiSelectionEnabled(false);
+                fc.showOpenDialog(frame);
+                if (fc.getSelectedFile() == null)
+                    return;
+                try {
+                    String path = fc.getSelectedFile().getCanonicalPath();
+                    System.out.println(path);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
         //</snip>
 
         //<snip>Add a horizontal toolbar
@@ -199,11 +218,10 @@ public class FrameDemo extends JPanel {
     public void showFrame() {
         //<snip>Show frame
         // if frame already visible, then bring to the front
-        if (frame.isShowing()) {
+        if (frame.isShowing())
             frame.toFront();
-        } else {
+        else
             frame.setVisible(true);
-        }
         //</snip>
     }
 
@@ -221,14 +239,15 @@ public class FrameDemo extends JPanel {
     //</snip
 
     // remind(aim): replace with Beans binding
-
     private class ShowActionListener implements ActionListener {
+
         public void actionPerformed(ActionEvent actionEvent) {
             showFrame();
         }
     }
 
     private class BusyChangeListener implements ChangeListener {
+
         public void stateChanged(ChangeEvent changeEvent) {
             JCheckBox busyCheckBox = (JCheckBox) changeEvent.getSource();
             setFrameBusy(busyCheckBox.isSelected());

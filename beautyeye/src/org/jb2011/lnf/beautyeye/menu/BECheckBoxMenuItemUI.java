@@ -100,20 +100,10 @@ public class BECheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
      */
     public static class CheckBoxMenuItemIcon implements Icon, UIResource, Serializable {
 
-        /**
-         * 本常量用于标识是否运行于Vista及更新的windows平台.
-         * （当然，目前该变量只会在BeautyEyeLookAndFeelWin中被设置，即如果使
-         * 用BeautyEyeLookAndFeelCross跨平台主类则永远不会被设置，因为跨平台主类及LNF不受此影响哦）.
-         *
-         * @see org.jb2011.lnf.beautyeye.BeautyEyeLookAndFeelWin#initForVista()
-         */
-        private boolean usedForVista = false;
-
         @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
-            //* 注意：当用于windows平台专用主类且处于Vista及更高版win时要做不一样的处理哦
             g.drawImage(ICON.get(((AbstractButton) c).getModel().isSelected() ? "checked" : "normal").getImage(),
-                    x + (usedForVista ? 5 : -4), y - 3, null);
+                    x + 5, y - 3, null);
         }
 
         @Override
@@ -125,25 +115,5 @@ public class BECheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
         public int getIconHeight() {
             return 16;
         }// default 9
-
-        /**
-         * Checks if is used for vista.
-         *
-         * @return true, if is used for vista
-         */
-        public boolean isUsedForVista() {
-            return usedForVista;
-        }
-
-        /**
-         * Sets the used for vista.
-         *
-         * @param usedForVista the used for vista
-         * @return the check box menu item icon
-         */
-        public CheckBoxMenuItemIcon setUsedForVista(boolean usedForVista) {
-            this.usedForVista = usedForVista;
-            return this;
-        }
     }
 }

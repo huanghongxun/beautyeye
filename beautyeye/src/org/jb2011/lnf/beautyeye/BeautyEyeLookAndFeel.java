@@ -6,37 +6,45 @@
  * 
  * Jack Jiang PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  * 
- * BeautyEyeLookAndFeelCross.java at 2015-2-1 20:25:40, original version by Jack Jiang.
+ * BeautyEyeLookAndFeel.java at 2015-2-1 20:25:40, original version by Jack Jiang.
  * You can contact author with jb2011@163.com.
  */
 package org.jb2011.lnf.beautyeye;
 
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.UIDefaults;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.FrameBorderStyle;
 
 /**
  * <p>
  * BeautyEye Swing外观实现方案 - 跨平台通用外观实现主类.<br>
  * <p>
  * 本主题主类仅供跨平台时使用，它可用于Java支持的所有操作系统.
- * 
+ *
  * 如果要继承BasicLookAndFeel实现跨平台lnf 则还需要做更多的工作，目前
  * 跨平台时干脆继承MetalLookAndFeel以便站在巨人的肩膀上，节省一些工作量
  *
  * @author Jack Jiang(jb2011@163.com)
  * @version 1.0
  */
-public class BeautyEyeLookAndFeelCross extends MetalLookAndFeel {
+public class BeautyEyeLookAndFeel extends MetalLookAndFeel {
 
     static {
-        BeautyEyeLookAndFeelWin.initLookAndFeelDecorated();
+        if (BeautyEyeLNFHelper.frameBorderStyle == FrameBorderStyle.osLookAndFeelDecorated) {
+            JFrame.setDefaultLookAndFeelDecorated(false);
+            JDialog.setDefaultLookAndFeelDecorated(false);
+        } else {
+            JFrame.setDefaultLookAndFeelDecorated(true);
+            JDialog.setDefaultLookAndFeelDecorated(true);
+        }
+
+//		UIManager.put("swing.aatext", Boolean.FALSE);
     }
 
-    /**
-     * Instantiates a new beauty eye look and feel cross.
-     */
-    public BeautyEyeLookAndFeelCross() {
+    public BeautyEyeLookAndFeel() {
         super();
 
 //		//本属性仅对windows平台有效？！ -> Jack Jiang最终证实没效果！！！！！！！！！！！
@@ -49,26 +57,23 @@ public class BeautyEyeLookAndFeelCross extends MetalLookAndFeel {
         UIManager.put("TabbedPane.tabsOpaque", Boolean.FALSE);
         BeautyEyeLNFHelper.implLNF();
 
-        //自定义JFileChooser的L&F实现（为了解决JFileChooser中的文件查看列表的行高问题）
-        org.jb2011.lnf.beautyeye.filechooser.__UI__.uiImpl_cross();
-
 //		JFrame.setDefaultLookAndFeelDecorated(true);
 //		JDialog.setDefaultLookAndFeelDecorated(true);
     }
 
     @Override
     public String getName() {
-        return "BeautyEyeCross";
+        return "BeautyEye";
     }
 
     @Override
     public String getID() {
-        return "BeautyEyeCross";
+        return "BeautyEye";
     }
 
     @Override
     public String getDescription() {
-        return "BeautyEye cross-platform L&F developed by Jack Jiang(jb2011@163.com).";
+        return "BeautyEye L&F developed by Jack Jiang(jb2011@163.com).";
     }
 
     /**

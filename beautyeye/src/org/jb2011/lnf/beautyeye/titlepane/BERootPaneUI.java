@@ -321,7 +321,7 @@ public class BERootPaneUI extends BasicRootPaneUI {
         //* 正常显示，而且仅针对此目的。如果该边框不为透明，则此处也就不需要设置
         //* 窗口透明了，那么如果你的程序其它地方需要窗口透明的话，自行.setWindowOpaque(..)
         //* 就行了，由开发者自先决定，此处就不承载过多的要求了
-        if (!BeautyEyeLNFHelper.__isFrameBorderOpaque()
+        if (!BeautyEyeLNFHelper.isFrameBorderOpaque()
                 && window != null) {
             //** 20111222 by jb2011，让窗口全透明（用以实现窗口的透明边框效果）
 //			AWTUtilities.setWindowOpaque(window, false);
@@ -695,7 +695,7 @@ public class BERootPaneUI extends BasicRootPaneUI {
                     }
                 }
             }
-            if (root.getMenuBar() != null
+            if (root.getJMenuBar() != null
                     //* 该 行代码由Jack Jiang于2012-10-20增加：目的是为解决当
                     //* MebuBar被设置不可见时任然被错误地当作可视组件占据布局空间，这
                     //* 在BE LNF中的表现就是当menuBar不可见，它占据的那块空间将会是全透明
@@ -704,9 +704,9 @@ public class BERootPaneUI extends BasicRootPaneUI {
                     //* 可能官方不认为这是个bug吧。
                     //* 为什么无论什么外观当在使用系统窗口边框类型时不会出现这样的情况呢？它
                     //* 可能是由于窗口外观的实现原理决定的吧（按理说是同一原理），有待深究！！！
-                    && root.getMenuBar().isVisible()) {
-                Dimension mbd = root.getMenuBar().getPreferredSize();
-                root.getMenuBar().setBounds(0, nextY, w, mbd.height);
+                    && root.getJMenuBar().isVisible()) {
+                Dimension mbd = root.getJMenuBar().getPreferredSize();
+                root.getJMenuBar().setBounds(0, nextY, w, mbd.height);
                 nextY += mbd.height;
             }
             if (root.getContentPane() != null
@@ -1217,28 +1217,20 @@ public class BERootPaneUI extends BasicRootPaneUI {
             int cc = 0;
 
             if (r1.contains(p))
-//				System.out.println("西北-NW");
                 cc = Cursor.NW_RESIZE_CURSOR;
             else if (r3.contains(p))
-//				System.out.println("东北-NE");
                 cc = Cursor.NE_RESIZE_CURSOR;
             else if (r5.contains(p))
-//				System.out.println("东南-SE");
                 cc = Cursor.SE_RESIZE_CURSOR;
             else if (r7.contains(p))
-//				System.out.println("西南-SW");
                 cc = Cursor.SW_RESIZE_CURSOR;
             else if (r2.contains(p))
-//				System.out.println("北-N");
                 cc = Cursor.N_RESIZE_CURSOR;
             else if (r4.contains(p))
-//				System.out.println("东-E");
                 cc = Cursor.E_RESIZE_CURSOR;
             else if (r6.contains(p))
-//				System.out.println("南-S");
                 cc = Cursor.S_RESIZE_CURSOR;
             else if (r8.contains(p))
-//				System.out.println("西-W");
                 cc = Cursor.W_RESIZE_CURSOR;
 
             return cc;
