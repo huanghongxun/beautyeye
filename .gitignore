@@ -10,18 +10,18 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/SwingSets2/nbproject
-/SwingSets2/build
+/SwingSets2/nbproject/
+/SwingSets2/build/
 /SwingSets2/build.xml
 /SwingSets2/manifest.mf
 
-/SwingSets3/nbproject
-/SwingSets3/build
+/SwingSets3/nbproject/
+/SwingSets3/build/
 /SwingSets3/build.xml
 /SwingSets3/manifest.mf
 
-/beautyeye/nbproject
-/beautyeye/build
+/beautyeye/nbproject/
+/beautyeye/build/
 /beautyeye/build.xml
 /beautyeye/manifest.mf
 /beautyeye/dist/
