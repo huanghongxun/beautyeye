@@ -51,7 +51,7 @@ public class BEButtonUI extends BasicButtonUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("button");
     
-    private final static BEButtonUI xWindowsButtonUI = new BEButtonUI();
+    private final static BEButtonUI INSTANCE = new BEButtonUI();
 
     private NormalColor normalColor = NormalColor.normal;
 
@@ -133,7 +133,7 @@ public class BEButtonUI extends BasicButtonUI {
      * @return the component ui
      */
     public static ComponentUI createUI(JComponent c) {
-        return xWindowsButtonUI;
+        return INSTANCE;
     }
 
     // ********************************

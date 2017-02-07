@@ -41,8 +41,6 @@ import javax.swing.table.TableCellRenderer;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 import org.jb2011.lnf.beautyeye.utils.ReflectHelper;
 
-import sun.swing.DefaultLookup;
-
 /**
  * 表格头UI实现类。
  * <p>
@@ -129,7 +127,7 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
 
         private boolean horizontalTextPositionSet;
         private Icon sortArrow;
-        private EmptyIcon emptyIcon = new EmptyIcon();
+        private final EmptyIcon emptyIcon = new EmptyIcon();
 
         public DefaultTableCellHeaderRenderer() {
             setHorizontalAlignment(JLabel.CENTER);
@@ -154,8 +152,8 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
                     Color fgColor = null;
                     Color bgColor = null;
                     if (hasFocus) {
-                        fgColor = DefaultLookup.getColor(this, ui, "TableHeader.focusCellForeground");
-                        bgColor = DefaultLookup.getColor(this, ui, "TableHeader.focusCellBackground");
+                        fgColor = UIManager.getColor("TableHeader.focusCellForeground", this.getLocale());
+                        bgColor = UIManager.getColor("TableHeader.focusCellBackground", this.getLocale());
                     }
                     if (fgColor == null)
                         fgColor = header.getForeground();
@@ -178,16 +176,13 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
                     if (sortOrder != null)
                         switch (sortOrder) {
                             case ASCENDING:
-                                sortIcon = DefaultLookup.getIcon(
-                                        this, ui, "Table.ascendingSortIcon");
+                                sortIcon = UIManager.getIcon("Table.ascendingSortIcon", this.getLocale());
                                 break;
                             case DESCENDING:
-                                sortIcon = DefaultLookup.getIcon(
-                                        this, ui, "Table.descendingSortIcon");
+                                sortIcon = UIManager.getIcon("Table.descendingSortIcon", this.getLocale());
                                 break;
                             case UNSORTED:
-                                sortIcon = DefaultLookup.getIcon(
-                                        this, ui, "Table.naturalSortIcon");
+                                sortIcon = UIManager.getIcon("Table.naturalSortIcon", this.getLocale());
                                 break;
                         }
                 }
@@ -199,9 +194,9 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
 
             Border border = null;
             if (hasFocus)
-                border = DefaultLookup.getBorder(this, ui, "TableHeader.focusCellBorder");
-            if (border == null)
-                border = DefaultLookup.getBorder(this, ui, "TableHeader.cellBorder");
+                border = UIManager.getBorder("TableHeader.focusCellBorder", this.getLocale());
+            if (border == null) 
+                border = UIManager.getBorder("TableHeader.cellBorder", this.getLocale());
             setBorder(border);
 
             return this;
@@ -221,8 +216,7 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
 
         @Override
         public void paintComponent(Graphics g) {
-            boolean b = DefaultLookup.getBoolean(this, ui,
-                    "TableHeader.rightAlignSortArrow", false);
+            boolean b = UIManager.getBoolean("TableHeader.rightAlignSortArrow", this.getLocale());
             if (b && sortArrow != null) {
                 //emptyIcon is used so that if the text in the header is right
                 //aligned, or if the column is too narrow, then the text will

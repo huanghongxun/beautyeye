@@ -103,7 +103,7 @@ public class BECheckBoxMenuItemUI extends BasicCheckBoxMenuItemUI {
         @Override
         public void paintIcon(Component c, Graphics g, int x, int y) {
             g.drawImage(ICON.get(((AbstractButton) c).getModel().isSelected() ? "checked" : "normal").getImage(),
-                    x + 5, y - 3, null);
+                    x - 4, y - 3, null);
         }
 
         @Override

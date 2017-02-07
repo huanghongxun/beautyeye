@@ -30,7 +30,8 @@ public class __UI__ {
         //分隔条拖动时的颜色（说明：此值可以设置alpha通道以便达到半透明效果哦）
         UIManager.put("SplitPaneDivider.draggingColor", new ColorUIResource(new Color(0, 0, 0, 50)));
         //触碰按钮的默认大小
-        UIManager.put("SplitPane.oneTouchButtonSize", 4);//drfault is 5
+        // see javax.swing.plaf.basic.BasicSplitPaneDivider.ONE_TOUCH_SIZE = 6
+        UIManager.put("SplitPane.oneTouchButtonSize", 4);
         //分隔条的默认大小
         UIManager.put("SplitPane.dividerSize", 7);//drfault is 5
         //分隔条的边框实现

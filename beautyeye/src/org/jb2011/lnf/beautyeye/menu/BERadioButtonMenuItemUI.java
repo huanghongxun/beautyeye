@@ -95,7 +95,7 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
         public void paintIcon(Component c, Graphics g, int x, int y) {
             //* 注意：当用于windows平台专用主类且处于Vista及更高版win时要做不一样的处理哦
             g.drawImage(ICON.get(((AbstractButton) c).getModel().isSelected() ? "checked" : "normal").getImage(),
-                    x + 5, y + -3, null);
+                    x - 4, y - 4, null);
         }
 
         @Override

@@ -29,8 +29,6 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 
-import sun.swing.DefaultLookup;
-
 /**
  * 分栏面板上的分隔线实现类.
  * <p>
@@ -88,8 +86,7 @@ public class BESplitPaneDivider extends BasicSplitPaneDivider {
         super(ui);
 
         //copy from BasicSplitPaneDivider
-        oneTouchSize = DefaultLookup.getInt(ui.getSplitPane(), ui,
-                "SplitPane.oneTouchButtonSize", ONE_TOUCH_SIZE);
+        oneTouchSize = UIManager.getInt("SplitPane.oneTouchButtonSize", ui.getSplitPane().getLocale());
     }
 
     //copy from BasicSplitPaneDivider and modified by jb2011

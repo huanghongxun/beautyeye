@@ -28,8 +28,6 @@ import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
 
-import sun.awt.AppContext;
-
 /**
  * JToggleButton的UI实现类.
  *
@@ -40,7 +38,7 @@ public class BEToggleButtonUI extends BasicToggleButtonUI {
 
     protected static final Icon9Factory ICON_9 = new Icon9Factory("toggle_button");
 
-    private static final Object WINDOWS_TOGGLE_BUTTON_UI_KEY = new Object();
+    private static final BEToggleButtonUI INSTANCE = new BEToggleButtonUI();
 
     private final NormalColor normalColor = BEButtonUI.NormalColor.normal;
 
@@ -51,14 +49,7 @@ public class BEToggleButtonUI extends BasicToggleButtonUI {
      * @return the component ui
      */
     public static ComponentUI createUI(JComponent b) {
-        AppContext appContext = AppContext.getAppContext();
-        BEToggleButtonUI windowsToggleButtonUI
-                = (BEToggleButtonUI) appContext.get(WINDOWS_TOGGLE_BUTTON_UI_KEY);
-        if (windowsToggleButtonUI == null) {
-            windowsToggleButtonUI = new BEToggleButtonUI();
-            appContext.put(WINDOWS_TOGGLE_BUTTON_UI_KEY, windowsToggleButtonUI);
-        }
-        return windowsToggleButtonUI;
+        return INSTANCE;
     }
 
     //* 由Jack Jiang于2012-10-12日加入：重写本方法的目的是使得JToggleButton不填充
