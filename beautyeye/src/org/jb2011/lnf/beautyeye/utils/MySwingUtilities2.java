@@ -15,17 +15,18 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.PrintGraphics;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
-import java.awt.print.PrinterGraphics;
 
 import javax.swing.JComponent;
-import sun.swing.SwingUtilities2;
 
 /**
- * 本类中的方法一一对应于SUN未公开的类SwingUtilities2中的方法。
+ * 本类中的方法一一对应于SUN未公开的类SwingUtilities2中的方法.
  *
+ * 部分代码摘自JDK 1.5.
+ * 
  * @author Jack Jiang(jb2011@163.com)
+ * @author huangyuhui
  */
 public class MySwingUtilities2 {
 
@@ -96,86 +97,9 @@ public class MySwingUtilities2 {
      */
     public static void drawString(JComponent c, Graphics g, String text,
             int x, int y) {
-        SwingUtilities2.drawString(c, g, text, x, y);
-
-//        // c may be null
-//
-//        // All non-editable widgets that draw strings call into this
-//        // methods.  By non-editable that means widgets like JLabel, JButton
-//        // but NOT JTextComponents.
-//        if ( text == null || text.length() <= 0 ) { //no need to paint empty strings
-//            return;
-//        }
-//        if (isPrinting(g)) {
-//            Graphics2D g2d = getGraphics2D(g);
-//            if (g2d != null) {
-//                TextLayout layout = new TextLayout(text, g2d.getFont(),
-//                                                   DEFAULT_FRC);
-//
-//                /* Use alternate print color if specified */
-//                Color col = g2d.getColor();
-//                if (col instanceof PrintColorUIResource) {
-//                    g2d.setColor(((PrintColorUIResource)col).getPrintColor());
-//                }
-//
-//                layout.draw(g2d, x, y);
-//                
-//                g2d.setColor(col);
-//
-//                return;
-//            }
-//        } 
-//
-//        // If we get here we're not printing
-//        if (drawTextAntialiased(c) && (g instanceof Graphics2D)) {
-//            Graphics2D g2 = (Graphics2D)g;
-//            Object oldAAValue = g2.getRenderingHint(
-//                                       RenderingHints.KEY_TEXT_ANTIALIASING);
-//            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-//                                    RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-//            g.drawString(text, x, y);
-//            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
-//                                    oldAAValue);
-//        }
-//        else {
-//            g.drawString(text, x, y);
-//        }
-    }
-
-    /*
-     * returns true if the Graphics is print Graphics
-     * false otherwise
-     */
-    /**
-     * Checks if is printing.
-     *
-     * @param g the g
-     * @return true, if is printing
-     */
-    static boolean isPrinting(Graphics g) {
-        return (g instanceof PrinterGraphics || g instanceof PrintGraphics);
-    }
-
-
-    /* 
-     * Tries it best to get Graphics2D out of the given Graphics
-     * returns null if can not derive it.
-     */
-    /**
-     * Gets the graphics2 d.
-     *
-     * @param g the g
-     * @return the graphics2 d
-     */
-    public static Graphics2D getGraphics2D(Graphics g) {
-//        if (g instanceof Graphics2D) {
-//            return (Graphics2D) g;
-//        } else if (g instanceof ProxyPrintGraphics) {
-//            return (Graphics2D)(((ProxyPrintGraphics)g).getGraphics());
-//        } else {
-//            return null;
-//        }
-        return SwingUtilities2.getGraphics2D(g);
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.drawString(text, x, y);
     }
 
     /**
@@ -237,6 +161,18 @@ public class MySwingUtilities2 {
      */
     public static String clipString(JComponent c, FontMetrics fm,
             String string, int availTextWidth) {
-        return SwingUtilities2.clipString(c, fm, string, availTextWidth);
+        // c may be null here.
+        String clipString = "...";
+        int width = stringWidth(c, fm, clipString);
+        // NOTE: This does NOT work for surrogate pairs and other fun
+        // stuff
+        int nChars = 0;
+        for (int max = string.length(); nChars < max; nChars++) {
+            width += fm.charWidth(string.charAt(nChars));
+            if (width > availTextWidth)
+                break;
+        }
+        string = string.substring(0, nChars) + clipString;
+        return string;
     }
 }

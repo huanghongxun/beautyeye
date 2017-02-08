@@ -89,6 +89,7 @@ public class ReflectHelper
 			try
 			{
 				Method m = theClass.getMethod(methodName, paramsType);
+                                m.setAccessible(true);
 				ret = m.invoke(theObject, paramsValue);
 //				 System.out.println("@通过反射调用方法"+theClass.getName()+"."+methodName
 //										   +"("+Arrays.toString(paramsType)+")成功.");

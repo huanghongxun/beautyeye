@@ -13,16 +13,21 @@ hs_err_pid*
 
 /SwingSets2/nbproject/
 /SwingSets2/build/
+/SwingSets2/dist/
+/SwingSets2/test/
 /SwingSets2/build.xml
 /SwingSets2/manifest.mf
 
 /SwingSets3/nbproject/
 /SwingSets3/build/
+/SwingSets3/dist/
+/SwingSets3/test/
 /SwingSets3/build.xml
 /SwingSets3/manifest.mf
 
 /beautyeye/nbproject/
 /beautyeye/build/
+/beautyeye/dist/
+/beautyeye/test/
 /beautyeye/build.xml
 /beautyeye/manifest.mf
-/beautyeye/dist/

@@ -88,9 +88,7 @@ public class BEToggleButtonUI extends BasicToggleButtonUI {
     protected void paintText(Graphics g, JComponent c, Rectangle textRect, String text) {
         AbstractButton b = (AbstractButton) c;
         ButtonModel model = b.getModel();
-        FontMetrics fm
-                = //SwingUtilities2
-                MySwingUtilities2.getFontMetrics(c, g);
+        FontMetrics fm = MySwingUtilities2.getFontMetrics(c, g);
         int mnemonicIndex = b.getDisplayedMnemonicIndex();
 
         /* Draw the Text */
