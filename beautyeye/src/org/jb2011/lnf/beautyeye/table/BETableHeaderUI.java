@@ -39,7 +39,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
-import org.jb2011.lnf.beautyeye.utils.ReflectHelper;
 
 /**
  * 表格头UI实现类。
@@ -52,17 +51,9 @@ import org.jb2011.lnf.beautyeye.utils.ReflectHelper;
 public class BETableHeaderUI extends BasicTableHeaderUI {
 
     protected static final Icon9Factory ICON_9 = new Icon9Factory("table");
-    /**
-     * The original header renderer.
-     */
+
     private TableCellRenderer originalHeaderRenderer;
 
-    /**
-     * Creates the ui.
-     *
-     * @param h the h
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent h) {
         return new BETableHeaderUI();
     }
@@ -195,7 +186,7 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
             Border border = null;
             if (hasFocus)
                 border = UIManager.getBorder("TableHeader.focusCellBorder", this.getLocale());
-            if (border == null) 
+            if (border == null)
                 border = UIManager.getBorder("TableHeader.cellBorder", this.getLocale());
             setBorder(border);
 
@@ -346,13 +337,7 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
                 setIcon(null);
                 sortIcon = null;
 
-                //** BUG Fixed：2012-09-13 by Jsck Jiang
-                //** 该BUG产生原因是早期的1.6版不存在getColumnSortOrder方法，为了兼容，目前用反射来解决，
-                //** 即如果当前运行的jre存在该方法则调用之，否则忽略之，最大限度保证BeautyEye的运行
-//				SortOrder sortOrder = getColumnSortOrder(table, column);				
-                SortOrder sortOrder = (SortOrder) ReflectHelper.invokeMethod(DefaultTableCellHeaderRenderer.class,
-                        this, "getColumnSortOrder",
-                        new Class[] { JTable.class, int.class }, new Object[] { table, column });
+                SortOrder sortOrder = getColumnSortOrder(table, column);
                 if (sortOrder != null)
                     switch (sortOrder) {
                         case ASCENDING:
@@ -456,40 +441,10 @@ public class BETableHeaderUI extends BasicTableHeaderUI {
      */
     private static class IconBorder implements Border, UIResource {
 
-        /**
-         * The icon.
-         */
         private final Icon icon;
 
-        /**
-         * The top.
-         */
-        private final int top;
+        private final int top, left, bottom, right;
 
-        /**
-         * The left.
-         */
-        private final int left;
-
-        /**
-         * The bottom.
-         */
-        private final int bottom;
-
-        /**
-         * The right.
-         */
-        private final int right;
-
-        /**
-         * Creates this border;.
-         *
-         * @param icon - icon to paint for this border
-         * @param top the top
-         * @param left the left
-         * @param bottom the bottom
-         * @param right the right
-         */
         public IconBorder(Icon icon, int top, int left, int bottom, int right) {
             this.icon = icon;
             this.top = top;

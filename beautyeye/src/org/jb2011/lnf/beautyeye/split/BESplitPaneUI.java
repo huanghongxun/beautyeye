@@ -28,21 +28,10 @@ public class BESplitPaneUI extends BasicSplitPaneUI {
         super();
     }
 
-    /**
-     * Creates a new BESplitPaneUI instance.
-     *
-     * @param x the x
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent x) {
         return new BESplitPaneUI();
     }
 
-    /**
-     * Creates the default divider.
-     *
-     * @return the basic split pane divider
-     */
     @Override
     public BasicSplitPaneDivider createDefaultDivider() {
         return new BESplitPaneDivider(this);

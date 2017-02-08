@@ -76,12 +76,6 @@ public class BEInternalFrameUI extends BasicInternalFrameUI {
         super(b);
     }
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BEInternalFrameUI((JInternalFrame) c);
     }

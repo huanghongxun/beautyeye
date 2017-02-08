@@ -44,12 +44,6 @@ public class BEScrollBarUI extends BasicScrollBarUI {
 
     public static final Icon9Factory ICON_9 = new Icon9Factory("scroll_bar");
 
-    /**
-     * Creates a UI for a JScrollBar.
-     *
-     * @param c the text field
-     * @return the UI
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BEScrollBarUI();
     }

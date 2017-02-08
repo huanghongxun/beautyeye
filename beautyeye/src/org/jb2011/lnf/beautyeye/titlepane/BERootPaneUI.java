@@ -129,18 +129,11 @@ public class BERootPaneUI extends BasicRootPaneUI {
     private Cursor lastCursor
             = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
 
-    //* 由jb2011 增加：用于在窗口被激活与不激活时自动设置它的透明度（不激活时设为半透明） 
     /**
-     * The windows listener.
+     * 用于在窗口被激活与不激活时自动设置它的透明度（不激活时设为半透明）.
      */
     private WindowListener windowsListener = null;
 
-    /**
-     * Creates a UI for a <code>JRootPane</code>.
-     *
-     * @param c the JRootPane the RootPaneUI will be created for
-     * @return the RootPaneUI implementation for the passed in JRootPane
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BERootPaneUI();
     }

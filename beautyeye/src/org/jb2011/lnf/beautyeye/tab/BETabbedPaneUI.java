@@ -36,12 +36,6 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("tab");
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BETabbedPaneUI();
     }
@@ -76,8 +70,6 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
      * this function draws the border around each tab note that this function
      * does now draw the background of the tab. that is done elsewhere.
      *
-     * copy from parent and modified by jb2011
-     *
      * @param g the g
      * @param tabPlacement the tab placement
      * @param tabIndex the tab index
@@ -86,6 +78,7 @@ public class BETabbedPaneUI extends BasicTabbedPaneUI {
      * @param w the w
      * @param h the h
      * @param isSelected the is selected
+     * @see javax.swing.plaf.basic.BasicTabbedPaneUI#paintTabBorder(java.awt.Graphics, int, int, int, int, int, int, boolean)
      */
     @Override
     protected void paintTabBorder(Graphics g, int tabPlacement,

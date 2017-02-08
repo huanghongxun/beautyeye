@@ -48,6 +48,7 @@ public class N9ComponentFactory extends JLabel {
              final NinePatch n9, Insets is,
              Color foregroundColor, Font f) {
         JLabel l = new JLabel(text) {
+            @Override
             public void paintComponent(Graphics g) {
                 n9.draw((Graphics2D) g, 0, 0, this.getWidth(), this.getHeight());
                 super.paintComponent(g);

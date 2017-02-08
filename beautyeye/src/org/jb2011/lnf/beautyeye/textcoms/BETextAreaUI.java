@@ -23,7 +23,7 @@ import org.jb2011.lnf.beautyeye.textcoms.__UI__.BgSwitchable;
 import org.jb2011.ninepatch4j.NinePatch;
 
 /**
- * 文本组件JTextArea的UI实现类。.
+ * 文本组件JTextArea的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
  */
@@ -33,17 +33,8 @@ public class BETextAreaUI extends BasicTextAreaUI implements BgSwitchable,
     //默认是纯白色背景，因为JTextArea肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
     //如果JTextArea再有边框就很难看了，所以JTextArea在没有获得焦点时就已无边框效果出现会好看很多
 
-    /**
-     * The bg.
-     */
     private NinePatch bg = __UI__.ICON_9.get("white");
 
-    /**
-     * Creates a UI for a JTextField.
-     *
-     * @param c the text field
-     * @return the UI
-     */
     public static ComponentUI createUI(JComponent c) {
         BETextFieldUI.addOtherListener(c);
 //    	c.addMouseListener(new NLLookAndFeel.EditMenu());

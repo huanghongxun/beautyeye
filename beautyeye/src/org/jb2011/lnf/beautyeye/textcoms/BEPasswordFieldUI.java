@@ -24,25 +24,15 @@ import org.jb2011.lnf.beautyeye.widget.FocusListenerImpl;
 import org.jb2011.ninepatch4j.NinePatch;
 
 /**
- * 文本组件JPasswordField的UI实现类。.
+ * 文本组件JPasswordField的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
  */
 public class BEPasswordFieldUI extends BasicPasswordFieldUI implements BgSwitchable,
-         org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsPasswordFieldUI
-{
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
 
-    /**
-     * The bg.
-     */
     private NinePatch bg = __UI__.ICON_9.get("normal");
 
-    /**
-     * Creates a UI for a JPasswordField.
-     *
-     * @param c the password field
-     * @return the UI
-     */
     public static ComponentUI createUI(JComponent c) {
         c.addFocusListener(FocusListenerImpl.getInstance());
 //    	c.addMouseListener(new NLLookAndFeel.EditMenu());
@@ -86,7 +76,7 @@ public class BEPasswordFieldUI extends BasicPasswordFieldUI implements BgSwitcha
             //用新的NP图实现真正的背景填充
             JTextComponent editor = this.getComponent();
             BETextFieldUI.paintBg(g, 0, 0, editor.getWidth(), editor.getHeight(),
-                     editor.isEnabled(), bg);
+                    editor.isEnabled(), bg);
         }
     }
 

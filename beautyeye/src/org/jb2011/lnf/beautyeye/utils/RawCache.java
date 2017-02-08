@@ -28,7 +28,7 @@ public abstract class RawCache<T> {
     private final HashMap<String, T> rawCache = new HashMap<>();
 
     /**
-     * 本地磁盘资源（如果缓存中已存在，则从中取之，否则从磁盘读取并缓存之）。.
+     * 本地磁盘资源（如果缓存中已存在，则从中取之，否则从磁盘读取并缓存之）.
      *
      * @param relativePath
      * 本地磁盘资源相对于baseClass类的相对路径，比如它如果在/res/imgs/pic/下，baseClass在

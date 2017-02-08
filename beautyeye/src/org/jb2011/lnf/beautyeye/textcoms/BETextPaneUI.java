@@ -23,7 +23,7 @@ import org.jb2011.lnf.beautyeye.textcoms.__UI__.BgSwitchable;
 import org.jb2011.ninepatch4j.NinePatch;
 
 /**
- * 文本组件JTextPane的UI实现类。.
+ * 文本组件JTextPane的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com), 2012-08-25
  * @see com.sun.java.swing.plaf.windows.WindowsTextPaneUI
@@ -35,19 +35,12 @@ public class BETextPaneUI extends BasicTextPaneUI implements BgSwitchable,
 
     private NinePatch bg = __UI__.ICON_9.get("white");
 
-    /**
-     * Creates a UI for a JTextPane.
-     *
-     * @param c the styled text component
-     * @return the UI
-     */
     public static ComponentUI createUI(JComponent c) {
         BETextFieldUI.addOtherListener(c);
 //    	c.addMouseListener(new NLLookAndFeel.EditMenu());
         return new BETextPaneUI();
     }
 
-    //* 本方法由Jack Jiang于2012-09-07日加入
     /**
      * 是否使用父类的绘制实现方法，true表示是.
      * <p>

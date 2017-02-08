@@ -40,17 +40,10 @@ public class BEProgressBarUI extends BasicProgressBarUI
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("progress_bar");
 
-    /**
-     * Creates the ui.
-     *
-     * @param x the x
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent x) {
         return new BEProgressBarUI();
     }
 
-    //* 本方法由Jack Jiang于2012-09-07日加入
     /**
      * 是否使用父类的绘制实现方法，true表示是.
      * <p>
@@ -68,9 +61,9 @@ public class BEProgressBarUI extends BasicProgressBarUI
                 || !(progressBar.getBackground() instanceof UIResource));
     }
 
-    //* copy from BasicProgressBarUI and modified by Jack Jiang
-    //绘制普通进度条的方法
+    //
     /**
+     * 绘制普通进度条的方法.
      * All purpose paint method that should do the right thing for almost all
      * linear, determinate progress bars. By setting a few values in the
      * defaults table, things should work just fine to paint your progress bar.
@@ -80,6 +73,7 @@ public class BEProgressBarUI extends BasicProgressBarUI
      * @param g the g
      * @param c the c
      * @see #paintIndeterminate
+     * @see javax.swing.plaf.basic.BasicProgressBarUI#paintDeterminate(java.awt.Graphics, javax.swing.JComponent) 
      * @since 1.4
      */
     @Override
@@ -127,7 +121,6 @@ public class BEProgressBarUI extends BasicProgressBarUI
             paintString(g, b.left, b.top, barRectWidth, barRectHeight, amountFull, b);
     }
 
-    //* copy from BasicProgressBarUI and modified by Jack Jiang
     //绘制无穷进度条的方法
     /**
      * All purpose paint method that should do the right thing for all linear
@@ -138,6 +131,7 @@ public class BEProgressBarUI extends BasicProgressBarUI
      * @param c the c
      * @see #paintDeterminate
      * @since 1.4
+     * @see javax.swing.plaf.basic.BasicProgressBarUI#paintIndeterminate(java.awt.Graphics, javax.swing.JComponent) 
      */
     @Override
     protected void paintIndeterminate(Graphics g, JComponent c) {

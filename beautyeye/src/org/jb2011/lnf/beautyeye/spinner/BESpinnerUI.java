@@ -27,7 +27,7 @@ import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 
 /**
- * JSPinner的UI实现类。.
+ * JSPinner的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
  * @version 1.0
@@ -37,12 +37,6 @@ public class BESpinnerUI extends BasicSpinnerUI {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("spinner");
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BESpinnerUI();
     }

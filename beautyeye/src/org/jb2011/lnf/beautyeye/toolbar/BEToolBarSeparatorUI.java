@@ -35,12 +35,6 @@ import javax.swing.plaf.basic.BasicToolBarSeparatorUI;
  */
 public class BEToolBarSeparatorUI extends BasicToolBarSeparatorUI {
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BEToolBarSeparatorUI();
     }

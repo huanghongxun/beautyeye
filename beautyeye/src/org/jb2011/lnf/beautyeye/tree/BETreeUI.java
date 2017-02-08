@@ -29,12 +29,6 @@ import javax.swing.tree.TreeCellRenderer;
  */
 public class BETreeUI extends BasicTreeUI {
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BETreeUI();
     }
@@ -52,14 +46,12 @@ public class BETreeUI extends BasicTreeUI {
 //		// appear as one line.  This can be defeated by translating the
 //		// Graphics by an odd amount.
 ////		x1 += (x1 % 2);
-//		//modified by jb2011
 //		x1 += (x1 % 6);
 //
 ////		for (int x = x1; x <= x2; x+=2) 
 ////		{
 ////			g.drawLine(x, y, x, y);
 ////		}
-//		//modified by jb2011
 //		for (int x = x1; x <= x2; x+=6) 
 //		{
 //			g.drawLine(x, y, x, y);
@@ -79,13 +71,11 @@ public class BETreeUI extends BasicTreeUI {
 //		// appear as one line.  This can be defeated by translating the
 //		// Graphics by an odd amount.
 ////		y1 += (y1 % 2);
-//		//modified by jb2011
 //		y1 += (y1 % 6);
 //
 ////		for (int y = y1; y <= y2; y+=2) {
 ////			g.drawLine(x, y, x, y);
 ////		}
-//		//modified by jb2011
 //		for (int y = y1; y <= y2; y+=6) {
 //			g.drawLine(x, y, x, y);
 //		}

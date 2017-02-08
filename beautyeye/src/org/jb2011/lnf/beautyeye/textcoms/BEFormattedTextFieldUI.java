@@ -24,7 +24,7 @@ import org.jb2011.lnf.beautyeye.widget.FocusListenerImpl;
 import org.jb2011.ninepatch4j.NinePatch;
 
 /**
- * 文本组件JFormattedTextField的UI实现类。.
+ * 文本组件JFormattedTextField的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com), 2015-11-13
  * @since 3.7
@@ -32,17 +32,8 @@ import org.jb2011.ninepatch4j.NinePatch;
 public class BEFormattedTextFieldUI extends BasicFormattedTextFieldUI implements BgSwitchable,
         org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
 
-    /**
-     * The bg.
-     */
     private NinePatch bg = __UI__.ICON_9.get("normal");
 
-    /**
-     * Creates a UI for a JPasswordField.
-     *
-     * @param c the password field
-     * @return the UI
-     */
     public static ComponentUI createUI(JComponent c) {
         c.addFocusListener(FocusListenerImpl.getInstance());
         return new BEFormattedTextFieldUI();

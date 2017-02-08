@@ -57,12 +57,6 @@ public class BEMenuUI extends BasicMenuUI {
 
     protected boolean hotTrackingOn;
 
-    /**
-     * Creates the ui.
-     *
-     * @param x the x
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent x) {
         return new BEMenuUI();
     }

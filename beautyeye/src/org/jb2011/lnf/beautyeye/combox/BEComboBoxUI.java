@@ -49,12 +49,6 @@ public class BEComboBoxUI extends BasicComboBoxUI
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("button_arrow");
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
 //    	//监听焦点改变
 //    	if(NLLookAndFeel.paintFocusedBorder&&NLLookAndFeel.comboxFocusedThikness>=1)

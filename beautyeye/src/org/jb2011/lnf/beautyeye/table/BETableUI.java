@@ -25,17 +25,8 @@ import javax.swing.plaf.basic.BasicTableUI;
  */
 public class BETableUI extends BasicTableUI {
 
-    /**
-     * The default renderers by column class.
-     */
     UIDefaults defaultRenderersByColumnClass;
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BETableUI();
     }

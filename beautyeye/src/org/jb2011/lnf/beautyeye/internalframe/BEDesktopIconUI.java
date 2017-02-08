@@ -29,17 +29,8 @@ import javax.swing.plaf.basic.BasicDesktopIconUI;
  */
 public class BEDesktopIconUI extends BasicDesktopIconUI {
 
-    /**
-     * The width.
-     */
     private int width;
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BEDesktopIconUI();
     }

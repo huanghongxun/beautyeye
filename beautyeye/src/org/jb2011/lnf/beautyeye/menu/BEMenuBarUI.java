@@ -18,19 +18,13 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicMenuBarUI;
 
 /**
- * JMenuBar的UI实现类。.
+ * JMenuBar的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
  * @see com.sun.java.swing.plaf.windows.WindowsMenuBarUI
  */
 public class BEMenuBarUI extends BasicMenuBarUI {
 
-    /**
-     * Creates the ui.
-     *
-     * @param x the x
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent x) {
         return new BEMenuBarUI();
     }

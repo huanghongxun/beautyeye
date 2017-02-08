@@ -20,7 +20,6 @@ import java.awt.Stroke;
 import javax.swing.JComponent;
 import javax.swing.JSeparator;
 import javax.swing.LookAndFeel;
-import javax.swing.UIManager;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSeparatorUI;
 
@@ -31,56 +30,46 @@ import javax.swing.plaf.basic.BasicSeparatorUI;
  * @author Jack Jiang(jb2011@163.com), 2012-11-05
  * @version 1.0
  */
-public class BESeparatorUI extends BasicSeparatorUI 
-{ 
-	/**
-	 * Creates the ui.
-	 *
-	 * @param c the c
-	 * @return the component ui
-	 */
-	public static ComponentUI createUI( JComponent c )
-	{
-		return new BESeparatorUI();
-	}
-	
-	protected void installDefaults( JSeparator s )
-    {
-        LookAndFeel.installColors( s, "Separator.background", "Separator.foreground" );
-        LookAndFeel.installProperty( s, "opaque", Boolean.FALSE);
+public class BESeparatorUI extends BasicSeparatorUI {
+
+    public static ComponentUI createUI(JComponent c) {
+        return new BESeparatorUI();
     }
-	
-	@Override
-	public void paint( Graphics g, JComponent c )
-	{
-		//** 绘制border的底线
-		//虚线样式
-		Stroke oldStroke = ((Graphics2D)g).getStroke();
-		Stroke sroke = new BasicStroke(1, BasicStroke.CAP_BUTT,
-				BasicStroke.JOIN_BEVEL, 0, new float[]{2, 2}, 0);//实线，空白
-		((Graphics2D)g).setStroke(sroke);//
+
+    @Override
+    protected void installDefaults(JSeparator s) {
+        LookAndFeel.installColors(s, "Separator.background", "Separator.foreground");
+        LookAndFeel.installProperty(s, "opaque", Boolean.FALSE);
+    }
+
+    @Override
+    public void paint(Graphics g, JComponent c) {
+        //** 绘制border的底线
+        //虚线样式
+        Stroke oldStroke = ((Graphics2D) g).getStroke();
+        Stroke sroke = new BasicStroke(1, BasicStroke.CAP_BUTT,
+                BasicStroke.JOIN_BEVEL, 0, new float[] { 2, 2 }, 0);//实线，空白
+        ((Graphics2D) g).setStroke(sroke);//
 //		super.paint(g, c);
-		
-		Dimension s = c.getSize();
 
-        if ( ((JSeparator)c).getOrientation() == JSeparator.VERTICAL )
-        {
+        Dimension s = c.getSize();
+
+        if (((JSeparator) c).getOrientation() == JSeparator.VERTICAL) {
 //        	System.out.println("c.getBackground()c.getBackground()c.getBackground()="+c.getBackground());
-          g.setColor( c.getForeground() );
-          g.drawLine( 0, 0, 0, s.height );
+            g.setColor(c.getForeground());
+            g.drawLine(0, 0, 0, s.height);
 
-          g.setColor( c.getBackground() );
-          g.drawLine( 1, 0, 1, s.height );
-        }
-        else  // HORIZONTAL
+            g.setColor(c.getBackground());
+            g.drawLine(1, 0, 1, s.height);
+        } else // HORIZONTAL
         {
-          g.setColor( c.getForeground() );
-          g.drawLine( 0, 0, s.width, 0 );
+            g.setColor(c.getForeground());
+            g.drawLine(0, 0, s.width, 0);
 
-          g.setColor( c.getBackground() );
-          g.drawLine( 0, 1, s.width, 1 );
+            g.setColor(c.getBackground());
+            g.drawLine(0, 1, s.width, 1);
         }
-		
-		((Graphics2D)g).setStroke(oldStroke);
-	}
+
+        ((Graphics2D) g).setStroke(oldStroke);
+    }
 }

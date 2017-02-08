@@ -52,12 +52,6 @@ public class BESliderUI extends BasicSliderUI {
         super(b);
     }
 
-    /**
-     * Creates the ui.
-     *
-     * @param b the b
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent b) {
         return new BESliderUI((JSlider) b);
     }

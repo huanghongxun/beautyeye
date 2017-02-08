@@ -42,12 +42,6 @@ public class BEToggleButtonUI extends BasicToggleButtonUI {
 
     private final NormalColor normalColor = BEButtonUI.NormalColor.normal;
 
-    /**
-     * Creates the ui.
-     *
-     * @param b the b
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent b) {
         return INSTANCE;
     }

@@ -23,28 +23,18 @@ import org.jb2011.lnf.beautyeye.textcoms.__UI__.BgSwitchable;
 import org.jb2011.ninepatch4j.NinePatch;
 
 /**
- * 文本组件JEditorPane的UI实现类。.
+ * 文本组件JEditorPane的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com), 2012-08-25
  * @see com.sun.java.swing.plaf.windows.WindowsEditorPaneUI
  */
 public class BEEditorPaneUI extends BasicEditorPaneUI implements BgSwitchable,
-        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsEditorPaneUI
-{
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
     //默认是纯白色背景，因为JEditorPane肯定是要放在JScrollPane中的，而ScrollPane也是有边框的
     //如果JEditorPane再有边框就很难看了，所以JEditorPane在没有获得焦点时就已无边框效果出现会好看很多
 
-    /**
-     * The bg.
-     */
     private NinePatch bg = __UI__.ICON_9.get("white");
 
-    /**
-     * Creates a UI for a JEditorPane.
-     *
-     * @param c the configurable text component
-     * @return the UI
-     */
     public static ComponentUI createUI(JComponent c) {
         BETextFieldUI.addOtherListener(c);
 //    	c.addMouseListener(new NLLookAndFeel.EditMenu());

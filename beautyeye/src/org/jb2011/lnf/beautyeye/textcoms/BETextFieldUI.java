@@ -24,25 +24,15 @@ import org.jb2011.lnf.beautyeye.widget.FocusListenerImpl;
 import org.jb2011.ninepatch4j.NinePatch;
 
 /**
- * 文本组件JTextField的UI实现类。.
+ * 文本组件JTextField的UI实现类.
  *
  * @author Jack Jiang(jb2011@163.com)
  */
 public class BETextFieldUI extends BasicTextFieldUI implements BgSwitchable,
-        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported//WindowsTextFieldUI
-{
+        org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.__UseParentPaintSurported {
 
-    /**
-     * The bg.
-     */
     private NinePatch bg = __UI__.ICON_9.get("normal");
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the bE text field ui {@inheritDoc}
-     */
     public static BETextFieldUI createUI(JComponent c) {
         addOtherListener(c);
         return new BETextFieldUI();

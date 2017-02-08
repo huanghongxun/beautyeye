@@ -39,12 +39,6 @@ public class BEMenuItemUI extends BasicMenuItemUI {
      */
     private static boolean enforceTransparent = true;// TODO 可以提炼成UI属性
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BEMenuItemUI();
     }

@@ -58,7 +58,6 @@ public class BEFileChooserUI extends MetalFileChooserUI {
         g.fillRect(0, 0, c.getWidth(), c.getHeight());
     }
 
-    //* modified by Jack Jiang 2012-09-17
     /**
      * 重写父类方法，以实现对文件查看列表的额外设置.
      * <p>
@@ -72,6 +71,7 @@ public class BEFileChooserUI extends MetalFileChooserUI {
      * @param fc the fc
      * @return the j panel
      */
+    @Override
     protected JPanel createList(JFileChooser fc) {
         JPanel p = super.createList(fc);
 

@@ -56,7 +56,7 @@ public class BEButtonUI extends BasicButtonUI {
     private NormalColor normalColor = NormalColor.normal;
 
     /**
-     * 按钮颜色方案枚举类型。.
+     * 按钮颜色方案枚举类型.
      */
     public enum NormalColor {
 
@@ -126,12 +126,7 @@ public class BEButtonUI extends BasicButtonUI {
     // ********************************
     //          Create PLAF
     // ********************************
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
+    
     public static ComponentUI createUI(JComponent c) {
         return INSTANCE;
     }

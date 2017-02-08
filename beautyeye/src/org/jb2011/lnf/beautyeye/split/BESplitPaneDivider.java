@@ -41,60 +41,38 @@ public class BESplitPaneDivider extends BasicSplitPaneDivider {
 
     private static final Icon9Factory ICON_9 = new Icon9Factory("split_touch");
 
-    //copy from BasicSplitPaneDivider
-    /**
-     * The one touch size.
-     */
-    private int oneTouchSize;
+    private final int oneTouchSize;
 
-    //* add by jb201
-    //* TODO 本常量可以做成UIManager属性以便未来使用者进行配置哦
     /**
-     * The TOUC h_ butto n_ color.
+     * TODO 本常量可以做成UIManager属性以便未来使用者进行配置哦.
      */
     protected final Color TOUCH_BUTTON_COLOR = new Color(58, 135, 173);
-
-    //* add by jb201
-    //在水平SplitePane状态下，中间触碰装饰区装饰按钮的宽度 
+    
     /**
-     * The Constant TOUCH_DECRATED_BUTTON_W.
+     * 在水平SplitePane状态下，中间触碰装饰区装饰按钮的宽度.
      */
     protected final static int TOUCH_DECRATED_BUTTON_W = 5;//* TODO 本常量可以做成UIManager属性以便未来使用者进行配置哦
-    //在水平SplitePane状态下，中间触碰装饰区装饰按钮的高度 
+
     /**
-     * The Constant TOUCH_DECRATED_BUTTON_H.
+     * 在水平SplitePane状态下，中间触碰装饰区装饰按钮的高度.
      */
     protected final static int TOUCH_DECRATED_BUTTON_H = 30;//* TODO 本常量可以做成UIManager属性以便未来使用者进行配置哦
 
-    //分隔条线直线的颜色 
     /**
-     * The Constant TOUCH_DECRATED_BUTTON_COLOR.
+     * 分隔条线直线的颜色.
      */
     protected final static Color TOUCH_DECRATED_BUTTON_COLOR = new Color(180, 180, 180);//* TODO 本颜色常量可以做成UIManager属性以便未来使用者进行配置哦
-    //分隔条线直线的高亮颜色（用来形成高对比度的立体效果） 
+    
     /**
-     * The Constant TOUCH_DECRATED_BUTTON_HILIGHT_COLOR.
+     * 分隔条线直线的高亮颜色（用来形成高对比度的立体效果） .
      */
     protected final static Color TOUCH_DECRATED_BUTTON_HILIGHT_COLOR = Color.white;//* TODO 本颜色常量可以做成UIManager属性以便未来使用者进行配置哦
 
-    /**
-     * Creates a new Windows SplitPaneDivider.
-     *
-     * @param ui the ui
-     */
     public BESplitPaneDivider(BasicSplitPaneUI ui) {
         super(ui);
-
-        //copy from BasicSplitPaneDivider
         oneTouchSize = UIManager.getInt("SplitPane.oneTouchButtonSize", ui.getSplitPane().getLocale());
     }
 
-    //copy from BasicSplitPaneDivider and modified by jb2011
-    /**
-     * Paints the divider.
-     *
-     * @param g the g
-     */
     @Override
     public void paint(Graphics g) {
         Color bgColor = (splitPane.hasFocus())
@@ -169,14 +147,15 @@ public class BESplitPaneDivider extends BasicSplitPaneDivider {
         super.paint(g);
     }
 
-    //copy from BasicSplitPaneDivider and modified by jb2011
-    //因父类方法继承重用设计不佳，此处只能全部拷过来代码，再行修改。
-    //至2012-07-13：本方法只作了关于箭头按钮的填充颜色的改变。
     /**
      * Creates and return an instance of JButton that can be used to collapse
      * the left component in the split pane.
+     * 
+     * 因父类方法继承重用设计不佳，此处只能全部拷过来代码，再行修改。
+     * 至2012-07-13：本方法只作了关于箭头按钮的填充颜色的改变。
      *
      * @return the j button
+     * @see javax.swing.plaf.basic.BasicSplitPaneDivider#createLeftOneTouchButton() 
      */
     @Override
     protected JButton createLeftOneTouchButton() {
@@ -196,7 +175,6 @@ public class BESplitPaneDivider extends BasicSplitPaneDivider {
                     g.setColor(this.getBackground());
                     g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
-                    //modified by jb2011
                     // ... then draw the arrow.
                     g.setColor(TOUCH_BUTTON_COLOR);//Color.black);
 
@@ -241,14 +219,15 @@ public class BESplitPaneDivider extends BasicSplitPaneDivider {
         return b;
     }
 
-    //copy from BasicSplitPaneDivider and modified by jb2011
-    //因父类方法继承重用设计不佳，此处只能全部拷过来代码，再行修改。
-    //至2012-07-13：本方法只作了关于箭头按钮的填充颜色的改变。
     /**
      * Creates and return an instance of JButton that can be used to collapse
      * the right component in the split pane.
+     * 
+     * 因父类方法继承重用设计不佳，此处只能全部拷过来代码，再行修改。
+     * 至2012-07-13：本方法只作了关于箭头按钮的填充颜色的改变。
      *
      * @return the j button
+     * @see javax.swing.plaf.basic.BasicSplitPaneDivider#createRightOneTouchButton() 
      */
     @Override
     protected JButton createRightOneTouchButton() {
@@ -289,7 +268,6 @@ public class BESplitPaneDivider extends BasicSplitPaneDivider {
                         ys[2] = blockSize << 1;
                     }
 
-                    //modified by jb2011
                     g.setColor(TOUCH_BUTTON_COLOR);//Color.black);
 
                     g.fillPolygon(xs, ys, 3);
