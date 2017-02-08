@@ -31,3 +31,5 @@ hs_err_pid*
 /beautyeye/test/
 /beautyeye/build.xml
 /beautyeye/manifest.mf
+/Alchemy/nbproject/private/
+/Alchemy/build/

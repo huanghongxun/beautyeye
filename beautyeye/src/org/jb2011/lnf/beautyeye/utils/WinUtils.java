@@ -9,7 +9,7 @@
  * WinUtils.java at 2015-2-1 20:25:37, original version by Jack Jiang.
  * You can contact author with jb2011@163.com.
  */
-package org.jb2011.lnf.beautyeye.winlnfutils;
+package org.jb2011.lnf.beautyeye.utils;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -22,8 +22,6 @@ import javax.swing.ButtonModel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.UIManager;
-
-import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
 
 /**
  * The Class WinUtils.
@@ -72,14 +70,11 @@ public class WinUtils {
     public static void paintText(Graphics g, AbstractButton b,
             Rectangle textRect, String text,
             int textShiftOffset) {
-//		FontMetrics fm = SwingUtilities2.getFontMetrics(b, g);
-        FontMetrics fm = MySwingUtilities2.getFontMetrics(
-                b, g);//* modified by Jack Jiang 为了非公开api的兼容性
+        FontMetrics fm = MySwingUtilities2.getFontMetrics(b, g);
 
         int mnemIndex = b.getDisplayedMnemonicIndex();
         // W2K Feature: Check to see if the Underscore should be rendered.
-//		if (WindowsLookAndFeel.isMnemonicHidden() == true) {
-        if (isMnemonicHidden() == true)//* modified by jack jiang
+        if (isMnemonicHidden() == true)
             mnemIndex = -1;
         paintClassicText(b, g, textRect.x + textShiftOffset,
                 textRect.y + fm.getAscent() + textShiftOffset,
@@ -114,9 +109,7 @@ public class WinUtils {
 				 * BasicMenuItemUI as protected fields and we can't
 				 * reach them from this class */
                 g.setColor(b.getForeground());
-//			SwingUtilities2.drawStringUnderlineCharAt(b, g,text, mnemIndex, x, y);
-            MySwingUtilities2.drawStringUnderlineCharAt(b,
-                    g, text, mnemIndex, x, y);//* modified by Jack Jiang 为了非公开api的兼容性
+            MySwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex, x, y);
         } else {
             /**
              * * paint the text disabled **
@@ -129,17 +122,12 @@ public class WinUtils {
                 if (shadow == null)
                     shadow = b.getBackground().darker();
                 g.setColor(shadow);
-//				SwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex,
-//						x + 1, y + 1);
-                MySwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex,
-                        x + 1, y + 1);//* modified by Jack Jiang 为了非公开api的兼容性
+                MySwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex, x + 1, y + 1);
             }
             if (color == null)
                 color = b.getBackground().brighter();
             g.setColor(color);
-//			SwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex, x, y);
-            MySwingUtilities2.drawStringUnderlineCharAt(
-                    b, g, text, mnemIndex, x, y);//* modified by Jack Jiang 为了非公开api的兼容性
+            MySwingUtilities2.drawStringUnderlineCharAt(b, g, text, mnemIndex, x, y);
 
         }
     }

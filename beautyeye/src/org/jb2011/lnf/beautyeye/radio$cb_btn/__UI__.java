@@ -19,32 +19,31 @@ import javax.swing.ButtonModel;
 import javax.swing.Icon;
 import javax.swing.JToggleButton;
 import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.InsetsUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-public class __UI__ {
+public class __UI__ extends UI {
     private static final IconFactory RADIO = new IconFactory("radio");
     private static final IconFactory CHECK = new IconFactory("check");
 
     public static void uiImpl() {
-        UIManager.put("CheckBox.margin", new InsetsUIResource(4, 3, 4, 3));
-        UIManager.put("RadioButton.margin", new InsetsUIResource(4, 3, 4, 3));//2, 2, 2, 2));
+        putInsets("CheckBox.margin", 4, 3, 4, 3);
+        putInsets("RadioButton.margin", 4, 3, 4, 3); // 2, 2, 2, 2
 
-        UIManager.put("RadioButton.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("CheckBox.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
+        put("RadioButton.background", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("CheckBox.background", BeautyEyeLNFHelper.commonBackgroundColor);
 
-        UIManager.put("CheckBox.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("RadioButton.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
+        put("CheckBox.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("RadioButton.foreground", BeautyEyeLNFHelper.commonForegroundColor);
 
         UIManager.put("RadioButton.icon", new IconFactoryIcon(RADIO));
         UIManager.put("CheckBox.icon", new IconFactoryIcon(CHECK));
 
-        //衬距设定
-        UIManager.put("RadioButton.margin", new InsetsUIResource(1, 1, 1, 1));//默认是2,2,2,2
-        UIManager.put("CheckBox.margin", new InsetsUIResource(1, 1, 1, 1));//默认是2,2,2,2
+        // 衬距设定
+        putInsets("RadioButton.margin", 1, 1, 1, 1);// 2, 2, 2, 2
+        putInsets("CheckBox.margin", 1, 1, 1, 1); // 2, 2, 2, 2
     }
 
     /**

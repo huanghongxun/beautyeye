@@ -36,7 +36,7 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 
 import org.jb2011.lnf.beautyeye.titlepane.BETitlePane;
 import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
-import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
+import org.jb2011.lnf.beautyeye.utils.WinUtils;
 
 /**
  * 内部窗体的标题栏UI实现.

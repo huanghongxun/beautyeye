@@ -14,11 +14,10 @@ package org.jb2011.lnf.beautyeye.separator;
 import java.awt.Color;
 
 import javax.swing.UIManager;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
+import org.jb2011.lnf.beautyeye.utils.UI;
 import org.jb2011.lnf.beautyeye.widget.border.BEDashedRoundRecBorder;
 
 /**
@@ -27,42 +26,42 @@ import org.jb2011.lnf.beautyeye.widget.border.BEDashedRoundRecBorder;
  * @author Jack Jiang
  * @version 1.1
  */
-public class __UI__ {
+public class __UI__ extends UI {
 
     private static final IconFactory ICON = new IconFactory("option_pane");
 
     public static void uiImpl() {
-        UIManager.put("control", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("Separator.foreground", new ColorUIResource(new Color(180, 180, 180)));
-        UIManager.put("ToolTip.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
+        put("control", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("Separator.foreground", new Color(180, 180, 180));
+        put("ToolTip.foreground", BeautyEyeLNFHelper.commonForegroundColor);
 
-        UIManager.put("Separator.background", new ColorUIResource(Color.white));
-        UIManager.put("Panel.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("Panel.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
+        put("Separator.background", Color.white);
+        put("Panel.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("Panel.background", BeautyEyeLNFHelper.commonBackgroundColor);
 
-        UIManager.put("Label.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("Label.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
+        put("Label.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("Label.background", BeautyEyeLNFHelper.commonBackgroundColor);
 
-        UIManager.put("ColorChooser.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("ColorChooser.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("ColorChooser.swatchesDefaultRecentColor", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
+        put("ColorChooser.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("ColorChooser.background", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("ColorChooser.swatchesDefaultRecentColor", BeautyEyeLNFHelper.commonBackgroundColor);
 
-        UIManager.put("TitledBorder.titleColor", new ColorUIResource(new Color(58, 135, 173)));//TitleBorder的标题颜色
-        //TitledBorder的默认border实现（windows LNF中默认是圆色灰色实线距形）
-        UIManager.put("TitledBorder.border", new BorderUIResource(new BEDashedRoundRecBorder(BeautyEyeLNFHelper.commonFocusedBorderColor)));
+        putColor("TitledBorder.titleColor", 58, 135, 173); // TitleBorder的标题颜色
+        // TitledBorder的默认border实现（windows LNF中默认是圆色灰色实线距形）
+        put("TitledBorder.border", new BEDashedRoundRecBorder(BeautyEyeLNFHelper.commonFocusedBorderColor));
 
 //		UIManager.put("OptionPaneUI",org.jb2011.lnf.windows2.ch3.NLOptionPaneUI.class.getName());
         //** Ui里的实现逻辑：此属性为true时将导致JOptionPane里的各按钮按BasicOptionPaneUI里设定的Insets进行
         //** UI展现：当按钮数<=2时使用的Insets=new Instes(2,8,2,8)，否则使用new Instes(2,4,2,4)，
         //** 这样的逻辑下，BeautyEye L&F实现里会使得按钮高度缩小而不好看，所以要关闭此属性
-        UIManager.put("OptionPane.setButtonMargin", false);
-        UIManager.put("OptionPane.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("OptionPane.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
+        put("OptionPane.setButtonMargin", false);
+        put("OptionPane.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("OptionPane.background", BeautyEyeLNFHelper.commonBackgroundColor);
         UIManager.put("OptionPane.questionIcon", ICON.get("question"));
         UIManager.put("OptionPane.warningIcon", ICON.get("warn"));
         UIManager.put("OptionPane.informationIcon", ICON.get("info"));
         UIManager.put("OptionPane.errorIcon", ICON.get("error"));
 
-        UIManager.put("SeparatorUI", org.jb2011.lnf.beautyeye.separator.BESeparatorUI.class.getName());
+        put("SeparatorUI", BESeparatorUI.class);
     }
 }

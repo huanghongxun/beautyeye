@@ -32,7 +32,7 @@ import javax.swing.plaf.basic.BasicMenuUI;
 
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
-import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
+import org.jb2011.lnf.beautyeye.utils.WinUtils;
 
 /**
  * JMenuU的UI实现类.

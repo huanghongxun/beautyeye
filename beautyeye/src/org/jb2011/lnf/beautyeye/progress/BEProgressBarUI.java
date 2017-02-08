@@ -26,7 +26,7 @@ import javax.swing.plaf.basic.BasicProgressBarUI;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
 import org.jb2011.lnf.beautyeye.utils.MySwingUtilities2;
 
-import org.jb2011.lnf.beautyeye.winlnfutils.WinUtils;
+import org.jb2011.lnf.beautyeye.utils.WinUtils;
 import org.jb2011.ninepatch4j.NinePatch;
 
 /**

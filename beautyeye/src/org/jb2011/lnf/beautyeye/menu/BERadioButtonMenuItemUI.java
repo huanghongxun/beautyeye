@@ -38,12 +38,6 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
 
     private static final IconFactory ICON = new IconFactory("menu_radio");
 
-    /**
-     * Creates the ui.
-     *
-     * @param b the b
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent b) {
         return new BERadioButtonMenuItemUI();
     }
@@ -108,5 +102,5 @@ public class BERadioButtonMenuItemUI extends BasicRadioButtonMenuItemUI {
             return 16;
         }//default 6
 
-    } // End class RadioButtonMenuItemIcon
+    }
 }

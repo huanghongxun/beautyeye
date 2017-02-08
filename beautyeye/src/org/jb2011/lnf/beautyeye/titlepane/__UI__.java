@@ -13,13 +13,13 @@ package org.jb2011.lnf.beautyeye.titlepane;
 
 import javax.swing.UIManager;
 import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.BEUtils;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-public class __UI__ {
+public class __UI__ extends UI {
 
     protected static final IconFactory ICON = new IconFactory("frame");
 
@@ -47,14 +47,15 @@ public class __UI__ {
         //设定用于演示之用的“设置”按钮图标
         UIManager.put("Frame.setupIcon", ICON.get("setup"));
 
-//		UIManager.put("activeCaption",new ColorUIResource(Windows2LookAndFeel.activeCaption));
-        UIManager.put("activeCaptionText", new ColorUIResource(BeautyEyeLNFHelper.activeCaptionTextColor));
-//		UIManager.put("activeCaptionBorder",new ColorUIResource(Windows2LookAndFeel.activeCaptionBorder));
-//		UIManager.put("inactiveCaption",new ColorUIResource(GraphicHandler.getColor(activeCaption,64,42,22)));
-        UIManager.put("inactiveCaptionText", new ColorUIResource(BEUtils.getColor(BeautyEyeLNFHelper.activeCaptionTextColor, -49, -27, -7)));
-//		UIManager.put("inactiveCaptionBorder",new ColorUIResource(GraphicHandler.getColor(activeCaptionBorder,64,42,22)));
+//	put("activeCaption", Windows2LookAndFeel.activeCaption);
+        put("activeCaptionText", BeautyEyeLNFHelper.activeCaptionTextColor);
+//	put("activeCaptionBorder", Windows2LookAndFeel.activeCaptionBorder);
+//	put("inactiveCaption", GraphicHandler.getColor(activeCaption, 64, 42, 22));
+        put("inactiveCaptionText", BEUtils.getColor(BeautyEyeLNFHelper.activeCaptionTextColor, -49, -27, -7));
+//	put("inactiveCaptionBorder", GraphicHandler.getColor(activeCaptionBorder, 64, 42, 22));
+
         //此属性即是BeautyEye LNF的窗口标题栏实现
-        UIManager.put("RootPaneUI", BERootPaneUI.class.getName());
+        put("RootPaneUI", BERootPaneUI.class);
 
         // These bindings are only enabled when there is a default
         // button set on the rootpane.
@@ -66,7 +67,7 @@ public class __UI__ {
         });
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> OptionPane的各项ui属性设定
-        Object dialogBorder = new BorderUIResource(BeautyEyeLNFHelper.__getFrameBorder());//BorderFactory.createLineBorder(new Color(181,181,181)));
+        Object dialogBorder = new BorderUIResource(BeautyEyeLNFHelper.getFrameBorder());//BorderFactory.createLineBorder(new Color(181,181,181)));
         UIManager.put("RootPane.frameBorder", dialogBorder);
         UIManager.put("RootPane.plainDialogBorder", dialogBorder);
         UIManager.put("RootPane.informationDialogBorder", dialogBorder);

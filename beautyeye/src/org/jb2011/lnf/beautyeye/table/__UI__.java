@@ -18,51 +18,48 @@ import java.awt.Graphics2D;
 import java.awt.Insets;
 
 import javax.swing.UIManager;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.InsetsUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-public class __UI__ {
+public class __UI__  extends UI {
 
     private static final IconFactory ICON = new IconFactory("table");
 
     public static void uiImpl() {
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> JTable的相关ui属性设定
         //JTable所属的滚动面板的border实现（不像JList，JTable的UI自动为它配备的一个JScrollPane）
-        UIManager.put("Table.scrollPaneBorder", new BorderUIResource(new org.jb2011.lnf.beautyeye.table.TableScrollBorder()));//defaut is com.sun.java.swing.plaf.windows.XPStyle.XPFillBorder
-        UIManager.put("Table.focusCellHighlightBorder", new BorderUIResource(new org.jb2011.lnf.beautyeye.table.FocusCellHighlightBorder()));//new BEDashedBorder(new Color(0,160,0),1,0,true,false,true,false)));
+        put("Table.scrollPaneBorder", new TableScrollBorder());//defaut is com.sun.java.swing.plaf.windows.XPStyle.XPFillBorder
+        put("Table.focusCellHighlightBorder", new FocusCellHighlightBorder());//new BEDashedBorder(new Color(0,160,0),1,0,true,false,true,false)));
         /* ~~注：这个属性是jb2011为了更好的ui效果自已加的属性 */
-        UIManager.put("Table.focusCellHighlightBorderColor", new ColorUIResource(Color.white));//new ColorUIResource(Color.red));
+        put("Table.focusCellHighlightBorderColor", Color.white);//new ColorUIResource(Color.red));
         /* ~~注：这个属性是jb2011为了更好的ui效果自已加的属性，目的是使Table.focusCellHighlightBorder有点立体效果哦 */
-        UIManager.put("Table.focusCellHighlightBorderHighlightColor",
-                new ColorUIResource(new Color(255, 255, 255, 70)));//注意：这个颜色是半透明的哦
-        UIManager.put("Table.background", new ColorUIResource(Color.white));
+        putColor("Table.focusCellHighlightBorderHighlightColor", 255, 255, 255, 70);//注意：这个颜色是半透明的哦
+        put("Table.background", Color.white);
         //** 2011-03-16 add by jb2011 为了使JDK1.6及以上表格头在排序时能显示排序箭头（1.6里的排序图标是在UI里设定的）
         UIManager.put("Table.descendingSortIcon", ICON.get("descending_sort"));
         UIManager.put("Table.ascendingSortIcon", ICON.get("ascending_sort"));
-        UIManager.put("Table.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("Table.gridColor", new ColorUIResource(new Color(220, 220, 220)));
-        UIManager.put("Table.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("Table.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("TableUI", org.jb2011.lnf.beautyeye.table.BETableUI.class.getName());
+        put("Table.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        putColor("Table.gridColor", 220, 220, 220);
+        put("Table.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("Table.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("TableUI", BETableUI.class);
 
         //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> JTable表头相关ui属性设定
 //		UIManager.put("TableHeader.font",new Font("宋体",Font.PLAIN,12));//此属性将决定表头的字体
-        UIManager.put("TableHeader.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("TableHeader.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
+        put("TableHeader.background", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("TableHeader.foreground", BeautyEyeLNFHelper.commonForegroundColor);
 
         //不建议完全定制表头ui，因为BasicTableHeaderUI里的关键方法都是private，无法继承重写，要实现自已
         //的绘制逻辑需要重写大段代码，而因JTable在不同jdk版本里的变动较大：比如1.6里才有的排序（及图标）及相关方法
         //在不同的版本里都不尽相同，而且调用了若干sun的非公开包里的api。虽存在兼容性问题，为了UI美观，还是自定义实现吧
-        UIManager.put("TableHeaderUI", "org.jb2011.lnf.beautyeye.table.BETableHeaderUI");
+        put("TableHeaderUI", BETableHeaderUI.class);
         //** BE LNF的本属性只在Java版本高于1.5时起效
         //* 由jb2011自已加的属性，因原BasicTableHeaderUI里用TableHeader.cellBorder来设置
         //border，但WindowsTableHeaderUI的border则是自已实现的IconBorder，而BE LNF中则是仿
         //照Windows LNF实现，所以只能实现一个自已的属性来供以后的使用者灵活设定（否则只能像Windows LNF一样硬编码在代码里）
-        UIManager.put("TableHeader.cellMargin", new InsetsUIResource(7, 0, 7, 0));
+        putInsets("TableHeader.cellMargin", 7, 0, 7, 0);
     }
 
     /**

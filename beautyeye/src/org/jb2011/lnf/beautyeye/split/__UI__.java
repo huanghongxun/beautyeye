@@ -11,30 +11,26 @@
  */
 package org.jb2011.lnf.beautyeye.split;
 
-import java.awt.Color;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-import javax.swing.UIManager;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
-
-public class __UI__ {
+public class __UI__ extends UI {
 
     public static void uiImpl() {
-        UIManager.put("SplitPane.shadow", new ColorUIResource(new Color(200, 200, 200)));// 本属性在BE LNF中暂时没用到
+        putColor("SplitPane.shadow", 200, 200, 200); // 本属性在BE LNF中暂时没用到
         //JSplitePane的默认背景色
-        UIManager.put("SplitPane.background", new ColorUIResource(new Color(250, 250, 250)));//238,241,243)));
+        putColor("SplitPane.background", 250, 250, 250); // 238, 241, 243
         //JSplitePane的边框实现
-        UIManager.put("SplitPane.border", new BorderUIResource(new org.jb2011.lnf.beautyeye.scroll.ScrollPaneBorder()));//BorderFactory.createEmptyBorder(0, 0, 0, 0)));
-        UIManager.put("SplitPaneUI", org.jb2011.lnf.beautyeye.split.BESplitPaneUI.class.getName());
+        put("SplitPane.border", new org.jb2011.lnf.beautyeye.scroll.ScrollPaneBorder());// 0, 0, 0, 0
+        put("SplitPaneUI", BESplitPaneUI.class);
 
         //分隔条拖动时的颜色（说明：此值可以设置alpha通道以便达到半透明效果哦）
-        UIManager.put("SplitPaneDivider.draggingColor", new ColorUIResource(new Color(0, 0, 0, 50)));
+        putColor("SplitPaneDivider.draggingColor", 0, 0, 0, 50);
         //触碰按钮的默认大小
         // see javax.swing.plaf.basic.BasicSplitPaneDivider.ONE_TOUCH_SIZE = 6
-        UIManager.put("SplitPane.oneTouchButtonSize", 4);
+        put("SplitPane.oneTouchButtonSize", 4);
         //分隔条的默认大小
-        UIManager.put("SplitPane.dividerSize", 7);//drfault is 5
+        put("SplitPane.dividerSize", 7); //drfault is 5
         //分隔条的边框实现
-        UIManager.put("SplitPaneDivider.border", new SplitPaneDividerBorder());
+        put("SplitPaneDivider.border", new SplitPaneDividerBorder());
     }
 }

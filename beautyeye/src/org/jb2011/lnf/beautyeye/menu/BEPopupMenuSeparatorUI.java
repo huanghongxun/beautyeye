@@ -12,7 +12,6 @@
 package org.jb2011.lnf.beautyeye.menu;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -32,12 +31,6 @@ import javax.swing.plaf.SeparatorUI;
  */
 public class BEPopupMenuSeparatorUI extends SeparatorUI {
 
-    /**
-     * Creates the ui.
-     *
-     * @param c the c
-     * @return the component ui
-     */
     public static ComponentUI createUI(JComponent c) {
         return new BEPopupMenuSeparatorUI();
     }
@@ -54,37 +47,17 @@ public class BEPopupMenuSeparatorUI extends SeparatorUI {
         uninstallListeners((JSeparator) c);
     }
 
-    /**
-     * Install defaults.
-     *
-     * @param s the s
-     */
     protected void installDefaults(JSeparator s) {
         LookAndFeel.installColors(s, "Separator.background", "Separator.foreground");
         LookAndFeel.installProperty(s, "opaque", Boolean.FALSE);
     }
 
-    /**
-     * Uninstall defaults.
-     *
-     * @param s the s
-     */
     protected void uninstallDefaults(JSeparator s) {
     }
 
-    /**
-     * Install listeners.
-     *
-     * @param s the s
-     */
     protected void installListeners(JSeparator s) {
     }
 
-    /**
-     * Uninstall listeners.
-     *
-     * @param s the s
-     */
     protected void uninstallListeners(JSeparator s) {
     }
 
@@ -107,11 +80,6 @@ public class BEPopupMenuSeparatorUI extends SeparatorUI {
 
     /**
      * 以水平方向绘制分隔线样式.
-     *
-     * @param g2 the g2
-     * @param c the c
-     * @param w the w
-     * @param h the h
      */
     private void drawHorizonal(Graphics2D g2, JComponent c, int w, int h) {
         //** 绘制border的底线
@@ -151,24 +119,4 @@ public class BEPopupMenuSeparatorUI extends SeparatorUI {
         return null;
     }
 
-//	public static void main(String[] args) throws Exception
-//	{
-//		UIManager.setLookAndFeel(new WindowsLookAndFeel());
-//		JFrame f = new JFrame("111");
-//		f.setBounds(100,100,200,200);
-//		
-//		JToolBar.Separator sp = new JToolBar.Separator(new Dimension(3,100));
-//		sp.setUI(new NLSeparatorUI());
-//		sp.setOrientation(JSeparator.VERTICAL);
-////		sp.setPreferredSize(new Dimension(10,50));
-////		sp.setMaximumSize(new Dimension(10,50));
-////		sp.setMinimumSize(new Dimension(10,50));
-//		
-//		f.getContentPane().setLayout(new FlowLayout());
-//		f.getContentPane().add(new JButton("ddddd"));
-//		f.getContentPane().add(sp);
-//		
-//		f.setVisible(true);
-//		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//	}
 }

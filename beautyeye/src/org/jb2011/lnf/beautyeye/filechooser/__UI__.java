@@ -17,25 +17,25 @@ import javax.swing.UIManager;
 import javax.swing.plaf.BorderUIResource;
 import javax.swing.plaf.ColorUIResource;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
 /**
  * The Class __UI__.
  */
-public class __UI__ {
+public class __UI__ extends UI {
+
     private static final IconFactory ICON = new IconFactory("tree");
 
     public static void uiImpl() {
         //文件查看列表的边框实现
-        UIManager.put("FileChooser.listViewBorder",
-                 new BorderUIResource(new org.jb2011.lnf.beautyeye.scroll.ScrollPaneBorder()));//com.sun.java.swing.plaf.windows.XPStyle.XPFillBorder);
+        put("FileChooser.listViewBorder", new org.jb2011.lnf.beautyeye.scroll.ScrollPaneBorder());
         //此颜色将决定windows平台下文件选择面板的左边WindowsPlaceBar的背景色
-        UIManager.put("ToolBar.shadow", new ColorUIResource(new Color(249, 248, 243)));
-        UIManager.put("FileChooserUI",
-                 org.jb2011.lnf.beautyeye.filechooser.BEFileChooserUI.class.getName());
-        
+        putColor("ToolBar.shadow", 249, 248, 243);
+        put("FileChooserUI", BEFileChooserUI.class);
+
         UIManager.put("FileView.directoryIcon", ICON.get("closed"));
         UIManager.put("FileView.fileIcon", ICON.get("leaf"));
-        
+
         /*
         "FileView.directoryIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getTreeFolderIcon"),
         "FileView.fileIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getTreeLeafIcon"),
@@ -49,6 +49,6 @@ public class __UI__ {
         "FileChooser.listViewIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserListViewIcon"),
         "FileChooser.newFolderIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserNewFolderIcon"),
         "FileChooser.upFolderIcon", new SwingLazyValue("javax.swing.plaf.metal.MetalIconFactory", "getFileChooserUpFolderIcon"),
-        */
+         */
     }
 }

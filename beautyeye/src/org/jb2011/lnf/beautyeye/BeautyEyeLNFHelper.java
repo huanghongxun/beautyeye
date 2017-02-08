@@ -278,7 +278,7 @@ public class BeautyEyeLNFHelper {
      * 当frameBorderStyle=={@link FrameBorderStyle#defaultLookAndFeelDecorated}
      * 时返回无意义的BorderFactory.createEmptyBorder()，否则返回指定边框对象
      */
-    public static Border __getFrameBorder() {
+    public static Border getFrameBorder() {
         switch (frameBorderStyle) {
             case osLookAndFeelDecorated:
                 return BorderFactory.createEmptyBorder();

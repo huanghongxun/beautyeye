@@ -11,24 +11,20 @@
  */
 package org.jb2011.lnf.beautyeye.slider;
 
-import java.awt.Color;
-
-import javax.swing.UIManager;
-import javax.swing.plaf.ColorUIResource;
-
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-public class __UI__ {
+public class __UI__ extends UI {
 
     public static void uiImpl() {
-        UIManager.put("Slider.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
+        put("Slider.background", BeautyEyeLNFHelper.commonBackgroundColor);
         //JSlider的刻度线绘制颜色
-        UIManager.put("Slider.tickColor", new ColorUIResource(new Color(154, 154, 154)));
-        UIManager.put("Slider.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
+        putColor("Slider.tickColor", 154, 154, 154);
+        put("Slider.foreground", BeautyEyeLNFHelper.commonForegroundColor);
         //获得焦点时的insets
-//		UIManager.put("Slider.focusInsets",new InsetsUIResource(2,2,7,7));//父类中默认是2,2,2,2
+//	putInsets("Slider.focusInsets", 2, 2, 7, 7); //父类中默认是 2, 2, 2, 2
         //获得焦点时的焦点边框颜色
-        UIManager.put("Slider.focus", new ColorUIResource(BeautyEyeLNFHelper.commonFocusedBorderColor));//windows父类中默认是[r=113,g=111,b=100]
-        UIManager.put("SliderUI", org.jb2011.lnf.beautyeye.slider.BESliderUI.class.getName());
+        put("Slider.focus", BeautyEyeLNFHelper.commonFocusedBorderColor); //[r=113,g=111,b=100]
+        put("SliderUI", BESliderUI.class);
     }
 }

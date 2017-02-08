@@ -15,12 +15,11 @@ import java.awt.Color;
 import java.awt.Insets;
 
 import javax.swing.UIManager;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-public class __UI__ {
+public class __UI__ extends UI {
 
     public static void uiImpl() {
         //~* @since 3.4, add by Jack Jiang 2012-11-05
@@ -29,24 +28,22 @@ public class __UI__ {
         //~*  默认的渐变NinePatch图实现背景的填充。另外，还可以使用
         //~*  JToolBar.putClientProperty("ToolBar.isPaintPlainBackground", Boolean.TRUE);来进行
         //~*  独立控制背景的填充方法，ClientProperty相比UIManager中的本方法拥有最高优先级
-        UIManager.put("ToolBar.isPaintPlainBackground", Boolean.FALSE);
+        put("ToolBar.isPaintPlainBackground", false);
         //此属性目前用于ToolBar.border中表示触点的颜色
-        UIManager.put("ToolBar.shadow", new ColorUIResource(new Color(180, 183, 187)));
+        putColor("ToolBar.shadow", 180, 183, 187);
         //此属性目前用于ToolBar.border中表示触点的立体阴影效果颜色
-        UIManager.put("ToolBar.highlight", new ColorUIResource(Color.white));
-        UIManager.put("ToolBar.dockingBackground", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("ToolBar.floatingBackground", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("ToolBar.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("ToolBar.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
+        put("ToolBar.highlight", Color.white);
+        put("ToolBar.dockingBackground", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("ToolBar.floatingBackground", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("ToolBar.background", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("ToolBar.foreground", BeautyEyeLNFHelper.commonForegroundColor);
         //工具栏的border实现
-        UIManager.put("ToolBar.border", new BorderUIResource(
-                //				com.sun.java.swing.plaf.windows.WindowsBorders.getToolBarBorder()));
-                new org.jb2011.lnf.beautyeye.toolbar.BEToolBarUI.ToolBarBorder(UIManager.getColor("ToolBar.shadow"),
-                        UIManager.getColor("ToolBar.highlight"), new Insets(6, 0, 11, 0))));
+        UIManager.put("ToolBar.border",
+                new BEToolBarUI.ToolBarBorder(UIManager.getColor("ToolBar.shadow"),
+                        UIManager.getColor("ToolBar.highlight"), new Insets(6, 0, 11, 0)));
 //				BorderFactory.createEmptyBorder(5, 0, 8, 0)));//5, 5, 8, 5)));
         //分隔条ui实现
-        UIManager.put("ToolBarSeparatorUI",
-                 org.jb2011.lnf.beautyeye.toolbar.BEToolBarSeparatorUI.class.getName());
-        UIManager.put("ToolBarUI", org.jb2011.lnf.beautyeye.toolbar.BEToolBarUI.class.getName());
+        put("ToolBarSeparatorUI", BEToolBarSeparatorUI.class);
+        put("ToolBarUI", BEToolBarUI.class);
     }
 }

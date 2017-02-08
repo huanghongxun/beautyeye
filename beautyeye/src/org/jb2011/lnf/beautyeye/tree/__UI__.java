@@ -13,26 +13,24 @@ package org.jb2011.lnf.beautyeye.tree;
 
 import java.awt.Color;
 
-import javax.swing.BorderFactory;
 import javax.swing.UIManager;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.IconFactory;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-public class __UI__ {
+public class __UI__ extends UI {
 
     private static final IconFactory ICON = new IconFactory("tree");
 
     public static void uiImpl() {
-        UIManager.put("Tree.background", new ColorUIResource(Color.white));
-        UIManager.put("Tree.textBackground", new ColorUIResource(Color.white));
-//		UIManager.put("Tree.drawsFocusBorderAroundIcon",new Boolean(false));
-        UIManager.put("Tree.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("Tree.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("Tree.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("Tree.selectionBorderColor", new ColorUIResource(BeautyEyeLNFHelper.commonFocusedBorderColor));//windows父类中默认是0,0,0
+        put("Tree.background", Color.white);
+        put("Tree.textBackground", Color.white);
+//      put("Tree.drawsFocusBorderAroundIcon", false);
+        put("Tree.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        put("Tree.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("Tree.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("Tree.selectionBorderColor", BeautyEyeLNFHelper.commonFocusedBorderColor);//windows父类中默认是0,0,0
 
         UIManager.put("Tree.openIcon", ICON.get("open"));
         UIManager.put("Tree.closedIcon", ICON.get("closed"));
@@ -41,16 +39,15 @@ public class __UI__ {
         UIManager.put("Tree.collapsedIcon", ICON.get("collapsed"));
 
         //不绘制层次线
-        UIManager.put("Tree.paintLines", false);//default is true
+        put("Tree.paintLines", false);//default is true
         //行高
-        UIManager.put("Tree.rowHeight", 18);//default is 16
+        put("Tree.rowHeight", 18);//default is 16
         //未选中时单元前景色（备选MacOSX黑 (35,35,35)）
-        UIManager.put("Tree.textForeground", new ColorUIResource(70, 70, 70));
+        putColor("Tree.textForeground", 70, 70, 70);
         //处于编辑状态时的文本框边框，因BE LNF中文本框无边框（事实上它是用N9图实现的背景
         //边框视觉效果），所以此处要去掉，但加多点空白，与背景配合起来好看点
-        UIManager.put("Tree.editorBorder",
-                 new BorderUIResource(BorderFactory.createEmptyBorder(1, 5, 1, 5)));//Windows LNF中默认是LineBorderUIResource
+        putBorder("Tree.editorBorder", 1, 5, 1, 5);//Windows LNF中默认是LineBorderUIResource
 
-        UIManager.put("TreeUI", org.jb2011.lnf.beautyeye.tree.BETreeUI.class.getName());
+        put("TreeUI", BETreeUI.class);
     }
 }

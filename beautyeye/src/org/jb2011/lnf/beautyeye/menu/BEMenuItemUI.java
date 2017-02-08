@@ -49,9 +49,14 @@ public class BEMenuItemUI extends BasicMenuItemUI {
         return new BEMenuItemUI();
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see com.sun.java.swing.plaf.windows.WindowsMenuItemUI#paintBackground(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Color)
+     * @see javax.swing.plaf.basic.BasicMenuItemUI#paintBackground(java.awt.Graphics, javax.swing.JMenuItem, java.awt.Color)
+     */
     @Override
     protected void paintBackground(Graphics g, JMenuItem menuItem, Color bgColor) {
-        // see parent!
         ButtonModel model = menuItem.getModel();
         Color oldColor = g.getColor();
         int menuWidth = menuItem.getWidth();

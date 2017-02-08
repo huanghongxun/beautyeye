@@ -14,62 +14,62 @@ package org.jb2011.lnf.beautyeye.textcoms;
 import java.awt.Color;
 
 import javax.swing.UIManager;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
 import javax.swing.plaf.InsetsUIResource;
 
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 import org.jb2011.lnf.beautyeye.utils.Icon9Factory;
+import org.jb2011.lnf.beautyeye.utils.UI;
 import org.jb2011.lnf.beautyeye.widget.border.BERoundBorder;
 
-public class __UI__ {
+public class __UI__ extends UI {
 
     public static final Icon9Factory ICON_9 = new Icon9Factory("text");
 
     public static void uiImpl() {
         final InsetsUIResource iuir = new InsetsUIResource(4, 3, 4, 3);
+        final BERoundBorder berb = new BERoundBorder().setLineColor(new Color(0, 0, 0, 0));
 
         //使用全透明色绘边框（用什么边框无所谓，关键是读取它的margin并透明），目的就是要让它的背景显现出来（NinePatch图实现）
         UIManager.put("TextField.margin", iuir);
-        UIManager.put("TextField.border", new BorderUIResource(new BERoundBorder().setLineColor(new Color(0, 0, 0, 0))));
-        UIManager.put("TextField.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("TextField.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("TextField.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("TextFieldUI", org.jb2011.lnf.beautyeye.textcoms.BETextFieldUI.class.getName());
+        put("TextField.border", berb);
+        put("TextField.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        put("TextField.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("TextField.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("TextFieldUI", BETextFieldUI.class);
 
         UIManager.put("FormattedTextField.margin", iuir);
-        UIManager.put("FormattedTextField.border", new BorderUIResource(new BERoundBorder(1).setArcWidth(10).setLineColor(new Color(0, 0, 0, 0))));
-        UIManager.put("FormattedTextField.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("FormattedTextField.inactiveBackground", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("FormattedTextField.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("FormattedTextField.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("FormattedTextFieldUI", org.jb2011.lnf.beautyeye.textcoms.BEFormattedTextFieldUI.class.getName());
+        put("FormattedTextField.border", new BERoundBorder(1).setArcWidth(10).setLineColor(new Color(0, 0, 0, 0)));
+        put("FormattedTextField.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("FormattedTextField.inactiveBackground", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("FormattedTextField.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        put("FormattedTextField.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("FormattedTextFieldUI", BEFormattedTextFieldUI.class);
 
         UIManager.put("PasswordField.margin", iuir);
-        UIManager.put("PasswordField.border", new BorderUIResource(new BERoundBorder().setLineColor(new Color(0, 0, 0, 0))));
-        UIManager.put("PasswordField.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("PasswordField.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("PasswordField.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("PasswordFieldUI", org.jb2011.lnf.beautyeye.textcoms.BEPasswordFieldUI.class.getName());
+        put("PasswordField.border", berb);
+        put("PasswordField.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        put("PasswordField.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("PasswordField.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("PasswordFieldUI", BEPasswordFieldUI.class);
 
         UIManager.put("TextArea.margin", iuir);
-        UIManager.put("TextArea.border", new BorderUIResource(new BERoundBorder().setLineColor(new Color(0, 0, 0, 0))));
-        UIManager.put("TextArea.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("TextArea.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("TextArea.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("TextAreaUI", org.jb2011.lnf.beautyeye.textcoms.BETextAreaUI.class.getName());
+        put("TextArea.border", berb);
+        put("TextArea.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        put("TextArea.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("TextArea.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("TextAreaUI", BETextAreaUI.class);
 
-        UIManager.put("TextPane.border", new BorderUIResource(new BERoundBorder().setLineColor(new Color(0, 0, 0, 0))));
-        UIManager.put("TextPane.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("TextPane.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("TextPane.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("TextPaneUI", org.jb2011.lnf.beautyeye.textcoms.BETextPaneUI.class.getName());
+        put("TextPane.border", berb);
+        put("TextPane.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        put("TextPane.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("TextPane.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("TextPaneUI", BETextPaneUI.class);
 
-        UIManager.put("EditorPane.border", new BorderUIResource(new BERoundBorder().setLineColor(new Color(0, 0, 0, 0))));
-        UIManager.put("EditorPane.selectionForeground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionForegroundColor));
-        UIManager.put("EditorPane.selectionBackground", new ColorUIResource(BeautyEyeLNFHelper.commonSelectionBackgroundColor));
-        UIManager.put("EditorPane.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("EditorPaneUI", org.jb2011.lnf.beautyeye.textcoms.BEEditorPaneUI.class.getName());
+        put("EditorPane.border", berb);
+        put("EditorPane.selectionForeground", BeautyEyeLNFHelper.commonSelectionForegroundColor);
+        put("EditorPane.selectionBackground", BeautyEyeLNFHelper.commonSelectionBackgroundColor);
+        put("EditorPane.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("EditorPaneUI", BEEditorPaneUI.class);
     }
 
     public interface BgSwitchable {

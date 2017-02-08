@@ -11,28 +11,21 @@
  */
 package org.jb2011.lnf.beautyeye.spinner;
 
-import java.awt.Dimension;
-
-import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.BorderUIResource;
-import javax.swing.plaf.ColorUIResource;
-import javax.swing.plaf.InsetsUIResource;
-
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import org.jb2011.lnf.beautyeye.utils.UI;
 
-public class __UI__ {
+public class __UI__ extends UI {
 
     public static void uiImpl() {
-        UIManager.put("Spinner.background", new ColorUIResource(BeautyEyeLNFHelper.commonBackgroundColor));
-        UIManager.put("Spinner.foreground", new ColorUIResource(BeautyEyeLNFHelper.commonForegroundColor));
-        UIManager.put("SpinnerUI", org.jb2011.lnf.beautyeye.spinner.BESpinnerUI.class.getName());
+        put("Spinner.background", BeautyEyeLNFHelper.commonBackgroundColor);
+        put("Spinner.foreground", BeautyEyeLNFHelper.commonForegroundColor);
+        put("SpinnerUI", BESpinnerUI.class);
 
         //Spinner组件的边框
-        UIManager.put("Spinner.border", new BorderUIResource(new EmptyBorder(5, 5, 10, 5)));//windows lnf中默认是3, 3, 3, 3
+        putBorder("Spinner.border", 5, 5, 10, 5); // 3, 3, 3, 3
         //Spinner组件的2个箭头按钮的内衬距
-        UIManager.put("Spinner.arrowButtonInsets", new InsetsUIResource(1, 0, 2, 2));//windows lnf中默认是1,1,1,1
+        putInsets("Spinner.arrowButtonInsets", 1, 0, 2, 2); // 1, 1, 1, 1
         //Spinner组件的2个箭头按钮的默认大小
-        UIManager.put("Spinner.arrowButtonSize", new Dimension(17, 9));//windows lnf中默认是17,9
+        putDim("Spinner.arrowButtonSize", 17, 9);
     }
 }

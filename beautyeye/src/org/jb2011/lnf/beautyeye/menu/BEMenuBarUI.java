@@ -23,28 +23,25 @@ import javax.swing.plaf.basic.BasicMenuBarUI;
  * @author Jack Jiang(jb2011@163.com)
  * @see com.sun.java.swing.plaf.windows.WindowsMenuBarUI
  */
-public class BEMenuBarUI extends BasicMenuBarUI//WindowsMenuBarUI
-{
-    
+public class BEMenuBarUI extends BasicMenuBarUI {
+
     /**
      * Creates the ui.
      *
      * @param x the x
      * @return the component ui
      */
-    public static ComponentUI createUI(JComponent x)
-    {
-    	return new BEMenuBarUI();
+    public static ComponentUI createUI(JComponent x) {
+        return new BEMenuBarUI();
     }
-    
-    @Override
-    public void paint(Graphics g, JComponent c) 
-    {
-    	int width = c.getWidth();
-    	int height = c.getHeight();
 
-    	//背景划一个灰色底线（方便与JMenuBar的顶层菜单项的底色融合）
-    	g.setColor(BEMenuUI.MENU_UNSELECTED_UNDERLINE_COLOR);
-    	g.fillRect(0,height-BEMenuUI.DECORATED_UNDERLINE_HEIGHT, width, height);
+    @Override
+    public void paint(Graphics g, JComponent c) {
+        int width = c.getWidth();
+        int height = c.getHeight();
+
+        //背景划一个灰色底线（方便与JMenuBar的顶层菜单项的底色融合）
+        g.setColor(BEMenuUI.MENU_UNSELECTED_UNDERLINE_COLOR);
+        g.fillRect(0, height - BEMenuUI.DECORATED_UNDERLINE_HEIGHT, width, height);
     }
 }
